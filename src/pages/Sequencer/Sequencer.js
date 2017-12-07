@@ -7,7 +7,7 @@ import Transport from '../../components/Transport/Transport';
 const Sequencer = (props) => {
 
   return (
-    <div>
+    <div className="Sequencer">
     <SequenceRow />
     <SequenceRow />
     <SequenceRow />
