@@ -1,5 +1,8 @@
 # Heart-Bleep
 
 ### *A webMidi capable drum sequencer built on React*
-
-![Initial WireFrame](https://i.imgur.com/qLzlzrj.png)
+----
+### App Development:
+![Trello Board](https://trello.com/b/pFZWBZKW/heart-bleep)
+![Initial WireFrame](https://i.imgur.com/dRTcQdx.png)
+----
