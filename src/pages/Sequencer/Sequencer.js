@@ -1,12 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './Sequencer.css'
+import SequenceRow from '../../components/SequenceRow/SequenceRow';
 import Transport from '../../components/Transport/Transport';
 
 const Sequencer = (props) => {
 
   return (
+    <div>
+    <SequenceRow />
     <Transport />
+    </div>
   )
 }
 
