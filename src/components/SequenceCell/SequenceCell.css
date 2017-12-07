@@ -1,5 +1,9 @@
 .SequenceCell{
-  background-color: red;
-  width: 20px;
-  margin: 5;
+  border: 1px solid #eee;
+  text-align: center;
+  line-height: 50px;
+  font-size: 28px;
+  background-color: tomato;
+  color: #fff;
+  padding: 0;
 }

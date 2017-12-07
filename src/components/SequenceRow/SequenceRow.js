@@ -1,19 +1,28 @@
 import React from 'react';
 import SequenceCell from '../SequenceCell/SequenceCell';
 import './SequenceRow.css';
+import {Button, Icon, CardPanel, Col, Row} from 'react-materialize'
 
 const SequenceRow = (props) => {
 
-  return(
+  return (
     <div className="SequenceRow">
-    <SequenceCell />
-    <SequenceCell />
-    <SequenceCell />
-    <SequenceCell />
-    <SequenceCell />
-    <SequenceCell />
-    <SequenceCell />
-    <SequenceCell />
+      <Row>
+        <Col s={10}>
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        <SequenceCell />
+        </Col>
+      </Row>
     </div>
   )
 }
