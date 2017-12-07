@@ -9,6 +9,9 @@ const Sequencer = (props) => {
   return (
     <div>
     <SequenceRow />
+    <SequenceRow />
+    <SequenceRow />
+    <SequenceRow />
     <Transport />
     </div>
   )

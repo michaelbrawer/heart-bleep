@@ -10,6 +10,10 @@ const SequenceRow = (props) => {
     <SequenceCell />
     <SequenceCell />
     <SequenceCell />
+    <SequenceCell />
+    <SequenceCell />
+    <SequenceCell />
+    <SequenceCell />
     </div>
   )
 }
