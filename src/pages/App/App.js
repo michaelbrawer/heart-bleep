@@ -14,7 +14,7 @@ class App extends Component {
         <header className="header">heartBLEEP</header>
           <Switch>
             <Route exact path='/' render={()=><Sequencer />}/>
-            </Switch>
+          </Switch>
       </div>
     );
   }
