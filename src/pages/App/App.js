@@ -8,6 +8,19 @@ import Sequencer from '../Sequencer/Sequencer';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+  }
+
+/*---------- Helper Methods ----------*/
+
+/*---------- Callback Methods ----------*/
+
+/*---------- Lifecycle Methods ----------*/
+
+/*---------- Render ----------*/
+
   render() {
     return (
       <div className="App">
