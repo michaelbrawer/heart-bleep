@@ -1,14 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Clock from '../Clock/Clock'
 import './Transport.css';
+import {Button, Icon} from 'react-materialize'
 
 const Transport = (props) => {
   return(
     <div className="Transport">
       <Clock />
       <p>Transport:</p>
-      <button>play</button>
-      <button>stop</button>
+      <Button waves='light' className="grey"><i class="material-icons md-dark">arrow_back</i></Button>
+      <Button waves='light'><i class="material-icons md-dark">arrow_forward</i></Button>
+      <Button waves='light' className="red TransportButton"><i class="material-icons md-dark">cancel</i></Button>
     </div>
   );
 }
