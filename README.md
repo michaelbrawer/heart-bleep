@@ -2,6 +2,10 @@
 
 ### *A webMidi capable drum sequencer built on React*
 ----
+### Getting Started
+- Link to hosted app goes here.
+
+---
 ### Core Technologies Used:
 - Mongo DB
 - Express.Js
@@ -10,11 +14,17 @@
 - HTML 
 - CSS
 
-### Additional Libraries / Frameworks
+### Additional Libraries / Frameworks:
 - Materialize-React for styling
 - Bcrypt & JSON Webtokens for authentication / authorization
 - Mongoose for DB management
+---
 
+### Future Enhancements: 
+- Go Here
+
+### Unsolved Problems: 
+- Go Here
 
 ### App Development:
 
