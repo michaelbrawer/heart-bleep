@@ -7,6 +7,8 @@ import {
 import {Navbar, NavItem, Button, Icon, CardPanel, Col, Row, Footer} from 'react-materialize'
 import Sequencer from '../Sequencer/Sequencer';
 
+import userService from '../../utils/userService';
+
 import './App.css';
 
 class App extends Component {
@@ -20,6 +22,7 @@ class App extends Component {
 /*---------- Callback Methods ----------*/
 
 /*---------- Lifecycle Methods ----------*/
+
 
 /*---------- Render ----------*/
 
