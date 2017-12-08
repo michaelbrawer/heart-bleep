@@ -13,7 +13,7 @@ const NavBar = (props) => {
       <Link to="" className='NavBar-link' onClick={props.handleLogout} >LOG OUT</Link>
       </NavItem>
       <NavItem>
-      <p className='NavBar-welcome'>WELCOME, {props.user.name}</p>
+      <Link to="" className='NavBar-welcome'>WELCOME, {props.user.name}</Link>
       </NavItem> 
       </div>
       :
