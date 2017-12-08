@@ -2,14 +2,15 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './NavBar.css';
 import {Navbar, NavItem, Button, Icon, CardPanel, Col, Row, Footer} from 'react-materialize'
+import SignupForm from '../SignupForm/SignupForm'
 
 const NavBar = (props) => {
   let nav = props.user ?
-
       <ul>
-        <li><a href="" className='NavBar-link' onClick={props.handleLogout} >log out</a></li>
-        <li><span className='NavBar-welcome'>welcome, {props.user.name}</span></li>
+        <li><a href="/" onClick={props.handleLogout} >log out</a></li>
+        <li>welcome, {props.user.name}</li>
       </ul>
+      
       :
       <ul>
         <li><a href="/login">log in</a></li>
@@ -17,9 +18,9 @@ const NavBar = (props) => {
       </ul>
       
   return (
-    <div class="navbar-fixed">
-    <Navbar className="HeaderFooter right" brand='heart-bleep' right>
-      {nav}  
+    <div className="navbar-fixed">
+    <Navbar className="HeaderFooter" brand='heart-bleep' right>
+      {nav}
     </Navbar>
     </div>
   );
