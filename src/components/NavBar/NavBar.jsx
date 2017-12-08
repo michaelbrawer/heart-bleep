@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import './NavBar.css';
-import {Navbar, NavItem, Button, Icon, CardPanel, Col, Row, Footer} from 'react-materialize'
-import SignupForm from '../SignupForm/SignupForm'
+import {Navbar} from 'react-materialize'
+
 
 const NavBar = (props) => {
   let nav = props.user ?
