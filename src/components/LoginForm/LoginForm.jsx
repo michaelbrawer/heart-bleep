@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import userService from '../../utils/userService';
+import {Button} from 'react-materialize'
 
 class LoginForm extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class LoginForm extends Component {
           <div className="form-group">
             <div className="col-sm-12 text-center">
               <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-              <Link to='/'>Cancel</Link>
+             <Link to='/'> <Button>Cancel</Button></Link>
             </div>
           </div>
         </form>
