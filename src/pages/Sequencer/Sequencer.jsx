@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import './Sequencer.css'
 import SequenceRow from '../../components/SequenceRow/SequenceRow';
 import Transport from '../../components/Transport/Transport';
