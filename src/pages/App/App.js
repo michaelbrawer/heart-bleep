@@ -4,8 +4,9 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import {Navbar, NavItem, Button, Icon, CardPanel, Col, Row, Footer} from 'react-materialize'
+import {Button, Icon, CardPanel, Col, Row, Footer} from 'react-materialize'
 import Sequencer from '../Sequencer/Sequencer';
+import NavBar from '../../components/NavBar/NavBar';
 
 import userService from '../../utils/userService';
 
@@ -29,14 +30,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar className="HeaderFooter" brand='HeartBeep' right>
-        <NavItem href='get-started.html'>Getting started</NavItem>
-        <NavItem href='components.html'>Components</NavItem>
-      </Navbar>
+        <NavBar />
           <Switch>
             <Route exact path='/' render={()=><Sequencer />}/>
           </Switch>
-
       </div>
     );
   }
