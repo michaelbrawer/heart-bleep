@@ -27,22 +27,3 @@ const NavBar = (props) => {
 };
 
 export default NavBar;
-
-
-
-{/* <NavItem  >
-<Link to="/topscores" className='NavBar-link' >TOP SCORES</Link>
-</NavItem>
-<NavItem>
-<Link to="" className='NavBar-link' onClick={props.handleLogout} >LOG OUT</Link>
-</NavItem>
-<NavItem>
-<Link to="" className='NavBar-welcome'>WELCOME, {props.user.name}</Link>
-</NavItem>  */}
-
-{/* <NavItem>
-<Link to="/login" className='NavBar-link'>LOG IN</Link>
-</NavItem>
-<NavItem>
-<Link to="/signup" className='NavBar-link'>SIGN UP</Link>
-</NavItem> */}
