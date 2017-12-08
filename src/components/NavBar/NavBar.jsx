@@ -5,28 +5,31 @@ import {Navbar, NavItem, Button, Icon, CardPanel, Col, Row, Footer} from 'react-
 
 const NavBar = (props) => {
   let nav = props.user ?
-    <NavItem>
+      <div className="nav-wrapper">
+      <NavItem  >
       <Link to="/topscores" className='NavBar-link' >TOP SCORES</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      </NavItem>
+      <NavItem>
       <Link to="" className='NavBar-link' onClick={props.handleLogout} >LOG OUT</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
-    </NavItem> :
-    <NavItem>
+      </NavItem>
+      <NavItem>
+      <p className='NavBar-welcome'>WELCOME, {props.user.name}</p>
+      </NavItem> 
+      </div>
+      :
+      <div className="nav-wrapper">
+      <NavItem>
       <Link to="/login" className='NavBar-link'>LOG IN</Link>
+      </NavItem>
+      <NavItem>
       <Link to="/signup" className='NavBar-link'>SIGN UP</Link>
-    </NavItem>;
+      </NavItem>
+      </div>
   return (
-    <Navbar className="HeaderFooter" brand='HeartBeep' right>
-      {nav}
+    <Navbar className="HeaderFooter right" brand='HeartBleep' right>
+      {nav}  
     </Navbar>
   );
 };
 
 export default NavBar;
-
-{/* 
-        <NavItem href='get-started.html'>Getting started</NavItem>
-        <NavItem href='components.html'>Components</NavItem>
-       */}
-
