@@ -21,7 +21,6 @@ class App extends Component {
     this.state = Object.assign(
      {foo: "bar"}
     );
-
   }
 
 /*---------- Helper Methods ----------*/
@@ -68,10 +67,12 @@ componentDidMount() {
               />
             }/>
             <Route exact path='/login' render={(props) => 
+            <Row>
               <LoginPage
                 {...props}
                 handleLogin={this.handleLogin}
               />
+              </Row>
             }/>
           </Switch>
       </div>

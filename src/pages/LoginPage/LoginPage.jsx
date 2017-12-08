@@ -5,13 +5,11 @@ import './LoginPage.css';
 
 const LoginPage = (props) => {
   return (
-    <Container>
+    <Container className='LoginPage'>
       <div className='LoginPage'>
-        <Row>
-          <Col s={6}>
+          <Col s={7}>
             <LoginForm {...props}/>
           </Col>
-        </Row>
       </div>
     </Container>
   );
