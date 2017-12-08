@@ -50,6 +50,9 @@ componentDidMount() {
   render() {
     return (
       <div className="App">
+        <NavBar user={this.state.user}
+     handleLogout={this.handleLogout}
+     />
       
           <Switch>
             <Route exact path='/' render={()=>

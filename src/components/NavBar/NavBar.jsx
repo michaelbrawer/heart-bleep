@@ -17,9 +17,11 @@ const NavBar = (props) => {
       </ul>
       
   return (
+    <div class="navbar-fixed">
     <Navbar className="HeaderFooter right" brand='HeartBleep' right>
       {nav}  
     </Navbar>
+    </div>
   );
 };
 
