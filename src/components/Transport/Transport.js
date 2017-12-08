@@ -13,9 +13,9 @@ const Transport = (props) => {
     <CardPanel className="grey lighten-4 black-text">
       <Clock />
       <p>Transport:</p>
-      <Button waves='light' className="grey"><i className="material-icons md-dark">replay</i></Button>
-      <Button waves='light'><i className="material-icons md-dark">play_arrow</i></Button>
-      <Button waves='light' className="red TransportButton"><i className="material-icons md-dark">cancel</i></Button>
+      <Button waves='light' className="grey"><Icon className="material-icons md-dark">replay</Icon></Button>
+      <Button waves='light'><Icon className="material-icons md-dark">play_arrow</Icon></Button>
+      <Button waves='light' className="red TransportButton"><Icon className="material-icons md-dark">cancel</Icon></Button>
       </CardPanel>
       </Col>
       
