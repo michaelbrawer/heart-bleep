@@ -1,6 +1,6 @@
 import React from 'react';
 import './SequenceCell.css'
-import {Chip, Button, Icon, CardPanel, Col, Row} from 'react-materialize'
+import {Col} from 'react-materialize'
 const SequenceCell = (props) => {
 
   return (
