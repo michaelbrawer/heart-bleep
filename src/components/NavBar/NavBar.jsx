@@ -7,18 +7,18 @@ const NavBar = (props) => {
   let nav = props.user ?
 
       <ul>
-        <li><a href="" className='NavBar-link' onClick={props.handleLogout} >LOG OUT</a></li>
-        <li><span className='NavBar-welcome'>WELCOME, {props.user.name}</span></li>
+        <li><a href="" className='NavBar-link' onClick={props.handleLogout} >log out</a></li>
+        <li><span className='NavBar-welcome'>welcome, {props.user.name}</span></li>
       </ul>
       :
       <ul>
-        <li><a href="/login">LOG IN</a></li>
-        <li><a href="/signup">SIGN UP</a></li>
+        <li><a href="/login">log in</a></li>
+        <li><a href="/signup">sign up</a></li>
       </ul>
       
   return (
     <div class="navbar-fixed">
-    <Navbar className="HeaderFooter right" brand='HeartBleep' right>
+    <Navbar className="HeaderFooter right" brand='heart-bleep' right>
       {nav}  
     </Navbar>
     </div>
