@@ -1,7 +1,7 @@
 import React from 'react';
 import SequenceCell from '../SequenceCell/SequenceCell';
 import './SequenceRow.css';
-import {Button, Icon, CardPanel, Col, Row, Input} from 'react-materialize'
+import {Col, Row, Input} from 'react-materialize'
 
 const SequenceRow = (props) => {
 
