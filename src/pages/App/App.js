@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import logo from '../../logo.svg';
+// import logo from '../../logo.svg';
 import {
   BrowswerRouter as Router,
   Switch,
   Route,
   Redirect
 } from 'react-router-dom';
-import {Button, Icon, CardPanel, Col, Row, Footer} from 'react-materialize'
+import {Col, Row} from 'react-materialize'
 import Sequencer from '../Sequencer/Sequencer';
 import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
