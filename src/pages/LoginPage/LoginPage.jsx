@@ -7,9 +7,13 @@ const LoginPage = (props) => {
   return (
     <Container className='LoginPage'>
       <div className='LoginPage'>
-          <Col s={7}>
+        <Row>
+          <Col s={3}/>
+          <Col s={6}>
             <LoginForm {...props}/>
           </Col>
+          <Col s={3}/>
+        </Row>
       </div>
     </Container>
   );

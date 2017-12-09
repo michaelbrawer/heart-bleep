@@ -61,10 +61,12 @@ componentDidMount() {
             />}
             />
             <Route exact path='/signup' render={(props) => 
+            <Row>
               <SignupPage
                 {...props}
                 handleSignup={this.handleSignup}
               />
+              </Row>
             }/>
             <Route exact path='/login' render={(props) => 
             <Row>

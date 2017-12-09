@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import userService from '../../utils/userService';
+import {Col, Row, Container} from 'react-materialize'
 import {Button} from 'react-materialize'
 
 class SignupForm extends Component {
