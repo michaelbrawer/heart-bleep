@@ -18,6 +18,8 @@
 - Materialize-React for styling
 - Bcrypt & JSON Webtokens for authentication / authorization
 - Mongoose for DB management
+- web-audio-scheduler for consistent event timing / audio scheduling, groovy playback methods.  See this great article: ![A Tale of Two Clocks](https://www.html5rocks.com/en/tutorials/audio/scheduling/)
+- worker-timer used instead of native timer API (for timing performance in a background tab)
 ---
 
 ### Future Enhancements: 
