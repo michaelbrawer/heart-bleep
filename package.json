@@ -16,6 +16,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "serve-favicon": "^2.4.5",
+    "web-audio-scheduler": "^1.4.0",
     "worker-timer": "^1.1.0"
   },
   "scripts": {
