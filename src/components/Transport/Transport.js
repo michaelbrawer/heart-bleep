@@ -22,12 +22,12 @@ class Transport extends Component {
 
     // TO_BIND.forEach(method => {   this[method] = this[method].bind(this); });
 
-    this.state = {
+    this.state = Object.assign({
       running: false,
       isMetronomeUp: false,
       isMetronomeDown: false,
       bpm: DEFAULT_BPM
-    };
+    });
   }
 
   componentWillMount() {
@@ -103,13 +103,13 @@ class Transport extends Component {
   render() {
     return (
       <div className="Transport">
+            <CardPanel s={6} className="grey lighten-4 black-text">
         <Row>
           <Led visible={this.state.isMetronomeUp}/>
           <Led visible={this.state.isMetronomeDown}/>
         </Row>
         <Row>
           <Col s={6} className='grid-example'>
-            <CardPanel className="grey lighten-4 black-text">
               <p>Transport:</p>
               <Button onClick={this.handleResetClick} waves='light' className="grey">
                 <Icon className="material-icons md-dark">replay</Icon>
@@ -120,9 +120,9 @@ class Transport extends Component {
               <Button onClick={this.handleStopClick} waves='light' className="red TransportButton">
                 <Icon className="material-icons md-dark">cancel</Icon>
               </Button>
-            </CardPanel>
           </Col>
         </Row>
+            </CardPanel>
       </div>
     )
   }
