@@ -24,7 +24,6 @@ class Transport extends Component {
 
     // TO_BIND.forEach(method => {   this[method] = this[method].bind(this); });
 
-
     this.state = Object.assign({ 
       running: false,
       isMetronomeUp: false,
@@ -42,9 +41,11 @@ class Transport extends Component {
   }
 
   handleBPMChange = (e)=> {
-    this.setState({bpm: e.target.value}, () => {
+    
+    this.setState({bpm: parseInt(e.target.value, 10)}, () => {
       this.scheduler.removeAll();
-      this.scheduler.start(this.metronome);
+      this.scheduler.start(this.metronome, function(){
+      });
     });
   }
 
@@ -77,6 +78,7 @@ class Transport extends Component {
   start = () => {
     this.scheduler.start(this.metronome);
     // this.props.onClockStart();
+    this.props.onClockTick();
     this.setState({running: true});
   }
 
@@ -86,11 +88,18 @@ class Transport extends Component {
     this.setState({running: false});
   }
 
-  //Click Handlers(testing)
-
-  handleResetClick = () => {
-    alert('reset');
+  reset = () => {
+    this.scheduler.stop(true);
+    currentTick = 0;
+    this.props.onClockReset();
+    this.setState({
+      isMetronomeUp: false,
+      isMetronomeDown: false,
+      running: false
+    });
   }
+
+  //Click Handlers(testing)
 
   render() {
     return (
@@ -98,24 +107,22 @@ class Transport extends Component {
         <CardPanel s={6} className="grey lighten-4 black-text">
           <Row>
             <Col s={4}>
-            <p>BPM: {this.state.bpm} &nbsp;&nbsp;&nbsp;&nbsp; <Led visible={this.state.isMetronomeUp}/>
-            <Led visible={this.state.isMetronomeDown}/>
-            </p>
+            {/* <Led visible={this.state.isMetronomeUp}/> */}
+            <Led visible={this.state.isMetronomeDown} bpm={this.state.bpm}/>
             <input 
-              // label={`BPM: ${this.state.bpm}`}
               type="range" 
               min="20" 
               max="300"  
               value={this.state.bpm.toString()}
               onChange={this.handleBPMChange}
+              onMouseUp={this.start}
             />
-            
             </Col>
           </Row>
           <Row>
             <Col s={6} className='grid-example'>
               <p>Transport:</p>
-              <Button onClick={this.handleResetClick} waves='light' className="grey">
+              <Button onClick={this.reset} waves='light' className="grey">
                 <Icon className="material-icons md-dark">replay</Icon>
               </Button>
               <Button onClick={this.start} waves='light'>
