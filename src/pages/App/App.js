@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 // import logo from '../../logo.svg';
 import {BrowswerRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import {Col, Row} from 'react-materialize'
+import WebMidi from 'webmidi'
 //import App Components
 import NavBar from '../../components/NavBar/NavBar';
 import SequenceRow from '../../components/SequenceRow/SequenceRow';
+import Transport from '../../components/Transport/Transport'
 //import pages
 import LoginPage from '../LoginPage/LoginPage';
 import Sequencer from '../Sequencer/Sequencer';
@@ -30,6 +32,8 @@ class App extends Component {
     });
   }
 
+
+
   getSequencers = () =>{
     console.log('got sequencers')
     return this.state.sequencers.map(definition => {
@@ -48,7 +52,7 @@ class App extends Component {
 
   /*---------- Sequencer Clock Address Methods ----------*/
 
-  handleOnClockTick(t0, t1, e = {args: null}) {
+  handleOnClockTick = (t0, t1, e = {args: null}) => {
     this.state.sequencers.forEach(definition => {
       this.refs[definition.ref].onClockTick(...arguments);
     });

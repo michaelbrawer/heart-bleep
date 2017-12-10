@@ -3,6 +3,25 @@ import SequenceCell from '../SequenceCell/SequenceCell';
 import './SequenceRow.css';
 import {Col, Row, Input} from 'react-materialize'
 
+const DEFAULT_RESOLUTION = 4;
+
+const defaultPattern = () => {
+  return {
+    currentStep: -1,
+    noteNumber: 66,
+    steps: {
+      0: {play: true, velocity: 100},
+      1: null, 
+      2: null,
+      3: null, 
+      4: null, 
+      5: null,
+      6: null,
+      7: null
+    }
+  }
+}
+
 class SequenceRow extends Component {
 
   render(){

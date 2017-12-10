@@ -50,7 +50,7 @@ class Transport extends Component {
   ticktock = (e) => {
     var t0 = e.playbackTime;
     var t1 = t0 + e.args.duration;
-    // this.props.onClockTick(t0, t1, e);
+    this.props.onClockTick(t0, t1, e);
     let isBeat = e.args.tick % 4 === 0;
     let isMeasure = e.args.tick % 16 === 0;
     // Visual Metronome
