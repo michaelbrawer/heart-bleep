@@ -205,7 +205,7 @@ class SequenceRow extends Component {
   return (
     <div className="SequenceRow">
       <Row>
-        <Col s={8}>
+        <Col s={10}>
           {this.getPatterns()}
         </Col>
         <Col s={2}>
@@ -220,7 +220,7 @@ class SequenceRow extends Component {
             <option value='3'>Option 3</option>
           </Input>
         </Col>
-        <Col s={2}>
+        {/* <Col s={1}>
           <Input
             s={12}
             type='select'
@@ -231,7 +231,7 @@ class SequenceRow extends Component {
             <option value='2'>Option 2</option>
             <option value='3'>Option 3</option>
           </Input>
-        </Col>
+        </Col> */}
       </Row>
     </div>
   )

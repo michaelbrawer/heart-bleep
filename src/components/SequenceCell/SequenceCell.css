@@ -7,3 +7,10 @@
   color: #fff;
   padding: 0;
 }
+
+.StepButton{
+  color: red;
+  background-color: red;
+  width: 5px;
+  margin-bottom: 5px;
+}
