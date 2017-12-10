@@ -23,6 +23,41 @@ const defaultPattern = () => {
 }
 
 class SequenceRow extends Component {
+  constructor(){
+    super();
+    this.state = Object.assign({
+      selectedChannel: 1,
+      selectedOutput: null,
+      resolution: DEFAULT_RESOLUTION,
+      patterns: [defaultPattern()]
+    });
+  }
+
+  componentWillMount() {
+    if (this.props.outputs && this.state.selectedOutput == null) {
+      this.setState({selectedOutput: this.props.outputs[0]});
+    }
+  }
+
+  componentWillReceiveProps(nextProps, nextState) {
+    if (nextProps.outputs && nextState.selectedOutput == null) {
+      this.setState({selectedOutput: nextProps.outputs[0]});
+    }
+  }
+
+  handleAddStep = (patternKey) => {
+    this.updatePattern(patternKey, pattern => {
+      let lastStep = 
+      Object.keys(pattern.steps).length;
+      pattern.steps[lastStep] = null;
+      return pattern; 
+    });
+  }
+
+  getPatterns (){
+    let totalSteps = new
+    Array(this.getLastStep())
+  }
 
   render(){
   return (
