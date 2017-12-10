@@ -1,49 +1,62 @@
 import React, {Component} from 'react';
 import WorkerTimer from 'worker-timer';
 import {Button, Icon, CardPanel, Col, Row} from 'react-materialize';
-import WebAudioSchedular from 'web-audio-scheduler';
+import WebAudioScheduler from 'web-audio-scheduler';
+import Led from '../Led/Led';
 import './Transport.css';
 
 const DEFAULT_BPM = 120;
-const SCHEDULAR_INTERVAL = 0.025;
-const SCHEDULAR_AHEAD = 0.01;
+const SCHEDULER_INTERVAL = 0.025;
+const SCHEDULER_AHEAD = 0.01;
 
 var currentTick = 0;
 
-const toBind = [
+const noop = () => {};
+
+const TO_BIND = [
   'handleBPMChange',
   'tickTock',
   'metronome',
   'start',
-  'stop',
-  'reset'
+  'stop'
 ];
+
 
 class Transport extends Component {
   constructor() {
     super();
+
     this.scheduler = null;
 
-    TO_BIND.forEach(method => {this[method] = this[method].bind(this);
-    });
+    // TO_BIND.forEach(method => {
+    //   this[method] = this[method].bind(this);
+    // });
 
     this.state = {
       running: false,
       isMetronomeUp: false,
       isMetronomeDown: false,
-      bpm: default_BPM
+      bpm: DEFAULT_BPM
     };
   }
 
   componentWillMount(){
+    this.scheduler = new WebAudioScheduler({
+      interval: SCHEDULER_INTERVAL,
+      aheadTime: SCHEDULER_AHEAD,
+      timerAPI: WorkerTimer
+    });
+  }
+
+  componentWillUnmount(){
     this.stop();
   }
 
-  handleBPMChange(e){
+  handleBPMChange = (e) => {
     this.setState({bpm: parseInt(e.target.value, 10)}, () => {});
   }
 
-  tickTock(e){
+  tickTock = (e) => {
     //sets metronome high/low state
     var t0 = e.playbackTime;
     var t1 = t0 + e.args.duration;
@@ -56,6 +69,35 @@ class Transport extends Component {
     } else if (isBeat){
       this.setState({isMetronomeUp: false, isMetronomeDown: true});
     }
+  }
+
+  metronome = (e) =>{
+    let duration = parseFloat(
+      ((1000 / (this.state.bpm / 60) / 1000) / 4).toFixed(4)
+    );
+
+    let t0 = e.playbackTime;
+    let t1 = t0 + duration;
+
+    //send tick and schedule next call
+    this.scheduler.insert(t0, this.ticktock, {
+      tick: currentTick++,
+      duration: duration
+    });
+
+    this.scheduler.insert(t1, this.metronome);
+  }
+
+  start = () => {
+    this.scheduler.start(this.metronome);
+    this.props.onClockStar();
+    this.setState({running: true});
+  }
+
+  stop= () => {
+    this.scheduler.stop(true);
+    this.props.onClockStop();
+    this.setState({running: false});
   }
 
   render() {
@@ -82,5 +124,20 @@ class Transport extends Component {
     )
   }
 }
+
+// Transport.propTypes = {
+//   onClockTick: React.PropTypes.func,
+//   onClockStart: React.PropTypes.func,
+//   onClockStop: React.PropTypes.func,
+//   onClockReset: React.PropTypes.func
+// };
+
+
+// Transport.defaultProps = {
+//   onClockTick: noop,
+//   onClockStart: noop,
+//   onClockStop: noop,
+//   onClockReset: noop
+// }
 
 export default Transport;
