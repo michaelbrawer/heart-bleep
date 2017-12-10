@@ -18,7 +18,7 @@ const SequenceRow = (props) => {
             // label='Materialize Select'
             icon='queue_music'
             defaultValue='2'>
-            <option  value='1'>Option 1</option>
+            <option value='1'>Option 1</option>
             <option value='2'>Option 2</option>
             <option value='3'>Option 3</option>
           </Input>

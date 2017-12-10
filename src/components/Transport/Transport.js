@@ -41,11 +41,9 @@ class Transport extends Component {
   }
 
   handleBPMChange = (e)=> {
-    
     this.setState({bpm: parseInt(e.target.value, 10)}, () => {
-      this.scheduler.removeAll();
-      this.scheduler.start(this.metronome, function(){
-      });
+        this.scheduler.removeAll();
+        this.scheduler.start(this.metronome);
     });
   }
 
@@ -83,7 +81,7 @@ class Transport extends Component {
   }
 
   stop = () => {
-    this.scheduler.stop(true);
+    this.scheduler.stop({reset:true});
     // this.props.onClockStop();
     this.setState({running: false});
   }
@@ -105,21 +103,7 @@ class Transport extends Component {
     return (
       <div className="Transport">
         <CardPanel s={6} className="grey lighten-4 black-text">
-          <Row>
-            <Col s={4}>
-            {/* <Led visible={this.state.isMetronomeUp}/> */}
-            <Led visible={this.state.isMetronomeDown} bpm={this.state.bpm}/>
-            <input 
-              type="range" 
-              min="20" 
-              max="300"  
-              value={this.state.bpm.toString()}
-              onChange={this.handleBPMChange}
-              onMouseUp={this.start}
-            />
-            </Col>
-          </Row>
-          <Row>
+        <Row>
             <Col s={6} className='grid-example'>
               <p>Transport:</p>
               <Button onClick={this.reset} waves='light' className="grey">
@@ -133,6 +117,22 @@ class Transport extends Component {
               </Button>
             </Col>
            </Row>
+          <Row>
+            <Col s={4}>
+            {/* <Led visible={this.state.isMetronomeUp}/> */}
+            <Led visible={this.state.isMetronomeDown} bpm={this.state.bpm}/>
+            <input 
+              type="range" 
+              min="20" 
+              max="300"  
+              value={this.state.bpm.toString()}
+              onMouseDown={this.reset}
+              onChange={this.handleBPMChange}
+              onMouseUp={this.start}
+            />
+            </Col>
+          </Row>
+          
         </CardPanel>
       </div>
     )
