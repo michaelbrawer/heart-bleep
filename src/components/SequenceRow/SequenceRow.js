@@ -19,7 +19,7 @@ const defaultPattern = () => {
     noteNumber: 66,
     steps: {
       0: {play: true, velocity: 100},
-      1: null, 
+      1: {play: true, velocity: 100}, 
       2: null,
       3: null, 
       4: null, 
@@ -73,7 +73,7 @@ class SequenceRow extends Component {
     });
   }
 
-  handleStepToggle(patternKey, stepKey) {
+  handleStepToggle = (patternKey, stepKey) => {
     this.updatePattern(patternKey, pattern => {
       if (pattern.steps != null && pattern.steps[stepKey] !== undefined) {
         pattern.steps[stepKey] = pattern.steps[stepKey] == null
@@ -84,7 +84,7 @@ class SequenceRow extends Component {
     });
   }
 
-  handlePatternNoteChange(patternKey, e) {
+  handlePatternNoteChange = (patternKey, e) => {
     this.updatePattern(patternKey, pattern => {
       pattern.noteNumber = parseInt(e.target.value, 10);
       return pattern;
@@ -101,11 +101,11 @@ class SequenceRow extends Component {
     }
   }
 
-  handleResolutionChange(value) {
+  handleResolutionChange = (value) => {
     this.setState({resolution: value});
   }
 
-  handleAddPattern(e) {
+  handleAddPattern = (e) => {
     e.preventDefault();
     let newState = Object.assign({}, this.state);
 
@@ -124,12 +124,7 @@ class SequenceRow extends Component {
     }, 0);
   }
 
-  getPatterns (){
-    let totalSteps = new
-    Array(this.getLastStep())
-  }
-
-  onClockTick(t0, t1, e) {
+  onClockTick = (t0, t1, e)=>{
     // Skip if outside of resolution
     if (e.args.tick % this.state.resolution !== 0) {
       return;
@@ -179,12 +174,39 @@ class SequenceRow extends Component {
     this.setState(newState);
   }
 
+  onClockReset() {
+    // TODO immutability
+    let newState = Object.assign({}, this.state);
+    newState.patterns.forEach(pattern => { pattern.currentStep = -1;});
+    this.setState(newState);
+  }
+
+  getPatterns() {
+    let totalSteps = new Array(this.getLastStep()).fill(true);
+    return this.state.patterns.map((pattern, patternKey) => {
+      return (
+        <SequenceCell key={patternKey}
+                              onAddStep={this.handleAddStep}
+                              onRemoveStep={this.handleRemoveStep}
+                              onPatternNoteChange={this.handlePatternNoteChange}
+                              onStepToggle={this.handleStepToggle}
+                              totalSteps={totalSteps}
+                              pattern={pattern}
+                              patternKey={patternKey}/>
+      );
+    });
+  }
   render(){
+    // let {resolution} = this.state;
+    // let resolutions = Object.keys(RESOLUTIONS).map(key => (
+    //   <DropdownItem key={key} value={key}>{RESOLUTIONS[key]}</DropdownItem>
+    // ));
+    
   return (
     <div className="SequenceRow">
       <Row>
         <Col s={8}>
-          <SequenceCell/>
+          {this.getPatterns()}
         </Col>
         <Col s={2}>
           <Input
