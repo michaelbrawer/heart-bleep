@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import WorkerTimer from 'worker-timer';
-import {Button, Icon, CardPanel, Col, Row, Input} from 'react-materialize';
+import {Button, Icon, CardPanel, Col, Row} from 'react-materialize';
 import WebAudioScheduler from 'web-audio-scheduler';
-import StepRangeSlider from 'react-step-range-slider'
 import Led from '../Led/Led';
 import './Transport.css';
 
@@ -52,7 +51,6 @@ class Transport extends Component {
     var t1 = t0 + e.args.duration;
     this.props.onClockTick(t0, t1, e);
     let isBeat = e.args.tick % 4 === 0;
-    let isMeasure = e.args.tick % 16 === 0;
     // Visual Metronome
     if (e.args.tick % 8 === 0) {
       this.setState({isMetronomeUp: true, isMetronomeDown: false});

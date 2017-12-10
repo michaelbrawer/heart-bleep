@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 // import {Link} from 'react-router-dom';
-import './Sequencer.css'
-import SequenceRow from '../../components/SequenceRow/SequenceRow';
 import Transport from '../../components/Transport/Transport';
+import './Sequencer.css'
 
 class Sequencer extends Component {
 

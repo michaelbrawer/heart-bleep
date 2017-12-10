@@ -6,7 +6,6 @@ import WebMidi from 'webmidi'
 //import App Components
 import NavBar from '../../components/NavBar/NavBar';
 import SequenceRow from '../../components/SequenceRow/SequenceRow';
-import Transport from '../../components/Transport/Transport'
 //import pages
 import LoginPage from '../LoginPage/LoginPage';
 import Sequencer from '../Sequencer/Sequencer';
