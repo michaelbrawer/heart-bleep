@@ -10,17 +10,6 @@ const SequenceRow = (props) => {
       <Row>
         <Col s={8}>
           <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
-          <SequenceCell/>
         </Col>
         <Col s={2}>
           <Input
