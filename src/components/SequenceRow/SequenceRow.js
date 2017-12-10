@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import SequenceCell from '../SequenceCell/SequenceCell';
 import './SequenceRow.css';
 import {Col, Row, Input} from 'react-materialize'
 
-const SequenceRow = (props) => {
+class SequenceRow extends Component {
 
+  render(){
   return (
     <div className="SequenceRow">
       <Row>
@@ -38,6 +39,7 @@ const SequenceRow = (props) => {
       </Row>
     </div>
   )
+}
 }
 
 export default SequenceRow;

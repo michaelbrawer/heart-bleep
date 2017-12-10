@@ -17,6 +17,8 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.initialRefCounter = 1;
+    this.sequencerRefs =[];
     this.state = Object.assign({
       outputs: null,
       sequencers: [
@@ -28,9 +30,20 @@ class App extends Component {
     });
   }
 
-
-  getAllSequencers(){
+  getSequencers = () =>{
     console.log('got sequencers')
+    return this.state.sequencers.map(definition => {
+      let SequenceRow = definition.component;
+      let ref = definition.ref;
+      return (
+        <SequenceRow ref={ref} 
+                   key={ref}
+                   id={ref}
+                   outputs={this.state.outputs}
+                   onNoteOn={this.handleNoteOn}
+                   onNoteOff={this.handleNoteOff} />
+      );
+    });
   }
 
   /*---------- Sequencer Clock Address Methods ----------*/
@@ -84,7 +97,7 @@ class App extends Component {
             exact
             path='/'
             render={() => <Sequencer
-            getAllSequencers={this.getAllSequencers}
+            getSequencers={this.getSequencers}
             handleOnClockTick={this.handleOnClockTick}
             handleOnClockReset={this.handleOnClockReset}
             user={this.state.user}
