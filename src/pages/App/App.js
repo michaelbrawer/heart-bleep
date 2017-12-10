@@ -2,28 +2,49 @@ import React, {Component} from 'react';
 // import logo from '../../logo.svg';
 import {BrowswerRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import {Col, Row} from 'react-materialize'
-import Sequencer from '../Sequencer/Sequencer';
+//import App Components
 import NavBar from '../../components/NavBar/NavBar';
-import SignupPage from '../SignupPage/SignupPage';
+import SequenceRow from '../../components/SequenceRow/SequenceRow';
+//import pages
 import LoginPage from '../LoginPage/LoginPage';
+import Sequencer from '../Sequencer/Sequencer';
+import SignupPage from '../SignupPage/SignupPage';
+//import utils
 import userService from '../../utils/userService';
-
+//import styling
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({foo: "bar"});
+    this.state = Object.assign({
+      outputs: null,
+      sequencers: [
+        {ref: 1, component: SequenceRow},
+        {ref: 2, component: SequenceRow},
+        {ref: 3, component: SequenceRow},
+        {ref: 4, component: SequenceRow}
+      ]
+    });
   }
 
-  /*---------- Helper Methods ----------*/
 
-  handleOnClockTick() {
-    console.log('tick');
+  getAllSequencers(){
+    console.log('got sequencers')
   }
 
-  handleOnClockReset () {
-    console.log('clock reset');
+  /*---------- Sequencer Clock Address Methods ----------*/
+
+  handleOnClockTick(t0, t1, e = {args: null}) {
+    this.state.sequencers.forEach(definition => {
+      this.refs[definition.ref].onClockTick(...arguments);
+    });
+  }
+
+  handleOnClockReset() {
+    this.state.sequencers.forEach(definition => {
+      this.refs[definition.ref].onClockReset(...arguments);
+    });
   }
 
   /*---------- Login Callback Methods ----------*/
@@ -51,6 +72,8 @@ class App extends Component {
     let user = userService.getUser();
     this.setState({user});
   }
+
+    /*---------- Render ----------*/
   render() {
     return (
       <div className="App">
@@ -61,6 +84,7 @@ class App extends Component {
             exact
             path='/'
             render={() => <Sequencer
+            getAllSequencers={this.getAllSequencers}
             handleOnClockTick={this.handleOnClockTick}
             handleOnClockReset={this.handleOnClockReset}
             user={this.state.user}

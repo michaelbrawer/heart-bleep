@@ -9,10 +9,7 @@ class Sequencer extends Component {
   render(){
   return (
     <div className="Sequencer">
-    <SequenceRow />
-    <SequenceRow />
-    <SequenceRow />
-    <SequenceRow />
+    {this.props.getAllSequencers()}
     <Transport
       onClockTick={this.props.handleOnClockTick}
       onClockReset={this.props.handleOnClockReset}
