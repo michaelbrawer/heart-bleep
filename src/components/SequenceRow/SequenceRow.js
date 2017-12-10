@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import SequenceCell from '../SequenceCell/SequenceCell';
-import {Col, Row, Input} from 'react-materialize'
-import './SequenceRow.css';
+import {Col, Row, Input, Dropdown} from 'react-materialize'
 import WebMidi from 'webmidi';
+import './SequenceRow.css';
 
 const GRACE_NOTE_OFF = 100;
 const RESOLUTIONS = {
@@ -19,7 +19,7 @@ const defaultPattern = () => {
     noteNumber: 66,
     steps: {
       0: {play: true, velocity: 100},
-      1: {play: true, velocity: 100}, 
+      1: null, 
       2: null,
       3: null, 
       4: null, 
@@ -28,11 +28,12 @@ const defaultPattern = () => {
       7: null
     }
   }
-}
+};
 
 class SequenceRow extends Component {
   constructor(){
     super();
+
     this.state = Object.assign({
       selectedChannel: 1,
       selectedOutput: null,
@@ -55,10 +56,9 @@ class SequenceRow extends Component {
 
   handleAddStep = (patternKey) => {
     this.updatePattern(patternKey, pattern => {
-      let lastStep = 
-      Object.keys(pattern.steps).length;
+      let lastStep = Object.keys(pattern.steps).length;
       pattern.steps[lastStep] = null;
-      return pattern; 
+      return pattern;
     });
   }
 
@@ -74,6 +74,8 @@ class SequenceRow extends Component {
   }
 
   handleStepToggle = (patternKey, stepKey) => {
+    console.log(`StepKey: ${stepKey}`);
+    console.log(`patternkey:${patternKey}`)
     this.updatePattern(patternKey, pattern => {
       if (pattern.steps != null && pattern.steps[stepKey] !== undefined) {
         pattern.steps[stepKey] = pattern.steps[stepKey] == null
@@ -85,9 +87,11 @@ class SequenceRow extends Component {
   }
 
   handlePatternNoteChange = (patternKey, e) => {
+    
     this.updatePattern(patternKey, pattern => {
       pattern.noteNumber = parseInt(e.target.value, 10);
       return pattern;
+      console.log(pattern)
     });
   }
 
@@ -197,9 +201,9 @@ class SequenceRow extends Component {
     });
   }
   render(){
-    // let {resolution} = this.state;
+    let {resolution} = this.state;
     // let resolutions = Object.keys(RESOLUTIONS).map(key => (
-    //   <DropdownItem key={key} value={key}>{RESOLUTIONS[key]}</DropdownItem>
+    //   <Dropdown key={key} value={key}>{RESOLUTIONS[key]}</Dropdown>
     // ));
     
   return (

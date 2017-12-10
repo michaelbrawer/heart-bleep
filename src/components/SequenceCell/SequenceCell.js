@@ -13,9 +13,9 @@ class SequenceCell extends Component {
           : "dark";
 
         return (
-          <Col s={1} key={stepKey}>
-            <Button size="small" color={color} disabled={true}>Z</Button>
-          </Col>
+ 
+            <Button size="small" color={color} disabled={true}>ZZZ</Button>
+      
         );
       }
 

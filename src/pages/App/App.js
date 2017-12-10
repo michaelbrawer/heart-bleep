@@ -58,9 +58,9 @@ class App extends Component {
     });
   }
 
-  handleOnClockReset() {
+  handleOnClockReset = () => {
     this.state.sequencers.forEach(definition => {
-      this.refs[definition.ref].onClockReset(...arguments);
+      this.ref[definition.ref].onClockReset(...arguments);
     });
   }
 
