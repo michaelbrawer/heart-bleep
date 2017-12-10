@@ -25,7 +25,7 @@ class App extends Component {
 
 /*---------- Helper Methods ----------*/
 
-handleOnClockTick = (t0, t1, e = {args: null}) => {
+handleOnClockTick () {
   console.log('tick');
 }
 
@@ -65,7 +65,7 @@ componentDidMount() {
           <Switch>
             <Route exact path='/' render={()=>
             <Sequencer 
-            onClockTick={this.handleOnClockTick}
+            handleOnClockTick={this.handleOnClockTick}
             onClockReset={this.handleOnClockReset}
             user={this.state.user}
             handleLogout={this.handleLogout}

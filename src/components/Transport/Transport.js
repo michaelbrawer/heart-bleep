@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import WorkerTimer from 'worker-timer';
-import {Button, Icon, CardPanel, Col, Row} from 'react-materialize';
+import {Button, Icon, CardPanel, Col, Row, Input} from 'react-materialize';
 import WebAudioScheduler from 'web-audio-scheduler';
+import StepRangeSlider from 'react-step-range-slider'
 import Led from '../Led/Led';
 import './Transport.css';
 
@@ -11,7 +12,7 @@ const SCHEDULER_AHEAD = 0.01;
 
 var currentTick = 0;
 
-const noop = () => {}; 
+// const noop = () => {}; 
 // const TO_BIND = [   'handleBPMChange',   'tickTock',
 // 'metronome',   'start',   'stop' ];
 
@@ -32,7 +33,7 @@ class Transport extends Component {
     });
   }
 
-  componentWillMount() {
+  componentWillMount () {
     this.scheduler = new WebAudioScheduler({interval: SCHEDULER_INTERVAL, aheadTime: SCHEDULER_AHEAD, timerAPI: WorkerTimer});
   }
 
@@ -40,10 +41,11 @@ class Transport extends Component {
     this.stop();
   }
 
-  handleBPMChange = (e) => {
-    this.setState({
-      bpm: parseInt(e.target.value, 10)
-    }, () => {});
+  handleBPMChange = (e)=> {
+    this.setState({bpm: e.target.value}, () => {
+      this.scheduler.removeAll();
+      this.scheduler.start(this.metronome);
+    });
   }
 
   ticktock = (e) => {
@@ -64,7 +66,6 @@ class Transport extends Component {
     let duration = parseFloat(((1000 / (this.state.bpm / 60) / 1000) / 4).toFixed(4));
     let t0 = e.playbackTime;
     let t1 = t0 + duration;
-
     //send tick and schedule next call
     this.scheduler.insert(t0, this.ticktock, {
         tick: currentTick++,
@@ -96,8 +97,20 @@ class Transport extends Component {
       <div className="Transport">
         <CardPanel s={6} className="grey lighten-4 black-text">
           <Row>
-            <Led visible={this.state.isMetronomeUp}/>
+            <Col s={4}>
+            <p>BPM: {this.state.bpm} &nbsp;&nbsp;&nbsp;&nbsp; <Led visible={this.state.isMetronomeUp}/>
             <Led visible={this.state.isMetronomeDown}/>
+            </p>
+            <input 
+              // label={`BPM: ${this.state.bpm}`}
+              type="range" 
+              min="20" 
+              max="300"  
+              value={this.state.bpm.toString()}
+              onChange={this.handleBPMChange}
+            />
+            
+            </Col>
           </Row>
           <Row>
             <Col s={6} className='grid-example'>
@@ -119,19 +132,5 @@ class Transport extends Component {
   }
 }
 
-// Transport.propTypes = {
-//   onClockTick: React.PropTypes.func,
-//   onClockStart: React.PropTypes.func,
-//   onClockStop: React.PropTypes.func,
-//   onClockReset: React.PropTypes.func
-// };
-
-
-// Transport.defaultProps = {
-//   onClockTick: noop,
-//   onClockStart: noop,
-//   onClockStop: noop,
-//   onClockReset: noop
-// }
 
 export default Transport;
