@@ -25,7 +25,16 @@ class App extends Component {
 
 /*---------- Helper Methods ----------*/
 
-/*---------- Callback Methods ----------*/
+handleOnClockTick = (t0, t1, e = {args: null}) => {
+  console.log('tick');
+}
+
+handleOnClockReset = () => {
+  console.log('clock reset');
+}
+
+
+/*---------- Login Callback Methods ----------*/
 
 handleLogout = () => {
   userService.logout();
@@ -56,6 +65,8 @@ componentDidMount() {
           <Switch>
             <Route exact path='/' render={()=>
             <Sequencer 
+            onClockTick={this.handleOnClockTick}
+            onClockReset={this.handleOnClockReset}
             user={this.state.user}
             handleLogout={this.handleLogout}
             />}

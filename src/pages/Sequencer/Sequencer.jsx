@@ -12,7 +12,10 @@ const Sequencer = (props) => {
     <SequenceRow />
     <SequenceRow />
     <SequenceRow />
-    <Transport />
+    <Transport
+      onClockTick={props.handleOnClockTick}
+      onClockReset={props.handleOnClockReset}
+    />
     </div>
   )
 }

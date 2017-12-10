@@ -4,10 +4,10 @@ const Led =(props) => {
 
     let style = {
       fontSize: '24px',
-      color: props.visible ? "#41abe0" : "#999"
+      color: props.visible ? "blue" : "red"
     }
     return(
-      <span>
+      <span style={style}>
       ●
       </span>
     )
