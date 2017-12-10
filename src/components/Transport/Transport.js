@@ -1,10 +1,23 @@
 import React, {Component} from 'react';
 import WorkerTimer from 'worker-timer';
-import {Button, Icon, CardPanel, Col, Row} from 'react-materialize'
+import {Button, Icon, CardPanel, Col, Row} from 'react-materialize';
+import WebAudioSchedular from 'web-audio-scheduler';
 import './Transport.css';
 
-const defaultBpm = 120;
-const toBind = [];
+const DEFAULT_BPM = 120;
+const SCHEDULAR_INTERVAL = 0.025;
+const SCHEDULAR_AHEAD = 0.01;
+
+var currentTick = 0;
+
+const toBind = [
+  'handleBPMChange',
+  'tickTock',
+  'metronome',
+  'start',
+  'stop',
+  'reset'
+];
 
 class Transport extends Component {
   constructor() {
@@ -16,8 +29,8 @@ class Transport extends Component {
 
     this.state = {
       running: false,
-      IsMetronomeUp: false,
-      IsMetronomeDown: false,
+      isMetronomeUp: false,
+      isMetronomeDown: false,
       bpm: default_BPM
     };
   }
@@ -30,14 +43,19 @@ class Transport extends Component {
     this.setState({bpm: parseInt(e.target.value, 10)}, () => {});
   }
 
-  ticktock(e){
+  tickTock(e){
+    //sets metronome high/low state
     var t0 = e.playbackTime;
     var t1 = t0 + e.args.duration;
-
     this.props.onClockTick(t0, t1, e);
-    
     let isBeat = e.args.tick % 4 === 0;
     let isMeasure = e.args.tick % 16 === 0;
+    // for metronome display
+    if (e.args.tick % 8 ===0){
+      this.setState({isMetronomeUp: true, isMetronomeDown: false});
+    } else if (isBeat){
+      this.setState({isMetronomeUp: false, isMetronomeDown: true});
+    }
   }
 
   render() {
