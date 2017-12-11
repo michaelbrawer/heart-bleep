@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {BrowswerRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import {Col, Row} from 'react-materialize'
 import WebMidi from 'webmidi'
+import Tone from 'tone';
 //import App Components
 import NavBar from '../../components/NavBar/NavBar';
 import SequenceRow from '../../components/SequenceRow/SequenceRow';
@@ -13,34 +14,22 @@ import SignupPage from '../SignupPage/SignupPage';
 import userService from '../../utils/userService';
 //import styling
 import './App.css';
-
+//pattern assets
 import { nullTrack } from '../../assets/js/null_track';
-import { drumTrack } from '../../assets/js/patterns'
+import { demoTrack } from '../../assets/js/patterns'
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.initialRefCounter = 1;
-    // this.sequencerRefs =[1,2,3,4];
     this.state = {
-      outputs: null,
-      sequencers: [
-        {
-          ref: 1,
-          component: SequenceRow
-        }, {
-          ref: 2,
-          component: SequenceRow
-        }, {
-          ref: 3,
-          component: SequenceRow
-        }, {
-          ref: 4,
-          component: SequenceRow
-        }
-      ]
-    };
+      bpm: 120,
+      position: 0,
+      volume: -6,
+      playing: false,
+      bPattern: false,
+      currentPattern: demoTrack
+    }
   }
 
   //Generates Four Sequencer Rows
