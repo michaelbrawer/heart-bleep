@@ -11,92 +11,7 @@ const SCHEDULER_AHEAD = 0.01;
 
 var currentTick = 0;
 
-class Transport extends Component {
-  constructor() {
-    super();
-
-    this.handleBPMChange = this.handleBPMChange.bind(this);
-    this.ticktock = this.ticktock.bind(this);
-    this.metronome = this.metronome.bind(this);
-    this.start = this.start.bind(this);
-    this.stop = this.stop.bind(this);
-    this.reset = this.reset.bind(this);
-
-    this.scheduler = null;
-
-    this.state = Object.assign({ 
-      running: false,
-      isMetronomeUp: false,
-      isMetronomeDown: true,
-      bpm: DEFAULT_BPM
-    });
-  }
-
-  componentWillMount () {
-    this.scheduler = new WebAudioScheduler({interval: SCHEDULER_INTERVAL, aheadTime: SCHEDULER_AHEAD, timerAPI: WorkerTimer});
-  }
-
-  componentWillUnmount() {
-    this.stop();
-  }
-
-  handleBPMChange(e){
-    this.setState({bpm: parseInt(e.target.value, 10)}, () => {
-        this.scheduler.removeAll();
-        this.scheduler.start(this.metronome);
-    });
-  }
-
-  ticktock(e){
-    var t0 = e.playbackTime;
-    var t1 = t0 + e.args.duration;
-    this.props.onClockTick(t0, t1, e);
-    let isBeat = e.args.tick % 4 === 0;
-    // Visual Metronome
-    if (e.args.tick % 8 === 0) {
-      this.setState({isMetronomeUp: true, isMetronomeDown: false});
-    } else if (isBeat){
-      this.setState({isMetronomeUp: false, isMetronomeDown: true});
-    }
-  }
-
-  metronome(e){
-    let duration = parseFloat(((1000 / (this.state.bpm / 60) / 1000) / 4).toFixed(4));
-    let t0 = e.playbackTime;
-    let t1 = t0 + duration;
-    //send tick and schedule next call
-    this.scheduler.insert(t0, this.ticktock, {
-        tick: currentTick++,
-        duration: duration
-      });
-    this.scheduler.insert(t1, this.metronome);
-  }
-
-  start(){
-    this.scheduler.start(this.metronome);
-    // this.props.onClockStart();
-    this.props.onClockTick();
-    this.setState({running: true});
-  }
-
-  stop(){
-    this.scheduler.stop({reset:true});
-    // this.props.onClockStop();
-    this.setState({running: false});
-  }
-
-  reset(){
-    this.scheduler.stop(true);
-    currentTick = 0;
-    this.props.onClockReset();
-    this.setState({
-      isMetronomeUp: false,
-      isMetronomeDown: false,
-      running: false
-    });
-  }
-
-  render() {
+const Transport = (props) => {
     return (
       <div className="Transport">
         <CardPanel s={6} className="grey lighten-4 black-text">
@@ -117,24 +32,20 @@ class Transport extends Component {
           <Row>
             <Col s={4}>
             {/* <Led visible={this.state.isMetronomeUp}/> */}
-            <Led visible={this.state.isMetronomeDown} bpm={this.state.bpm}/>
+            {/* <Led visible={this.state.isMetronomeDown} bpm={this.state.bpm}/> */}
             <input 
               type="range" 
               min="20" 
               max="300"  
-              value={this.state.bpm.toString()}
-              onMouseDown={this.reset}
-              onChange={this.handleBPMChange}
-              onMouseUp={this.start}
+              value={}
+              onChange={}
             />
             </Col>
           </Row>
          
         </CardPanel>
       </div>
-    )
-  }
+    );
 }
-
 
 export default Transport;
