@@ -19,12 +19,9 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.handleOnClockTick = this.handleOnClockTick.bind(this);
-    this.handleOnClockReset = this.handleOnClockReset.bind(this);
-
     this.initialRefCounter = 1;
     // this.sequencerRefs =[1,2,3,4];
-    this.state = Object.assign({
+    this.state = {
       outputs: null,
       sequencers: [
         {
@@ -41,13 +38,12 @@ class App extends Component {
           component: SequenceRow
         }
       ]
-    });
+    };
   }
 
   //Generates Four Sequencer Rows
 
   getSequencers = () => {
-
     console.log('got sequencers')
     return this.state.sequencers.map(definition => {
         let Sequencer = definition.component;
@@ -67,12 +63,12 @@ class App extends Component {
 
   /*---------- Sequencer Clock Address Methods ----------*/
 
-  handleOnClockTick(t0, t1, e = {args: null}){
+  handleOnClockTick = (t0, t1, e = {args: null}) => {
     this.state.sequencers.forEach(definition => {this.refs[definition.ref].onClockTick(...arguments);
     });
   }
 
-  handleOnClockReset(){
+  handleOnClockReset = () =>{
     this.state.sequencers.forEach(definition => {this.refs[definition.ref].onClockReset(...arguments);
     });
   }
@@ -113,8 +109,8 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={(props) => <Sequencer
-            {...props}
+            render={(props) => 
+            <Sequencer {...props}
             sequencers={this.state.sequencers}
             getSequencers={this.getSequencers}
             onClockTick={this.handleOnClockTick}

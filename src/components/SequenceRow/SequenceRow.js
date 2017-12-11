@@ -13,7 +13,7 @@ const RESOLUTIONS = {
 }
 const DEFAULT_RESOLUTION = 4;
 
-let defaultPattern = () => {
+const defaultPattern = () => {
   return{
     currentStep: -1,
     noteNumber: 66,
@@ -22,7 +22,7 @@ let defaultPattern = () => {
       1: null,
       2: null,
       3: null,
-      4: null,
+      4: {play: true, velocity: 100},
       5: null,
       6: null,
       7: null
@@ -30,23 +30,10 @@ let defaultPattern = () => {
   }
 };
 
-// const TO_BIND = [
-//   'handleAddPattern',
-//   'handleAddStep',
-//   'handlePatternNoteChange',
-//   'handleRemoveStep',
-//   'handleResolutionChange',
-//   'handleStepToggle',
-//   'onMidiOutputSelected',
-//   'onClockTick',
-//   'sendTestNote'
-// ];
-
 class SequenceRow extends Component {
   constructor(){
     super();
 
-    this.handleAddPattern = this.handleAddPattern.bind(this)
     this.handleAddStep = this.handleAddStep.bind(this)
     this.handlePatternNoteChange = this.handlePatternNoteChange.bind(this)
     this.handleRemoveStep = this.handleRemoveStep.bind(this)
@@ -128,19 +115,6 @@ class SequenceRow extends Component {
     this.setState({resolution: value});
   }
 
-  handleAddPattern(e){
-    e.preventDefault();
-    let newState = Object.assign({}, this.state);
-
-    newState.patterns.push(Object.assign({}, {
-      currentStep: -1,
-      noteNumber: 41,
-      steps: []
-    }));
-
-    this.setState(newState);
-  }
-
   getLastStep(){
     return this.state.patterns.reduce(function(memo, pattern){
       return Math.max(Object.keys(pattern.steps).length, memo);
@@ -206,8 +180,10 @@ class SequenceRow extends Component {
 
   getPatterns(){
     let totalSteps = new Array(this.getLastStep()).fill(true);
-    console.log(totalSteps)
+    
     return this.state.patterns.map((pattern, patternKey) => {
+      console.log(pattern)
+      console.log(patternKey)
       return (
         <SequenceCell key={patternKey}
                               onAddStep={this.handleAddStep}
@@ -221,10 +197,6 @@ class SequenceRow extends Component {
     });
   }
   render(){
-    let {resolution} = this.state;
-    // let resolutions = Object.keys(RESOLUTIONS).map(key => (
-    //   <Dropdown key={key} value={key}>{RESOLUTIONS[key]}</Dropdown>
-    // ));
     
   return (
     <div className="SequenceRow">

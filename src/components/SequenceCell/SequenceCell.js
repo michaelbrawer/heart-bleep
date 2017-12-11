@@ -15,20 +15,17 @@ class SequenceCell extends Component {
         return (
           <div>
             <Button size="small" color={color} disabled={true}></Button>
-          <p>Burger</p>
           </div>
         );
       }
 
       let color = pattern.steps[stepKey] != null
-        ? "red"
+        ? "accent"
         : "blue";
 
       if (pattern.currentStep === stepKey) {
         color = "red";
       }
-
-
       //returns step buttons
       return (
           <Button key={stepKey}  

@@ -24,8 +24,6 @@ class Transport extends Component {
 
     this.scheduler = null;
 
-    // TO_BIND.forEach(method => {   this[method] = this[method].bind(this); });
-
     this.state = Object.assign({ 
       running: false,
       isMetronomeUp: false,
@@ -98,8 +96,6 @@ class Transport extends Component {
     });
   }
 
-  //Click Handlers(testing)
-
   render() {
     return (
       <div className="Transport">
@@ -133,7 +129,7 @@ class Transport extends Component {
             />
             </Col>
           </Row>
-          
+         
         </CardPanel>
       </div>
     )
