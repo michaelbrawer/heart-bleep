@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 // import logo from '../../logo.svg';
 import {BrowswerRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import {Col, Row} from 'react-materialize'
+//adds tone & WebMidi frameworks
 import WebMidi from 'webmidi'
 import Tone from 'tone';
 //import App Components
@@ -30,38 +31,27 @@ class App extends Component {
       bPattern: false,
       currentPattern: demoTrack
     }
-  }
 
-  //Generates Four Sequencer Rows
+    this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
+    
+        const multSampler = new Tone.MultiPlayer({
+          urls: {
+            BD: './assets/samples/Kick.wav',
+            SD: './assets/samples/Snare.wav',
+            CL: './assets/samples/Clap.wav',
+            CA: './assets/samples/Clave.wav',
+            LT: './assets/samples/LowTom.wav',
+            CH: './assets/samples/ClosedHat.wav',
+            OH: './assets/samples/OpenHat.wav',
+            HT: './assets/samples/HighTom.wav'
+          }
+        }).toMaster();
 
-  getSequencers = () => {
-    console.log('got sequencers')
-    return this.state.sequencers.map(definition => {
-        let Sequencer = definition.component;
-        let ref = definition.ref;
-        return (
-        <Sequencer
-          ref={ref}
-          key={ref}
-          id={ref}
-          outputs={this.state.outputs}
-          onNoteOn={this.handleNoteOn}
-          onNoteOff={this.handleNoteOff}
-          />
-        );
-    });
-  }
+        const steps = Array(32).fill(1).map((v, i) => {
+          return i;
+        });
+        
 
-  /*---------- Sequencer Clock Address Methods ----------*/
-
-  handleOnClockTick = (t0, t1, e = {args: null}) => {
-    this.state.sequencers.forEach(definition => {this.refs[definition.ref].onClockTick(...arguments);
-    });
-  }
-
-  handleOnClockReset = () =>{
-    this.state.sequencers.forEach(definition => {this.refs[definition.ref].onClockReset(...arguments);
-    });
   }
 
   /*---------- Login Callback Methods ----------*/
