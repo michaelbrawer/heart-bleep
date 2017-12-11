@@ -47,7 +47,7 @@ class SequenceRow extends Component {
     super();
 
     this.handleAddPattern = this.handleAddPattern.bind(this)
-    this.handdleAddStep = this.handleAddStep.bind(this)
+    this.handleAddStep = this.handleAddStep.bind(this)
     this.handlePatternNoteChange = this.handlePatternNoteChange.bind(this)
     this.handleRemoveStep = this.handleRemoveStep.bind(this)
     this.handleResolutionChange = this.handleResolutionChange.bind(this)
