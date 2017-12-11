@@ -14,6 +14,7 @@ import './Sequencer.css'
 class Sequencer extends Component {
   constructor(props) {
     super(props);
+    
     this.abswitch = this.abswitch.bind(this);
     this.updatePattern = this.updatePattern.bind(this);
     this.startStop = this.startStop.bind(this);
