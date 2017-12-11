@@ -8,6 +8,7 @@ import SequenceRow from '../SequenceRow/SequenceRow';
 // import ProgressBar from './progress_bar';
 // import ScrewPlate from './screws';
 // import PlayBar from './playbar';
+import Transport from '../Transport/Transport'
 import './Sequencer.css'
 
 class Sequencer extends Component {
@@ -34,14 +35,14 @@ class Sequencer extends Component {
 
     const multSampler = new Tone.MultiPlayer({
       urls: {
-        BD: './assets/samples/Kick.wav',
-        SD: './assets/samples/Snare.wav',
-        CL: './assets/samples/Clap.wav',
-        CA: './assets/samples/Clave.wav',
-        LT: './assets/samples/LowTom.wav',
-        CH: './assets/samples/ClosedHat.wav',
-        OH: './assets/samples/OpenHat.wav',
-        HT: './assets/samples/HighTom.wav'
+        BD: 'https://dl.dropboxusercontent.com/s/v1agv03lkjqj9cu/70sHi2.mp3?dl=1',
+        SD: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+        CL: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+        CA: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+        LT: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+        CH: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+        OH: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+        HT: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1'
       }
     }).toMaster();
 
@@ -176,12 +177,12 @@ class Sequencer extends Component {
 
             {this.state.currentPattern.map(makeSeqRow, this)}
 
-            {/* <PlayBar
+            <Transport
               bpm_num={this.state.bpm}
               toggle_f={this.abswitch}
               tempo_f={this.changeTempo}
               playbutton_f={this.startStop}
-            /> */}
+            />
 
             {/* <ScrewPlate /> */}
           </div>

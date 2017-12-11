@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
-import Toggle from './toggle';
+// import Toggle from './toggle';
 
-const playBar = (props) => {
+const Transport = (props) => {
   return (
     <div className="drumrackbar">
       <div className="drumracklabel">SEQUENCE</div>
-      <Toggle abfunc={props.toggle_f} />
+      {/* <Toggle abfunc={props.toggle_f} /> */}
       <div className="bpmplaybar">
         <input type="number" className="tempolabel" onChange={props.tempo_f} value={props.bpm_num} />
       </div>
@@ -18,11 +18,11 @@ const playBar = (props) => {
   );
 };
 
-playBar.propTypes = {
-  bpm_num: PropTypes.number.isRequired,
-  toggle_f: PropTypes.func.isRequired,
-  tempo_f: PropTypes.func.isRequired,
-  playbutton_f: PropTypes.func.isRequired
-};
+// playBar.propTypes = {
+//   bpm_num: PropTypes.number.isRequired,
+//   toggle_f: PropTypes.func.isRequired,
+//   tempo_f: PropTypes.func.isRequired,
+//   playbutton_f: PropTypes.func.isRequired
+// };
 
-export default playBar;
+export default Transport;
