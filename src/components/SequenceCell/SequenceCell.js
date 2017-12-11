@@ -9,8 +9,8 @@ class SequenceCell extends Component {
     let steps = totalSteps.map((_, stepKey) => {
       if (pattern.steps[stepKey] === undefined) {
         let color = pattern.currentStep === stepKey
-          ? "primary"
-          : "dark";
+          ? "red"
+          : "blue";
 
         return (
  
@@ -20,21 +20,22 @@ class SequenceCell extends Component {
       }
 
       let color = pattern.steps[stepKey] != null
-        ? "accent"
-        : "dark";
+        ? "red"
+        : "blue";
 
       if (pattern.currentStep === stepKey) {
         color = "primary";
       }
 
       return (
-        <Col key={stepKey}>
-          <Button size="small"
+        
+          <Button key={stepKey}  
+                  size="small"
                   className={"StepButton"} 
-                  onClick={this.props.onStepToggle.bind(this, patternKey, stepKey)}>
+                  onClick={this.props.onStepToggle.bind(null, patternKey, stepKey)}>
                   X
           </Button>
-        </Col>
+        
       );
     });
 
@@ -42,7 +43,7 @@ class SequenceCell extends Component {
      <div>
      <Row>
           <Col s={3} key={patternKey}>
-          <Button size="small" color="dark" onClick={this.props.onAddStep.bind(null, patternKey)}>
+          <Button size="small" color="dark" onClick={this.props.onAddStep.bind(this, patternKey)}>
             +
           </Button>
           <Button size="small" color="default" disabled>{pattern.steps == null ? 0 : Object.keys(pattern.steps).length}</Button>
@@ -52,15 +53,14 @@ class SequenceCell extends Component {
           </Col>
         
         <Col s={1}>
-          <Input type="number" min="0" max="127"
+          {/* <Input type="number" min="0" max="127"
                  value={pattern.noteNumber}
-                 onChange={this.props.onPatternNoteChange.bind(null, patternKey)} />
+                 onChange={this.props.onPatternNoteChange.bind(null, patternKey)} 
+                 /> */}
         </Col>
         <Col s={8}>{steps}</Col>
       </Row>
    
-        
-       
         </div>
     );
   }

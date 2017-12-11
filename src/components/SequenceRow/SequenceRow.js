@@ -13,7 +13,7 @@ const RESOLUTIONS = {
 }
 const DEFAULT_RESOLUTION = 4;
 
-const defaultPattern = () => {
+let defaultPattern = () => {
   return {
     currentStep: -1,
     noteNumber: 66,
@@ -61,7 +61,6 @@ class SequenceRow extends Component {
       return pattern;
     });
   }
-
   handleRemoveStep = (patternKey) => {
     this.updatePattern(patternKey, pattern => {
       let lastStep =
@@ -75,7 +74,7 @@ class SequenceRow extends Component {
 
   handleStepToggle = (patternKey, stepKey) => {
     console.log(`StepKey: ${stepKey}`);
-    console.log(`patternkey:${patternKey}`)
+    console.log(`patternKey:${patternKey}`)
     this.updatePattern(patternKey, pattern => {
       if (pattern.steps != null && pattern.steps[stepKey] !== undefined) {
         pattern.steps[stepKey] = pattern.steps[stepKey] == null
@@ -87,15 +86,13 @@ class SequenceRow extends Component {
   }
 
   handlePatternNoteChange = (patternKey, e) => {
-    
     this.updatePattern(patternKey, pattern => {
       pattern.noteNumber = parseInt(e.target.value, 10);
       return pattern;
-      console.log(pattern)
     });
   }
 
-  updatePattern(patternKey, callback = () => {}) {
+  updatePattern (patternKey, callback = () => {}){
     let newState = Object.assign({}, this.state);
     let pattern = Object.assign({}, newState.patterns[patternKey]);
 
@@ -122,13 +119,13 @@ class SequenceRow extends Component {
     this.setState(newState);
   }
 
-  getLastStep(){
+  getLastStep = () => {
     return this.state.patterns.reduce(function(memo, pattern){
       return Math.max(Object.keys(pattern.steps).length, memo);
     }, 0);
   }
 
-  onClockTick = (t0, t1, e)=>{
+  onClockTick = (t0, t1, e) =>{
     // Skip if outside of resolution
     if (e.args.tick % this.state.resolution !== 0) {
       return;
@@ -150,7 +147,6 @@ class SequenceRow extends Component {
           : 0;
 
         // Reset steps every 32 ticks
-        // TODO refactor this crap
         if (e.args.tick % 32 === 0) {
           pattern.currentStep = 0;
         }
@@ -185,7 +181,7 @@ class SequenceRow extends Component {
     this.setState(newState);
   }
 
-  getPatterns() {
+  getPatterns = () => {
     let totalSteps = new Array(this.getLastStep()).fill(true);
     return this.state.patterns.map((pattern, patternKey) => {
       return (
@@ -224,18 +220,6 @@ class SequenceRow extends Component {
             <option value='3'>Option 3</option>
           </Input>
         </Col>
-        {/* <Col s={1}>
-          <Input
-            s={12}
-            type='select'
-            // label='Materialize Select'
-            icon='settings_input_svideo'
-            defaultValue='2'>
-            <option value='1'>Option 1</option>
-            <option value='2'>Option 2</option>
-            <option value='3'>Option 3</option>
-          </Input>
-        </Col> */}
       </Row>
     </div>
   )

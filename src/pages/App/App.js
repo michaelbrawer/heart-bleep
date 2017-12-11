@@ -18,8 +18,10 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
+
+  
     this.initialRefCounter = 1;
-    this.sequencerRefs =[];
+    this.sequencerRefs =[1,2,3,4];
     this.state = Object.assign({
       outputs: null,
       sequencers: [
@@ -51,6 +53,7 @@ class App extends Component {
 
   /*---------- Sequencer Clock Address Methods ----------*/
 
+
   handleOnClockTick = (t0, t1, e = {args: null}) => {
     this.state.sequencers.forEach(definition => {
       this.refs[definition.ref].onClockTick(...arguments);
@@ -59,7 +62,7 @@ class App extends Component {
 
   handleOnClockReset = () => {
     this.state.sequencers.forEach(definition => {
-      this.ref[definition.ref].onClockReset(...arguments);
+      this.refs[definition.ref].onClockReset(...arguments);
     });
   }
 
@@ -99,10 +102,10 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={() => <Sequencer
+            render={(props) => <Sequencer
             getSequencers={this.getSequencers}
-            handleOnClockTick={this.handleOnClockTick}
-            handleOnClockReset={this.handleOnClockReset}
+            onClockTick={this.handleOnClockTick}
+            onClockReset={this.handleOnClockReset}
             user={this.state.user}
             handleLogout={this.handleLogout}/>}/>
           <Route
