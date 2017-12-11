@@ -36,21 +36,21 @@ class App extends Component {
     
         const multSampler = new Tone.MultiPlayer({
           urls: {
-            BD: './assets/samples/Kick.wav',
-            SD: './assets/samples/Snare.wav',
-            CL: './assets/samples/Clap.wav',
-            CA: './assets/samples/Clave.wav',
-            LT: './assets/samples/LowTom.wav',
-            CH: './assets/samples/ClosedHat.wav',
-            OH: './assets/samples/OpenHat.wav',
-            HT: './assets/samples/HighTom.wav'
+            BD: 'https://dl.dropboxusercontent.com/s/rjdruv4d55l7q7f/60H2.mp3?dl=1',
+            SD: 'https://dl.dropboxusercontent.com/s/lkipjekblqr43gk/60H1.mp3?dl=1',
+            CL: 'https://dl.dropboxusercontent.com/s/vk8z6jwbnlubooz/60H3.mp3?dl=1',
+            CA: 'https://dl.dropboxusercontent.com/s/sy394rdoyk03l25/60H4.mp3?dl=1',
+            LT: 'https://dl.dropboxusercontent.com/s/w326tg4f3egg9id/60sWin.mp3?dl=1',
+            CH: 'https://dl.dropboxusercontent.com/s/2mztl3bqmsds7aw/60sLoseLong.mp3?dl=1',
+            OH: 'https://dl.dropboxusercontent.com/s/g96ez1oxzo4p9z3/70sHi1.mp3?dl=1',
+            HT: 'https://dl.dropboxusercontent.com/s/v1agv03lkjqj9cu/70sHi2.mp3?dl=1'
           }
         }).toMaster();
 
         const steps = Array(32).fill(1).map((v, i) => {
           return i;
         });
-        
+
 
   }
 
