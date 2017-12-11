@@ -8,6 +8,7 @@ import SequenceRow from '../SequenceRow/SequenceRow';
 // import ProgressBar from './progress_bar';
 // import ScrewPlate from './screws';
 // import PlayBar from './playbar';
+import './Sequencer.css'
 
 class Sequencer extends Component {
   constructor(props) {

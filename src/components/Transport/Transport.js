@@ -1,45 +1,28 @@
-import React, {Component} from 'react';
-import WorkerTimer from 'worker-timer';
-import {Button, Icon, CardPanel, Col, Row} from 'react-materialize';
-import WebAudioScheduler from 'web-audio-scheduler';
-import Led from '../Led/Led';
-import './Transport.css';
+import React, { PropTypes } from 'react';
+import Toggle from './toggle';
 
-const Transport = (props) => {
-    return (
-      <div className="Transport">
-        <CardPanel s={6} className="grey lighten-4 black-text">
-        <Row>
-            <Col s={6} className='grid-example'>
-              <p>Transport:</p>
-              <Button onClick={this.reset} waves='light' className="grey">
-                <Icon className="material-icons md-dark">replay</Icon>
-              </Button>
-              <Button onClick={this.start} waves='light'>
-                <Icon className="material-icons md-dark">play_arrow</Icon>
-              </Button>
-              <Button onClick={this.stop} waves='light' className="red TransportButton">
-                <Icon className="material-icons md-dark">cancel</Icon>
-              </Button>
-            </Col>
-           </Row>
-          <Row>
-            <Col s={4}>
-            {/* <Led visible={this.state.isMetronomeUp}/> */}
-            {/* <Led visible={this.state.isMetronomeDown} bpm={this.state.bpm}/> */}
-            <input 
-              type="range" 
-              min="20" 
-              max="300"  
-              value={props.bpm}
-              onChange={}
-            />
-            </Col>
-          </Row>
-         
-        </CardPanel>
+const playBar = (props) => {
+  return (
+    <div className="drumrackbar">
+      <div className="drumracklabel">SEQUENCE</div>
+      <Toggle abfunc={props.toggle_f} />
+      <div className="bpmplaybar">
+        <input type="number" className="tempolabel" onChange={props.tempo_f} value={props.bpm_num} />
       </div>
-    );
-}
+      <div className="playstopbutton" onClick={props.playbutton_f}>
+        <i className="fa fa-play fa-2x" aria-hidden="true" />
+        <div className="slash">/</div>
+        <i className="fa fa-stop fa-2x" aria-hidden="true" />
+      </div>
+    </div>
+  );
+};
 
-export default Transport;
+playBar.propTypes = {
+  bpm_num: PropTypes.number.isRequired,
+  toggle_f: PropTypes.func.isRequired,
+  tempo_f: PropTypes.func.isRequired,
+  playbutton_f: PropTypes.func.isRequired
+};
+
+export default playBar;

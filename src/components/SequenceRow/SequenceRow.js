@@ -1,16 +1,32 @@
-import React, {Component} from 'react';
-// import SequenceCell from '../SequenceCell/SequenceCell';
-import {Col, Row, Input, Dropdown} from 'react-materialize'
-import WebMidi from 'webmidi';
-import './SequenceRow.css';
+import React, { PropTypes } from 'react';
 
 const SequenceRow = (props) => {
+  function makeRow(v, i) {
+    const channelClasses = v ? 'lighton' : 'lightoff';
+    return (
+      <div
+        className="stepbutton"
+        data-channel={props.channelNum}
+        data-stepindx={props.bside ? i + 13 : i}
+        onClick={props.updateSeq}
+        key={`c${v}s${i}`}
+      >
+      <div className={channelClasses} /></div>
+    );
+  }
 
   return (
-    <div className="sequencerrow">YYY
-      
+    <div className="SequenceRow">
+      {props.channel.map(makeRow, this)}
     </div>
   );
-}
+};
+
+// channelRow.propTypes = {
+//   channelNum: PropTypes.number.isRequired,
+//   bside: PropTypes.bool.isRequired,
+//   updateSeq: PropTypes.func.isRequired,
+//   channel: PropTypes.array.isRequired
+// };
 
 export default SequenceRow;
