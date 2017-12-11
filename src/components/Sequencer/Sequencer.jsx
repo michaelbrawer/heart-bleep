@@ -1,216 +1,192 @@
-import React from 'react';
-import BufferLoader from './bufferloader.js';
-// import Slider from 'react-toolbox/lib/slider';
 
+import React, { Component } from 'react';
+import Tone from 'tone';
+import PositionTransform from '../assets/js/position';
+import { demoTrack } from '../assets/js/patterns';
+import { nullTrack } from '../assets/js/null_track';
+import SequenceRow from '../SequenceRow/SequenceRow';
+// import ProgressBar from './progress_bar';
+// import ScrewPlate from './screws';
+// import PlayBar from './playbar';
 
-// スケジューリング間隔（milliseconds, handled by javascript clock)
-var SCHEDULER_TICK = 25.0;
-// スケジューリング先読み範囲（sec, handled by WebAudio clock)
-var SCHEDULER_LOOK_AHEAD = 0.1;
+class Sequencer extends Component {
+  constructor(props) {
+    super(props);
+    this.abswitch = this.abswitch.bind(this);
+    this.updatePattern = this.updatePattern.bind(this);
+    this.startStop = this.startStop.bind(this);
+    this.changeTempo = this.changeTempo.bind(this);
+    this.changeVolume = this.changeVolume.bind(this);
+    this.clearPattern = this.clearPattern.bind(this);
+    this.positionMarker = this.positionMarker.bind(this);
 
-//audio context initialization
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
-var audioContext = new AudioContext();
-
-//loadimg audio buffers
-var bufferLoader = new BufferLoader(
-  audioContext,
-  ['sounds/hihat_open.wav',
-    'sounds/hihat_close.wav',
-    'sounds/snare.wav',
-    'sounds/kick.wav'],
-  ()=>console.log('audio resource loading finished.'));
-bufferLoader.load();
-
-// run a worker process to schedule next note(s)
-var timerWorker = new Worker('scripts/timerworker.js');
-timerWorker.postMessage({"interval": SCHEDULER_TICK});
-
-function Square (props) {
-    return (
-        <button className="note" onClick={()=>props.onClick()}>
-            {props.marking}
-        </button>
-    );
-}
-
-class Track extends React.Component {
-  render() {
-    return (
-        <div className="track">
-          <span className="track-name">{this.props.name}</span>
-          {Array(16).fill().map((x,i) =>
-            <Square 
-              key={i}
-              marking={this.props.squares[i]}
-              onClick={()=>this.props.handler(i)}
-            />)}
-        </div>
-    );
-  }
-}
-
-class LEDLine extends React.Component {
-  render() {
-    return (
-        <div className="track">
-          <span className="track-name"></span>
-          {Array(16).fill().map((x,i) =>
-          <button className={
-            (this.props.isPlaying && this.props.idxCurrent16thNote == (i+1)%16)? "led  led-playing" : "led"
-            } key={i} disabled />)}
-        </div>
-    );
-  }
-}
-
-class Sequencer extends React.Component {
-  constructor() {
-    super();
     this.state = {
-      tracks: [
-        {name:"hihat-open",
-         steps: [null,null,null,null,null,null,null,null,null,null,'■',null,null,null,null,null]},
-        {name:"hihat-close",
-         steps: ['■','■','■',null,'■',null,'■',null,'■',null,null,null,'■',null,'■',null]},
-        {name:"snare",
-         steps: [null,null,null,null,'■',null,null,null,null,null,null,null,'■',null,null,'■']},
-        {name:"kick",
-         steps: ['■',null,null,null,null,null,null,'■',null,'■','■',null,null,'■',null,null]},
-      ],
-      bpm: 100,
-      isPlaying: false,
-      idxCurrent16thNote: 0,
-      startTime: 0.0,
-      nextNoteTime: 0.0,
-      swing: 0
+      bpm: 94,
+      position: 0,
+      volume: -6,
+      playing: false,
+      bside: false,
+      currentPattern: demoTrack
     };
-    timerWorker.onmessage = function(e) {
-      if(e.data=="tick"){
-            this.schedule();
+
+    this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
+
+    const multSampler = new Tone.MultiPlayer({
+      urls: {
+        BD: './assets/samples/Kick.wav',
+        SD: './assets/samples/Snare.wav',
+        CL: './assets/samples/Clap.wav',
+        CA: './assets/samples/Clave.wav',
+        LT: './assets/samples/LowTom.wav',
+        CH: './assets/samples/ClosedHat.wav',
+        OH: './assets/samples/OpenHat.wav',
+        HT: './assets/samples/HighTom.wav'
       }
-    }.bind(this);
+    }).toMaster();
+
+    const steps = Array(32).fill(1).map((v, i) => {
+      return i;
+    });
+
+    const getColumns = (track) => {
+      const result = [];
+      for (let i = 0; i < 32; i += 1) {
+        result.push(track.map((v, idx) => { return v[i] ? this.sampleOrder[idx] : null }).filter(v => v));
+      }
+      return result;
+    };
+
+    this.columnPattern = getColumns(this.state.currentPattern);
+
+    this.playSeq = new Tone.Sequence((time, value) => {
+      this.columnPattern[value].forEach((v) => { return multSampler.start(v, time, 0, '16n', 0);});
+    }, steps, '16n');
+
+    this.playSeq.start();
+    this.playSeq.loop = true;
+
+    Tone.Transport.setLoopPoints(0, '2m');
+    Tone.Transport.loop = true;
+    Tone.Transport.scheduleRepeat(this.positionMarker, '16n');
+    Tone.Transport.bpm.value = this.state.bpm;
+    Tone.Master.volume.value = this.state.volume;
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', (e) => {
+      const pressed = e.key;
+      if (pressed === ' ') {
+        this.startStop();
+      }
+    });
+  }
+
+  clearPattern() {
+    this.setState({ currentPattern: nullTrack });
+  }
+
+  positionMarker() {
+    this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
+  }
+
+  startStop() {
+    if (this.state.playing) {
+      Tone.Transport.stop();
+      this.setState({ playing: false });
+    }
+    else {
+      Tone.Transport.start('+0.25');
+      this.setState({ playing: true });
+    }
+  }
+
+  changeTempo(e) {
+    let newTempo = parseInt(e.currentTarget.value, 10);
+    if (isNaN(newTempo)) {
+      newTempo = 10;
+    }
+    if (newTempo > 200) {
+      newTempo = 200;
+    }
+    Tone.Transport.bpm.value = newTempo;
+    this.setState({ bpm: newTempo });
+  }
+
+  updatePattern(event) {
+    const channelNum = parseInt(event.currentTarget.dataset.channel, 10);
+    const stepNum = parseInt(event.currentTarget.dataset.stepindx, 10);
+    const cpattern = this.state.currentPattern;
+    if (cpattern[channelNum][stepNum]) {
+      cpattern[channelNum][stepNum] = null;
+      const colpattemp = this.columnPattern[stepNum].slice();
+      const target = colpattemp.indexOf(this.sampleOrder[channelNum]);
+      colpattemp.splice(target, 1);
+      this.columnPattern[stepNum] = colpattemp;
+      this.setState({ currentPattern: cpattern });
+    }
+    else {
+      const newSamp = this.sampleOrder[channelNum];
+      this.columnPattern[stepNum].push(newSamp);
+      cpattern[channelNum][stepNum] = true;
+      this.setState({ currentPattern: cpattern });
+    }
+    this.setState({ currentPattern: cpattern });
+  }
+
+  abswitch() {
+    this.setState({ bside: !this.state.bside });
+  }
+
+  changeVolume(e, value) {
+    this.setState({ volume: value });
+    if (value < -40) {
+      value = -100;
+    }
+    Tone.Master.volume.value = value;
   }
 
   render() {
+    function makeSeqRow(v, i) {
+      let pattern;
+      if (this.state.bside) {
+        pattern = v.slice(16);
+      }
+      else {
+        pattern = v.slice(0, 16);
+      }
+      return (
+        <SequenceRow
+          bside={this.state.bside}
+          key={`${i}row`}
+          channelNum={i}
+          updateSeq={this.updatePattern}
+          channel={pattern}
+        />
+      );
+    }
+
     return (
-      <div className="sequencer">
-        <div className="area-tracks">
-          {Array(4).fill().map((x,i) =>
-            <Track 
-              key={i}
-              name={this.state.tracks[i].name}
-              squares={this.state.tracks[i].steps}
-              handler={(idx)=>this.toggleStep(i, idx)}
-            />
-            )
-          }
-          <LEDLine
-            isPlaying={this.state.isPlaying}
-            idxCurrent16thNote={this.state.idxCurrent16thNote}
-          />
-        </div>
-        <hr />
-        <div className="area-play">
-          <button className="button-play" onClick={()=>this.togglePlayButton()}>
-            {this.state.isPlaying ? '■STOP' : '▶PLAY!'}
-          </button>
-        </div>
-        <div className="area-shuffle">
-          <button className="button-shuffle" onClick={()=>this.shuffleNotes()}>SHUFFLE</button>
-        </div>
-        <div className="area-bpm">
-          <span className="label-bpm">[bpm]</span>
-          <div style={{display: 'inline-block', width: '200px'}}>
-            {/* <Slider min={40} max={250} step={1}
-              editable pinned value={this.state.bpm} onChange={this.handleSliderChange.bind(this, 'bpm')}/> */}
-          </div>
-        </div>
-        <div className="area-swing">
-          <span className="label-swing">[swing]</span>
-          <div style={{display: 'inline-block', width: '200px'}}>
-            {/* <Slider min={0} max={100} step={1}
-              editable pinned value={this.state.swing} onChange={this.handleSliderChange.bind(this, 'swing')}/> */}
+      <div className="rackcabinet">
+        <div className="rack">
+          <div className="drumrack">
+            {/* <ScrewPlate /> */}
+
+            {/* <ProgressBar prog={this.state.position} /> */}
+
+            {this.state.currentPattern.map(makeSeqRow, this)}
+
+            {/* <PlayBar
+              bpm_num={this.state.bpm}
+              toggle_f={this.abswitch}
+              tempo_f={this.changeTempo}
+              playbutton_f={this.startStop}
+            /> */}
+
+            {/* <ScrewPlate /> */}
           </div>
         </div>
       </div>
     );
-  }
-
-    handleSliderChange(slider, value){
-      const newState = {};
-      newState[slider] = value;
-      this.setState(newState);
-    }
-
-  shuffleNotes(){
-    let tr = this.state.tracks.slice();
-    tr[0].steps = this.generateSequence(0.1);
-    tr[1].steps = this.generateSequence(0.6);
-    tr[2].steps = this.generateSequence(0.25);
-    tr[3].steps = this.generateSequence(0.33);
-    this.setState({tracks: tr});
-  }
-
-  generateSequence(density){
-    var newSeq = Array(16).fill().map((x,i) =>{
-      let random = Math.random();
-      return random <= density ? '■' : null;
-    });
-    return newSeq;
-  }
-
-  toggleStep(idxTrack, idxNote) {
-    let tr = this.state.tracks.slice();
-    tr[idxTrack].steps[idxNote] = tr[idxTrack].steps[idxNote] == null ? '■' : null;
-    this.setState({tracks: tr});
-  }
-
-  togglePlayButton(){
-      if (this.state.isPlaying == false) {
-          timerWorker.postMessage("start");
-          this.setState({
-            // to avoid first note delay
-            nextNoteTime: audioContext.currentTime + SCHEDULER_TICK/1000,
-            isPlaying: true,
-          });
-      } else {
-          timerWorker.postMessage("stop");
-          this.setState({
-            idxCurrent16thNote: 0,
-            isPlaying: false,
-          });
-      }
-  }
-
-  schedule() {
-    while (this.state.nextNoteTime < audioContext.currentTime + SCHEDULER_LOOK_AHEAD ) {
-        this.scheduleSound( this.state.idxCurrent16thNote, this.state.nextNoteTime );
-        this.nextNote();
-    }
-  }
-
-  scheduleSound(idxNote, time) {
-      this.state.tracks.map((tr, i) =>{
-        if(tr.steps[idxNote])
-        {
-            let source = audioContext.createBufferSource();
-            source.buffer = bufferLoader.bufferList[i];
-            source.connect(audioContext.destination);
-            source.start(time);
-        }
-      });
-  }
-
-  nextNote() {
-      let secondsPerBeat = 60.0 / this.state.bpm;
-      let noteRateWithSwingCalc = 
-        this.state.idxCurrent16thNote % 2 == 0 ?
-        1/4 + 1/1200*this.state.swing : 1/4 - 1/1200*this.state.swing;
-      this.setState({
-        nextNoteTime: this.state.nextNoteTime + noteRateWithSwingCalc * secondsPerBeat,
-        idxCurrent16thNote: (this.state.idxCurrent16thNote + 1) % 16,
-    });
   }
 }
 

@@ -68,9 +68,7 @@ class App extends Component {
             exact
             path='/'
             render={(props) => 
-            <div>
-              A Drum Machine Will Go Here:
-              </div>
+            <Sequencer />
             }
             />
           <Route
