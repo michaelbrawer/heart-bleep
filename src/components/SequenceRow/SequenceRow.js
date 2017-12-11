@@ -8,10 +8,15 @@ const SequenceRow = (props) => {
   function makeRow(v, i) {
     return (
       <div>
-        Sequence Row:
+        X
       </div>
     )
   }
+  return (
+    <div className="sequencerrow">Y
+      {props.channel.map(makeRow, this)}
+    </div>
+  );
 }
 
 export default SequenceRow;

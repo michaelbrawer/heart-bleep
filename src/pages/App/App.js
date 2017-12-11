@@ -17,11 +17,20 @@ import userService from '../../utils/userService';
 import './App.css';
 //pattern assets
 import { nullTrack } from '../../components/assets/js/null_track';
-import { demoTrack } from '../../components/assets/js/patterns'
+import { demoTrack } from '../../components/assets/js/patterns';
+import PositionTransform from '../../components/assets/js/position';
 
 class App extends Component {
   constructor(props) {
     super(props);
+
+    // this.abswitch = this.abswitch.bind(this);
+    // this.updatePattern = this.updatePattern.bind(this);
+    this.startStop = this.startStop.bind(this);
+    this.changeTempo = this.changeTempo.bind(this);
+    // this.changeVolume = this.changeVolume.bind(this);
+    this.clearPattern = this.clearPattern.bind(this);
+    this.positionMarker = this.positionMarker.bind(this);
 
     this.state = {
       bpm: 120,
@@ -73,7 +82,37 @@ class App extends Component {
         Tone.Transport.scheduleRepeat(this.positionMarker, '16n');
         Tone.Transport.bpm.value = this.state.bpm;
         Tone.Master.volume.value = this.state.volume;
-    
+  }
+
+  clearPattern() {
+    this.setState({ currentPattern: nullTrack });
+  }
+
+  positionMarker() {
+    this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
+  }
+
+  startStop() {
+    if (this.state.playing) {
+      Tone.Transport.stop();
+      this.setState({ playing: false });
+    }
+    else {
+      Tone.Transport.start('+0.25');
+      this.setState({ playing: true });
+    }
+  }
+
+  changeTempo(e) {
+    let newTempo = parseInt(e.currentTarget.value, 10);
+    if (isNaN(newTempo)) {
+      newTempo = 10;
+    }
+    if (newTempo > 200) {
+      newTempo = 200;
+    }
+    Tone.Transport.bpm.value = newTempo;
+    this.setState({ bpm: newTempo });
   }
 
   /*---------- Login Callback Methods ----------*/
@@ -134,6 +173,7 @@ class App extends Component {
       </div>
     );
   }
+
 }
 
 export default App;
