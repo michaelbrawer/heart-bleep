@@ -5,16 +5,10 @@ import WebMidi from 'webmidi';
 import './SequenceRow.css';
 
 const SequenceRow = (props) => {
-  function makeRow(v, i) {
-    return (
-      <div>
-        X
-      </div>
-    )
-  }
+
   return (
-    <div className="sequencerrow">Y
-      {props.channel.map(makeRow, this)}
+    <div className="sequencerrow">YYY
+      
     </div>
   );
 }
