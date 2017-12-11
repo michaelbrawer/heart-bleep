@@ -16,8 +16,8 @@ import userService from '../../utils/userService';
 //import styling
 import './App.css';
 //pattern assets
-import { nullTrack } from '../../assets/js/null_track';
-import { demoTrack } from '../../assets/js/patterns'
+import { nullTrack } from '../../components/assets/js/null_track';
+import { demoTrack } from '../../components/assets/js/patterns'
 
 class App extends Component {
   constructor(props) {
@@ -51,7 +51,29 @@ class App extends Component {
           return i;
         });
 
+        const getColumns = (track) => {
+          const result = [];
+          for (let i = 0; i < 32; i += 1) {
+            result.push(track.map((v, idx) => { return v[i] ? this.sampleOrder[idx] : null }).filter(v => v));
+          }
+          return result;
+        };
+    
+        this.columnPattern = getColumns(this.state.currentPattern);
 
+        this.playSeq = new Tone.Sequence((time, value) => {
+          this.columnPattern[value].forEach((v) => { return multSampler.start(v, time, 0, '16n', 0);});
+        }, steps, '16n');
+    
+        this.playSeq.start();
+        this.playSeq.loop = true;
+    
+        Tone.Transport.setLoopPoints(0, '2m');
+        Tone.Transport.loop = true;
+        Tone.Transport.scheduleRepeat(this.positionMarker, '16n');
+        Tone.Transport.bpm.value = this.state.bpm;
+        Tone.Master.volume.value = this.state.volume;
+    
   }
 
   /*---------- Login Callback Methods ----------*/
