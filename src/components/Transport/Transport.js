@@ -11,13 +11,16 @@ const SCHEDULER_AHEAD = 0.01;
 
 var currentTick = 0;
 
-// const noop = () => {}; 
-// const TO_BIND = [   'handleBPMChange',   'tickTock',
-// 'metronome',   'start',   'stop' ];
-
 class Transport extends Component {
   constructor() {
     super();
+
+    this.handleBPMChange = this.handleBPMChange.bind(this);
+    this.ticktock = this.ticktock.bind(this);
+    this.metronome = this.metronome.bind(this);
+    this.start = this.start.bind(this);
+    this.stop = this.stop.bind(this);
+    this.reset = this.reset.bind(this);
 
     this.scheduler = null;
 
@@ -39,14 +42,14 @@ class Transport extends Component {
     this.stop();
   }
 
-  handleBPMChange = (e)=> {
+  handleBPMChange(e){
     this.setState({bpm: parseInt(e.target.value, 10)}, () => {
         this.scheduler.removeAll();
         this.scheduler.start(this.metronome);
     });
   }
 
-  ticktock = (e) => {
+  ticktock(e){
     var t0 = e.playbackTime;
     var t1 = t0 + e.args.duration;
     this.props.onClockTick(t0, t1, e);
@@ -59,7 +62,7 @@ class Transport extends Component {
     }
   }
 
-  metronome = (e) =>{
+  metronome(e){
     let duration = parseFloat(((1000 / (this.state.bpm / 60) / 1000) / 4).toFixed(4));
     let t0 = e.playbackTime;
     let t1 = t0 + duration;
@@ -71,20 +74,20 @@ class Transport extends Component {
     this.scheduler.insert(t1, this.metronome);
   }
 
-  start = () => {
+  start(){
     this.scheduler.start(this.metronome);
     // this.props.onClockStart();
     this.props.onClockTick();
     this.setState({running: true});
   }
 
-  stop = () => {
+  stop(){
     this.scheduler.stop({reset:true});
     // this.props.onClockStop();
     this.setState({running: false});
   }
 
-  reset = () => {
+  reset(){
     this.scheduler.stop(true);
     currentTick = 0;
     this.props.onClockReset();

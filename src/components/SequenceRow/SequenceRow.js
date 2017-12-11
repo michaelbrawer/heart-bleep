@@ -14,15 +14,15 @@ const RESOLUTIONS = {
 const DEFAULT_RESOLUTION = 4;
 
 let defaultPattern = () => {
-  return {
+  return{
     currentStep: -1,
     noteNumber: 66,
     steps: {
       0: {play: true, velocity: 100},
-      1: null, 
+      1: null,
       2: null,
-      3: null, 
-      4: null, 
+      3: null,
+      4: null,
       5: null,
       6: null,
       7: null
@@ -30,9 +30,29 @@ let defaultPattern = () => {
   }
 };
 
+// const TO_BIND = [
+//   'handleAddPattern',
+//   'handleAddStep',
+//   'handlePatternNoteChange',
+//   'handleRemoveStep',
+//   'handleResolutionChange',
+//   'handleStepToggle',
+//   'onMidiOutputSelected',
+//   'onClockTick',
+//   'sendTestNote'
+// ];
+
 class SequenceRow extends Component {
   constructor(){
     super();
+
+    this.handleAddPattern = this.handleAddPattern.bind(this)
+    this.handdleAddStep = this.handleAddStep.bind(this)
+    this.handlePatternNoteChange = this.handlePatternNoteChange.bind(this)
+    this.handleRemoveStep = this.handleRemoveStep.bind(this)
+    this.handleResolutionChange = this.handleResolutionChange.bind(this)
+    this.handleStepToggle = this.handleStepToggle.bind(this)
+    this.onClockTick = this.onClockTick.bind(this)
 
     this.state = Object.assign({
       selectedChannel: 1,
@@ -54,14 +74,15 @@ class SequenceRow extends Component {
     }
   }
 
-  handleAddStep = (patternKey) => {
+  handleAddStep(patternKey){
     this.updatePattern(patternKey, pattern => {
       let lastStep = Object.keys(pattern.steps).length;
       pattern.steps[lastStep] = null;
       return pattern;
     });
   }
-  handleRemoveStep = (patternKey) => {
+
+  handleRemoveStep(patternKey){
     this.updatePattern(patternKey, pattern => {
       let lastStep =
       Object.keys(pattern.steps).length;
@@ -72,7 +93,8 @@ class SequenceRow extends Component {
     });
   }
 
-  handleStepToggle = (patternKey, stepKey) => {
+  handleStepToggle(patternKey, stepKey){
+    // console.log(pattern);
     console.log(`StepKey: ${stepKey}`);
     console.log(`patternKey:${patternKey}`)
     this.updatePattern(patternKey, pattern => {
@@ -85,14 +107,14 @@ class SequenceRow extends Component {
     });
   }
 
-  handlePatternNoteChange = (patternKey, e) => {
+  handlePatternNoteChange(patternKey, e){
     this.updatePattern(patternKey, pattern => {
       pattern.noteNumber = parseInt(e.target.value, 10);
       return pattern;
     });
   }
 
-  updatePattern (patternKey, callback = () => {}){
+  updatePattern(patternKey, callback = () => {}){
     let newState = Object.assign({}, this.state);
     let pattern = Object.assign({}, newState.patterns[patternKey]);
 
@@ -102,11 +124,11 @@ class SequenceRow extends Component {
     }
   }
 
-  handleResolutionChange = (value) => {
+  handleResolutionChange(value){
     this.setState({resolution: value});
   }
 
-  handleAddPattern = (e) => {
+  handleAddPattern(e){
     e.preventDefault();
     let newState = Object.assign({}, this.state);
 
@@ -119,14 +141,15 @@ class SequenceRow extends Component {
     this.setState(newState);
   }
 
-  getLastStep = () => {
+  getLastStep(){
     return this.state.patterns.reduce(function(memo, pattern){
       return Math.max(Object.keys(pattern.steps).length, memo);
     }, 0);
   }
 
-  onClockTick = (t0, t1, e) =>{
+  onClockTick = (t0, t1, e) => {
     // Skip if outside of resolution
+
     if (e.args.tick % this.state.resolution !== 0) {
       return;
     }
@@ -174,15 +197,16 @@ class SequenceRow extends Component {
     this.setState(newState);
   }
 
-  onClockReset() {
+  onClockReset = () => {
     // TODO immutability
     let newState = Object.assign({}, this.state);
     newState.patterns.forEach(pattern => { pattern.currentStep = -1;});
     this.setState(newState);
   }
 
-  getPatterns = () => {
+  getPatterns(){
     let totalSteps = new Array(this.getLastStep()).fill(true);
+    console.log(totalSteps)
     return this.state.patterns.map((pattern, patternKey) => {
       return (
         <SequenceCell key={patternKey}

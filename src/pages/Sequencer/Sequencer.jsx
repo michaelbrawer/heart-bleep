@@ -8,7 +8,7 @@ class Sequencer extends Component {
   render(){
   return (
     <div className="Sequencer">
-    {this.props.getSequencers({})}
+    {this.props.getSequencers()}
     <Transport
       onClockTick={this.props.onClockTick}
       onClockReset={this.props.onClockReset}

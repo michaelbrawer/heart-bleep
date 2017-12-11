@@ -19,50 +19,61 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-  
+    this.handleOnClockTick = this.handleOnClockTick.bind(this);
+    this.handleOnClockReset = this.handleOnClockReset.bind(this);
+
     this.initialRefCounter = 1;
-    this.sequencerRefs =[1,2,3,4];
+    // this.sequencerRefs =[1,2,3,4];
     this.state = Object.assign({
       outputs: null,
       sequencers: [
-        {ref: 1, component: SequenceRow},
-        {ref: 2, component: SequenceRow},
-        {ref: 3, component: SequenceRow},
-        {ref: 4, component: SequenceRow}
+        {
+          ref: 1,
+          component: SequenceRow
+        }, {
+          ref: 2,
+          component: SequenceRow
+        }, {
+          ref: 3,
+          component: SequenceRow
+        }, {
+          ref: 4,
+          component: SequenceRow
+        }
       ]
     });
   }
 
+  //Generates Four Sequencer Rows
 
+  getSequencers = () => {
 
-  getSequencers = () =>{
     console.log('got sequencers')
     return this.state.sequencers.map(definition => {
-      let SequenceRow = definition.component;
-      let ref = definition.ref;
-      return (
-        <SequenceRow ref={ref} 
-                   key={ref}
-                   id={ref}
-                   outputs={this.state.outputs}
-                   onNoteOn={this.handleNoteOn}
-                   onNoteOff={this.handleNoteOff} />
-      );
+        let Sequencer = definition.component;
+        let ref = definition.ref;
+        return (
+        <Sequencer
+          ref={ref}
+          key={ref}
+          id={ref}
+          outputs={this.state.outputs}
+          onNoteOn={this.handleNoteOn}
+          onNoteOff={this.handleNoteOff}
+          />
+        );
     });
   }
 
   /*---------- Sequencer Clock Address Methods ----------*/
 
-
-  handleOnClockTick = (t0, t1, e = {args: null}) => {
-    this.state.sequencers.forEach(definition => {
-      this.refs[definition.ref].onClockTick(...arguments);
+  handleOnClockTick(t0, t1, e = {args: null}){
+    this.state.sequencers.forEach(definition => {this.refs[definition.ref].onClockTick(...arguments);
     });
   }
 
-  handleOnClockReset = () => {
-    this.state.sequencers.forEach(definition => {
-      this.refs[definition.ref].onClockReset(...arguments);
+  handleOnClockReset(){
+    this.state.sequencers.forEach(definition => {this.refs[definition.ref].onClockReset(...arguments);
     });
   }
 
@@ -92,7 +103,7 @@ class App extends Component {
     this.setState({user});
   }
 
-    /*---------- Render ----------*/
+  /*---------- Render ----------*/
   render() {
     return (
       <div className="App">
@@ -103,6 +114,8 @@ class App extends Component {
             exact
             path='/'
             render={(props) => <Sequencer
+            {...props}
+            sequencers={this.state.sequencers}
             getSequencers={this.getSequencers}
             onClockTick={this.handleOnClockTick}
             onClockReset={this.handleOnClockReset}

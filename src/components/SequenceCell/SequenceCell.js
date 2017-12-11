@@ -13,9 +13,10 @@ class SequenceCell extends Component {
           : "blue";
 
         return (
- 
-            <Button size="small" color={color} disabled={true}>ZZZ</Button>
-      
+          <div>
+            <Button size="small" color={color} disabled={true}></Button>
+          <p>Burger</p>
+          </div>
         );
       }
 
@@ -24,21 +25,22 @@ class SequenceCell extends Component {
         : "blue";
 
       if (pattern.currentStep === stepKey) {
-        color = "primary";
+        color = "red";
       }
 
+
+      //returns step buttons
       return (
-        
           <Button key={stepKey}  
                   size="small"
-                  className={"StepButton"} 
+                  color={color} 
                   onClick={this.props.onStepToggle.bind(null, patternKey, stepKey)}>
                   X
           </Button>
-        
       );
     });
 
+    //these returns plus/minus step length buttons
     return (
      <div>
      <Row>
