@@ -8,12 +8,14 @@ import NavBar from '../../components/NavBar/NavBar';
 import SequenceRow from '../../components/SequenceRow/SequenceRow';
 //import pages
 import LoginPage from '../LoginPage/LoginPage';
-import Sequencer from '../Sequencer/Sequencer';
 import SignupPage from '../SignupPage/SignupPage';
 //import utils
 import userService from '../../utils/userService';
 //import styling
 import './App.css';
+
+import { nullTrack } from '../../assets/js/null_track';
+import { drumTrack } from '../../assets/js/patterns'
 
 class App extends Component {
   constructor(props) {
@@ -110,13 +112,11 @@ class App extends Component {
             exact
             path='/'
             render={(props) => 
-            <Sequencer {...props}
-            sequencers={this.state.sequencers}
-            getSequencers={this.getSequencers}
-            onClockTick={this.handleOnClockTick}
-            onClockReset={this.handleOnClockReset}
-            user={this.state.user}
-            handleLogout={this.handleLogout}/>}/>
+            <div>
+              A Drum Machine Will Go Here:
+              </div>
+            }
+            />
           <Route
             exact
             path='/signup'

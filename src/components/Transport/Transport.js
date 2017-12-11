@@ -5,12 +5,6 @@ import WebAudioScheduler from 'web-audio-scheduler';
 import Led from '../Led/Led';
 import './Transport.css';
 
-const DEFAULT_BPM = 60;
-const SCHEDULER_INTERVAL = 0.025;
-const SCHEDULER_AHEAD = 0.01;
-
-var currentTick = 0;
-
 const Transport = (props) => {
     return (
       <div className="Transport">
@@ -37,7 +31,7 @@ const Transport = (props) => {
               type="range" 
               min="20" 
               max="300"  
-              value={}
+              value={props.bpm}
               onChange={}
             />
             </Col>
