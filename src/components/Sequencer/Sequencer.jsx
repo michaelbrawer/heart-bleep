@@ -19,7 +19,7 @@ class Sequencer extends Component {
   constructor(props) {
     super(props);
 
-    this.abswitch = this.abswitch.bind(this);
+    // this.abswitch = this.abswitch.bind(this);
     this.updatePattern = this.updatePattern.bind(this);
     this.startStop = this.startStop.bind(this);
     this.changeTempo = this.changeTempo.bind(this);
@@ -86,7 +86,7 @@ class Sequencer extends Component {
     this.playSeq.start();
     this.playSeq.loop = true;
 
-    Tone.Transport.setLoopPoints(0, '2m');
+    Tone.Transport.setLoopPoints(0, '1m');
     Tone.Transport.loop = true;
     Tone.Transport.scheduleRepeat(this.positionMarker, '16n');
     Tone.Transport.bpm.value = this.state.bpm;
@@ -154,9 +154,9 @@ class Sequencer extends Component {
     this.setState({ currentPattern: cpattern });
   }
 
-  abswitch() {
-    this.setState({ bside: !this.state.bside });
-  }
+  // abswitch() {
+  //   this.setState({ bside: !this.state.bside });
+  // }
 
   changeVolume(e, value) {
     this.setState({ volume: value });
