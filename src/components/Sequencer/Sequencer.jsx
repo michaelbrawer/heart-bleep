@@ -1,20 +1,24 @@
 
 import React, { Component } from 'react';
+//adds Tone audio Framework
 import Tone from 'tone';
 import PositionTransform from '../assets/js/position';
 import { demoTrack } from '../assets/js/patterns';
 import { nullTrack } from '../assets/js/null_track';
+
+//custom React Components
 import SequenceRow from '../SequenceRow/SequenceRow';
-// import ProgressBar from './progress_bar';
-// import ScrewPlate from './screws';
-// import PlayBar from './playbar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import Transport from '../Transport/Transport'
+
+//Styling:
+import {Col, Row} from 'react-materialize'
 import './Sequencer.css'
 
 class Sequencer extends Component {
   constructor(props) {
     super(props);
-    
+
     this.abswitch = this.abswitch.bind(this);
     this.updatePattern = this.updatePattern.bind(this);
     this.startStop = this.startStop.bind(this);
@@ -24,28 +28,42 @@ class Sequencer extends Component {
     this.positionMarker = this.positionMarker.bind(this);
 
     this.state = {
-      bpm: 94,
+      bpm: 100,
       position: 0,
       volume: -6,
       playing: false,
       bside: false,
-      currentPattern: demoTrack
+      currentPattern: nullTrack
     };
 
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
 
+    // const multSampler = new Tone.MultiPlayer({
+    //   urls: {
+    //     BD: 'https://dl.dropboxusercontent.com/s/v1agv03lkjqj9cu/70sHi2.mp3?dl=1',
+    //     SD: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+    //     CL: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+    //     CA: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+    //     LT: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+    //     CH: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+    //     OH: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
+    //     HT: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1'
+    //   }
+    // }).toMaster();
+
     const multSampler = new Tone.MultiPlayer({
       urls: {
-        BD: 'https://dl.dropboxusercontent.com/s/v1agv03lkjqj9cu/70sHi2.mp3?dl=1',
-        SD: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-        CL: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-        CA: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-        LT: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-        CH: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-        OH: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-        HT: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1'
+        BD: "https://dl.dropboxusercontent.com/s/91nfm9xg7p16isy/Kick.wav?dl=1",
+        SD: "https://dl.dropboxusercontent.com/s/5eqwywqcfu6s1c5/Snare.wav?dl=1",
+        CL: "https://dl.dropboxusercontent.com/s/wkonst7oiepsimu/Clap.wav?dl=1",
+        CA: "https://dl.dropboxusercontent.com/s/e4k3dqqo7xaqfim/Tamb.wav?dl=1",
+        LT: "https://dl.dropboxusercontent.com/s/t191837d7unfh31/LowTom.wav?dl=1",
+        CH: "https://dl.dropboxusercontent.com/s/jypkqgpkcve863z/ClosedHat.wav?dl=1",
+        OH: "https://dl.dropboxusercontent.com/s/ykqfdn3q8ridglg/OpenHat.wav?dl=1",
+        HT: "https://dl.dropboxusercontent.com/s/hx3l8shrbm47bsh/HighTom.wav?dl=1"
       }
     }).toMaster();
+
 
     const steps = Array(32).fill(1).map((v, i) => {
       return i;
@@ -174,13 +192,14 @@ class Sequencer extends Component {
           <div className="drumrack">
             {/* <ScrewPlate /> */}
 
-            {/* <ProgressBar prog={this.state.position} /> */}
+            <ProgressBar prog={this.state.position} />
 
             {this.state.currentPattern.map(makeSeqRow, this)}
 
             <Transport
+              playing={this.state.playing}
               bpm_num={this.state.bpm}
-              toggle_f={this.abswitch}
+              // toggle_f={this.abswitch}
               tempo_f={this.changeTempo}
               playbutton_f={this.startStop}
             />

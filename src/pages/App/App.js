@@ -2,10 +2,6 @@
 import React, {Component} from 'react';
 // import logo from '../../logo.svg';
 import {BrowswerRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
-import {Col, Row} from 'react-materialize'
-//adds tone & WebMidi frameworks
-import WebMidi from 'webmidi'
-import Tone from 'tone';
 //import App Components
 import NavBar from '../../components/NavBar/NavBar';
 import Sequencer from '../../components/Sequencer/Sequencer';
@@ -15,11 +11,9 @@ import SignupPage from '../SignupPage/SignupPage';
 //import utils
 import userService from '../../utils/userService';
 //import styling
+import {Col, Row} from 'react-materialize'
 import './App.css';
 //pattern assets
-import { nullTrack } from '../../components/assets/js/null_track';
-import { demoTrack } from '../../components/assets/js/patterns';
-import PositionTransform from '../../components/assets/js/position';
 
 class App extends Component {
   constructor(props) {
