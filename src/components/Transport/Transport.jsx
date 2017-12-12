@@ -25,7 +25,6 @@ const Transport = (props) => {
       <Button onClick={props.handleSaveClick} waves='light' className="red TransportButton">
         SAVE
       </Button>
-      
         <Button onClick={props.playbutton_f} waves='light'>
           <Icon className="material-icons md-dark">cancel</Icon>
           <Icon className="material-icons md-dark">play_arrow</Icon>

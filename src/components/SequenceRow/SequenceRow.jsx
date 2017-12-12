@@ -26,7 +26,7 @@ const SequenceRow = (props) => {
   }
 
   return (
-    <div className="SequenceRow">
+    <div className="sequencerrow">
       {props.channel.map(makeRow, this)}
     </div>
     

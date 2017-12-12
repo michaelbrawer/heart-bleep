@@ -198,10 +198,8 @@ class Sequencer extends Component {
         <div className="rack">
           <div className="drumrack">
             
-            <Row>
             <ProgressBar prog={this.state.position} />
-            </Row>  
-            
+           
             {this.state.currentPattern.map(makeSeqRow, this)}
             
             <Transport

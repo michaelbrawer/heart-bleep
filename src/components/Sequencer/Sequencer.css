@@ -7,13 +7,13 @@ body, #root {
 }
 
 .rackcabinet {
-  width: 75%;
+  width: 90%;
   background-color: grey;
   margin-top:8px;
   padding:0 2px 0 2px;
   display:flex;
   justify-content:center;
-  flex-wrap:wrap;
+  /* flex-wrap:wrap; */
   border-radius:10px;
 }
 
@@ -34,7 +34,7 @@ body, #root {
   display: flex;
   position:relative;
   justify-content: center;
-  flex-direction:row;
+  /* flex-direction:row; */
   flex-wrap:wrap;
   background-color: white;
 }
@@ -65,20 +65,20 @@ body, #root {
 .sequencerrow {
   width:90%;
   display:flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content:center;
 }
 
 .stepbutton {
   cursor: pointer;
   width: 40px;
-  height: 55px;
+  height: 40px;
   background-color: grey;
   margin: 5px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.9), inset 0 20px 0 rgba(255, 255, 255, 0.2), inset 0 24px 0 rgba(255, 255, 255, 0.3);
+  /* box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.9), inset 0 20px 0 rgba(255, 255, 255, 0.2), inset 0 24px 0 rgba(255, 255, 255, 0.3); */
 }
 
 .lightoff {
@@ -106,11 +106,11 @@ body, #root {
 }
 
 .stepbutton:nth-of-type(n):nth-of-type(-n+4) {
-  background-color: purple;
+  background-color: red;
 }
 
 .stepbutton:nth-of-type(n+5):nth-of-type(-n+8) {
-  background-color: red;
+  background-color: gold;
 }
 
 .stepbutton:nth-of-type(n+9):nth-of-type(-n+12) {
@@ -135,7 +135,7 @@ body, #root {
   margin:5px;
   border-radius: 2px;
   background-color: #1c3030;
-  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.9), inset 0 28px 0 rgba(255, 255, 255, 0.2), inset 0 28px 0 rgba(255, 255, 255, 0.3);
+  /* box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.9), inset 0 28px 0 rgba(255, 255, 255, 0.2), inset 0 28px 0 rgba(255, 255, 255, 0.3); */
 }
 
 .progresslighton {
@@ -145,7 +145,7 @@ body, #root {
   position:relative;
   border-radius: 2px;
   background-color: red;
-  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.9), inset 0 28px 0 rgba(221, 29, 0, 0.2), inset 0 28px 0 rgba(255, 255, 255, 0.3);
+  /* box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.9), inset 0 28px 0 rgba(221, 29, 0, 0.2), inset 0 28px 0 rgba(255, 255, 255, 0.3); */
 }
 
 .drumrackbar {
