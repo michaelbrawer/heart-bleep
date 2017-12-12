@@ -12,7 +12,7 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 import Transport from '../Transport/Transport'
 
 //Styling:
-import {Col, Row} from 'react-materialize'
+import {Col, Row, Container} from 'react-materialize'
 import './Sequencer.css'
 
 class Sequencer extends Component {
@@ -190,13 +190,15 @@ class Sequencer extends Component {
     }
 
     return (
+      <Container>
       <div className="rackcabinet">
         <div className="rack">
           <div className="drumrack">
             {/* <ScrewPlate /> */}
-
+            <Row>
             <ProgressBar prog={this.state.position} />
-
+            </Row>  
+            
             {this.state.currentPattern.map(makeSeqRow, this)}
             
             <Transport
@@ -212,6 +214,7 @@ class Sequencer extends Component {
           </div>
         </div>
       </div>
+      </Container>
     );
   }
 }

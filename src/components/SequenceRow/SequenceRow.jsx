@@ -26,9 +26,11 @@ const SequenceRow = (props) => {
   }
 
   return (
+    <Row>
     <div className="SequenceRow">
       {props.channel.map(makeRow, this)}
     </div>
+    </Row>
   );
 };
 

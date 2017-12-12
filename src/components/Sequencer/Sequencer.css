@@ -1,15 +1,14 @@
 html, 
 body, #root {
   width:100%;
-  background-color:black;
-  display:flex;
-  justify-content:center;
+  background-color:white;
+  /* display:flex;
+  justify-content:center; */
 }
 
 .rackcabinet {
   width: 75%;
   background-color: grey;
-  /* background-image: url('../images/dark-wood.png'); */
   margin-top:8px;
   padding:0 2px 0 2px;
   display:flex;
@@ -66,7 +65,7 @@ body, #root {
 .sequencerrow {
   width:90%;
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content:center;
 }
 
