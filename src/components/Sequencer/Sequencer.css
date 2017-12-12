@@ -2,8 +2,8 @@ html,
 body, #root {
   width:100%;
   background-color:white;
-  /* display:flex;
-  justify-content:center; */
+  display:flex;
+  justify-content:center;
 }
 
 .rackcabinet {
@@ -286,7 +286,7 @@ input::-webkit-inner-spin-button {
   margin: 0; /**<-- Apparently some margin are still there even though it's hidden **/
 }
 
-/* @media only screen and (min-width: 1550px) {
+@media only screen and (min-width: 1550px) {
   .drumrackbar{
     margin-left:19em;
     margin-right:19em;
@@ -353,4 +353,4 @@ input::-webkit-inner-spin-button {
   .lighton {
     left: 2px;
   }
-} */
+}

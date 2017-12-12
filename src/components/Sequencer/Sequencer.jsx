@@ -38,19 +38,6 @@ class Sequencer extends Component {
 
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
 
-    // const multSampler = new Tone.MultiPlayer({
-    //   urls: {
-    //     BD: 'https://dl.dropboxusercontent.com/s/v1agv03lkjqj9cu/70sHi2.mp3?dl=1',
-    //     SD: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-    //     CL: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-    //     CA: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-    //     LT: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-    //     CH: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-    //     OH: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1',
-    //     HT: 'https://dl.dropboxusercontent.com/s/hw7rlg8fiwmwkvx/wipe.mp3?dl=1'
-    //   }
-    // }).toMaster();
-
     const multSampler = new Tone.MultiPlayer({
       urls: {
         BD: "https://dl.dropboxusercontent.com/s/91nfm9xg7p16isy/Kick.wav?dl=1",
@@ -94,24 +81,26 @@ class Sequencer extends Component {
     Tone.Master.volume.value = this.state.volume;
   }
 
-  componentDidMount() {
-    document.addEventListener('keydown', (e) => {
-      const pressed = e.key;
-      if (pressed === ' ') {
-        this.startStop();
-      }
-    });
-  }
+  // componentDidMount() {
+  //   document.addEventListener('keydown', (e) => {
+  //     const pressed = e.key;
+  //     if (pressed === ' ') {
+  //       this.startStop();
+  //     }
+  //   });
+  // }
 
-  clearPattern () {
-    this.setState({ currentPattern: nullTrack });
+  clearPattern (){
+    this.setState({currentPattern: nullTrack})
+    console.log(this.state.currentPattern)
+    this.playSeq.dispose();
   }
 
   positionMarker () {
     this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
   }
 
-  startStop(){
+  startStop () {
     if (this.state.playing) {
       Tone.Transport.stop();
       this.setState({ playing: false });
