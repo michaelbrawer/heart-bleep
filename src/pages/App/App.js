@@ -67,12 +67,12 @@ class App extends Component {
             exact
             path='/'
             render={(props) => 
-              <div>
+              <Col s={12}>
             <Sequencer {...props}
             user={this.state.user}
             handleSaveClick={this.handleSaveClick}
             />
-            </div>
+            </Col>
             }
             />
           <Route
