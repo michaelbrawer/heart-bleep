@@ -29,7 +29,8 @@ const Transport = (props) => {
           <Icon className="material-icons md-dark">cancel</Icon>
           <Icon className="material-icons md-dark">play_arrow</Icon>
         </Button>
-        <span className="tempolabel">{props.bpm_num}</span>
+        <Button className="disabled">BPM:{props.bpm_num}</Button>
+        {/* <span className="tempolabel">{props.bpm_num}</span> */}
         <input
           type="range"
           onChange={props.tempo_f}
