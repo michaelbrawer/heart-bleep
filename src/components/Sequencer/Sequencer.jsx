@@ -33,7 +33,7 @@ class Sequencer extends Component {
       volume: -6,
       playing: false,
       bside: false,
-      currentPattern: nullTrack
+      currentPattern: demoTrack
     };
 
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
@@ -86,6 +86,7 @@ class Sequencer extends Component {
     this.playSeq.start();
     this.playSeq.loop = true;
 
+    // Tone.Transport.setLoopPoints(0, '2m');
     Tone.Transport.setLoopPoints(0, '1m');
     Tone.Transport.loop = true;
     Tone.Transport.scheduleRepeat(this.positionMarker, '16n');
@@ -102,15 +103,15 @@ class Sequencer extends Component {
     });
   }
 
-  clearPattern() {
+  clearPattern () {
     this.setState({ currentPattern: nullTrack });
   }
 
-  positionMarker() {
+  positionMarker () {
     this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
   }
 
-  startStop() {
+  startStop(){
     if (this.state.playing) {
       Tone.Transport.stop();
       this.setState({ playing: false });
@@ -121,7 +122,7 @@ class Sequencer extends Component {
     }
   }
 
-  changeTempo(e) {
+  changeTempo (e) {
     let newTempo = parseInt(e.currentTarget.value, 10);
     if (isNaN(newTempo)) {
       newTempo = 10;
@@ -133,7 +134,7 @@ class Sequencer extends Component {
     this.setState({ bpm: newTempo });
   }
 
-  updatePattern(event) {
+  updatePattern (event) {
     const channelNum = parseInt(event.currentTarget.dataset.channel, 10);
     const stepNum = parseInt(event.currentTarget.dataset.stepindx, 10);
     const cpattern = this.state.currentPattern;
@@ -206,7 +207,7 @@ class Sequencer extends Component {
               tempo_f={this.changeTempo}
               playbutton_f={this.startStop}
             />
-
+            <button onClick={this.clearPattern}>Clear Pattern</button>
             {/* <ScrewPlate /> */}
           </div>
         </div>

@@ -26,7 +26,7 @@ class App extends Component {
 
  /*---------- Pattern Save Methods ----------*/
  handleSaveClick = () => {
-   alert('save click');
+   console.log('save click');
  }
 
 
