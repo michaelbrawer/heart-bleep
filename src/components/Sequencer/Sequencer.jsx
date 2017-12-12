@@ -34,8 +34,9 @@ class Sequencer extends Component {
       playing: false,
       bside: false,
       currentPattern: demoTrack
-    };
+    }
 
+    
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
 
     const multSampler = new Tone.MultiPlayer({
@@ -81,6 +82,8 @@ class Sequencer extends Component {
     Tone.Master.volume.value = this.state.volume;
   }
 
+//constructor ends here
+
   // componentDidMount() {
   //   document.addEventListener('keydown', (e) => {
   //     const pressed = e.key;
@@ -90,10 +93,20 @@ class Sequencer extends Component {
   //   });
   // }
 
-  clearPattern (){
+  clearPattern () {
+    // this.playSeq.remove();
     this.setState({currentPattern: nullTrack})
+    // this.playSeq.dispose();
+    // this.getInitialState();
     console.log(this.state.currentPattern)
-    this.playSeq.dispose();
+    // this.playSeq.dispose();
+    // this.playSeq.startLoop(); 
+    // this.playSeq.start();
+    
+  }
+
+  loadPattern = () =>{
+    this.setState({currentPattern: demoTrack});
   }
 
   positionMarker () {
@@ -199,6 +212,7 @@ class Sequencer extends Component {
               playbutton_f={this.startStop}
             />
             <button onClick={this.clearPattern}>Clear Pattern</button>
+            <button onClick={this.loadPattern}>Load Pattern</button>
             {/* <ScrewPlate /> */}
           </div>
         </div>
