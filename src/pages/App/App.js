@@ -20,7 +20,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      foo: 'bar'
+      foo: 'bar',
     }
   }
 
@@ -54,6 +54,7 @@ class App extends Component {
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
+    
   }
 
   /*---------- Render ----------*/
@@ -61,15 +62,17 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
-
         <Switch>
           <Route
             exact
             path='/'
             render={(props) => 
+              <div>
             <Sequencer {...props}
+            user={this.state.user}
             handleSaveClick={this.handleSaveClick}
             />
+            </div>
             }
             />
           <Route

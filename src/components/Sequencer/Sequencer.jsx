@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //adds Tone audio Framework
 import Tone from 'tone';
 import PositionTransform from '../assets/js/position';
+import userService from '../../utils/userService';
 import { demoTrack } from '../assets/js/patterns';
 import { nullTrack } from '../assets/js/null_track';
 
@@ -19,7 +20,6 @@ class Sequencer extends Component {
   constructor(props) {
     super(props);
 
-    // this.abswitch = this.abswitch.bind(this);
     this.updatePattern = this.updatePattern.bind(this);
     this.startStop = this.startStop.bind(this);
     this.changeTempo = this.changeTempo.bind(this);
@@ -33,10 +33,11 @@ class Sequencer extends Component {
       volume: -6,
       playing: false,
       bside: false,
-      currentPattern: demoTrack
+      currentPattern: nullTrack
     }
+  }
 
-    
+    getInitialState(){
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
 
     const multSampler = new Tone.MultiPlayer({
@@ -81,6 +82,12 @@ class Sequencer extends Component {
     Tone.Transport.bpm.value = this.state.bpm;
     Tone.Master.volume.value = this.state.volume;
   }
+  
+
+  componentWillMount(){
+    this.setState({currentPattern: nullTrack})
+    this.getInitialState();
+  }
 
 //constructor ends here
 
@@ -96,13 +103,7 @@ class Sequencer extends Component {
   clearPattern () {
     // this.playSeq.remove();
     this.setState({currentPattern: nullTrack})
-    // this.playSeq.dispose();
-    // this.getInitialState();
     console.log(this.state.currentPattern)
-    // this.playSeq.dispose();
-    // this.playSeq.startLoop(); 
-    // this.playSeq.start();
-    
   }
 
   loadPattern = () =>{
@@ -196,7 +197,7 @@ class Sequencer extends Component {
       <div className="rackcabinet">
         <div className="rack">
           <div className="drumrack">
-            {/* <ScrewPlate /> */}
+            
             <Row>
             <ProgressBar prog={this.state.position} />
             </Row>  

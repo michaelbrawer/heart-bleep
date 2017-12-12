@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 class Toggle extends Component {
   constructor(props) {
@@ -35,9 +35,5 @@ class Toggle extends Component {
     );
   }
 }
-
-// Toggle.propTypes = {
-//   abfunc: PropTypes.func.isRequired
-// };
 
 export default Toggle;

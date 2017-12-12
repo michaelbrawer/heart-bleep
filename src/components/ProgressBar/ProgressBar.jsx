@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {Col, Row, Container} from 'react-materialize'
 
 const progressBar = (props) => {
@@ -15,7 +15,5 @@ const progressBar = (props) => {
 
   );
 };
-
-// progressBar.propTypes = {   prog: PropTypes.number.isRequired };
 
 export default progressBar;

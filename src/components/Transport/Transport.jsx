@@ -1,9 +1,8 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import Toggle from '../Toggle/Toggle';
 import {
   Button,
   Icon,
-  CardPanel,
   Col,
   Row,
   Input
@@ -43,9 +42,5 @@ const Transport = (props) => {
     </div>
   );
 };
-
-// playBar.propTypes = {   bpm_num: PropTypes.number.isRequired,   toggle_f:
-// PropTypes.func.isRequired,   tempo_f: PropTypes.func.isRequired,
-// playbutton_f: PropTypes.func.isRequired };
 
 export default Transport;
