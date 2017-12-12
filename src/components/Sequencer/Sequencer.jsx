@@ -16,6 +16,7 @@ import Transport from '../Transport/Transport'
 //Styling:
 import {Col, Row, Container} from 'react-materialize'
 import './Sequencer.css'
+import { get } from 'https';
 
 //8-bit drum kit
 const bitKit = {
@@ -53,15 +54,15 @@ class Sequencer extends Component {
 
     getInitialState(){
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
-    const multSampler = new Tone.MultiPlayer({
+    let multSampler = new Tone.MultiPlayer({
       urls: this.state.currentKit
     }).toMaster();
 
-    const steps = Array(32).fill(1).map((v, i) => {
+    let steps = Array(32).fill(1).map((v, i) => {
       return i;
     });
 
-    const getColumns = (track) => {
+    let getColumns = (track) => {
       const result = [];
       for (let i = 0; i < 32; i += 1) {
         result.push(track.map((v, idx) => { return v[i] ? this.sampleOrder[idx] : null }).filter(v => v));
@@ -85,11 +86,15 @@ class Sequencer extends Component {
     Tone.Transport.bpm.value = this.state.bpm;
     Tone.Master.volume.value = this.state.volume;
   }
-  
+
 
   componentWillMount(){
     this.setState({currentPattern: nullTrack})
     this.getInitialState();
+  }
+
+  componentDidMount(){
+    this.startStop();
   }
 
 //constructor ends here
@@ -104,9 +109,10 @@ class Sequencer extends Component {
   // }
 
   clearPattern () {
-    // this.playSeq.remove();
-    this.setState({currentPattern: nullTrack})
-    console.log(this.state.currentPattern)
+    this.playSeq.dispose();
+    this.setState({currentPattern: nullTrack});
+    window.location.reload();
+
   }
 
   loadPattern = () =>{
@@ -183,7 +189,7 @@ class Sequencer extends Component {
         pattern = v.slice(0, 16);
       }
       return (
-        
+
         <SequenceRow
           bside={this.state.bside}
           key={`${i}row`}
@@ -191,7 +197,7 @@ class Sequencer extends Component {
           updateSeq={this.updatePattern}
           channel={pattern}
         />
-        
+
       );
     }
 
@@ -200,12 +206,12 @@ class Sequencer extends Component {
       <div className="rackcabinet">
         <div className="rack">
           <div className="drumrack">
-            
+
             <ProgressBar prog={this.state.position} />
-           
+
             {this.state.currentPattern.map(makeSeqRow, this)}
-            
-            
+
+
             {/* <ScrewPlate /> */}
           </div>
         </div>
