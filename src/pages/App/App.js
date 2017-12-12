@@ -22,8 +22,13 @@ class App extends Component {
     this.state = {
       foo: 'bar'
     }
-
   }
+
+ /*---------- Pattern Save Methods ----------*/
+ handleSaveClick = () => {
+   alert('save click');
+ }
+
 
   /*---------- Login Callback Methods ----------*/
 
@@ -62,7 +67,9 @@ class App extends Component {
             exact
             path='/'
             render={(props) => 
-            <Sequencer />
+            <Sequencer {...props}
+            handleSaveClick={this.handleSaveClick}
+            />
             }
             />
           <Route

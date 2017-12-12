@@ -1,9 +1,18 @@
 import React, { PropTypes } from 'react';
+import {
+  Button,
+  Icon,
+  CardPanel,
+  Col,
+  Row,
+  Input
+} from 'react-materialize'
 
 const SequenceRow = (props) => {
   function makeRow(v, i) {
     const channelClasses = v ? 'lighton' : 'lightoff';
     return (
+      
       <div
         className="stepbutton"
         data-channel={props.channelNum}
@@ -12,6 +21,7 @@ const SequenceRow = (props) => {
         key={`c${v}s${i}`}
       >
       <div className={channelClasses} /></div>
+      
     );
   }
 

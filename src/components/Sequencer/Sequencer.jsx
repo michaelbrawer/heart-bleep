@@ -176,6 +176,7 @@ class Sequencer extends Component {
         pattern = v.slice(0, 16);
       }
       return (
+        
         <SequenceRow
           bside={this.state.bside}
           key={`${i}row`}
@@ -183,6 +184,7 @@ class Sequencer extends Component {
           updateSeq={this.updatePattern}
           channel={pattern}
         />
+        
       );
     }
 
@@ -195,8 +197,9 @@ class Sequencer extends Component {
             <ProgressBar prog={this.state.position} />
 
             {this.state.currentPattern.map(makeSeqRow, this)}
-
+            
             <Transport
+              handleSaveClick={this.props.handleSaveClick}
               playing={this.state.playing}
               bpm_num={this.state.bpm}
               // toggle_f={this.abswitch}

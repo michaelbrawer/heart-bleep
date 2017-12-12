@@ -1,3 +1,11 @@
+html, 
+body, #root {
+  width:100%;
+  background-color:black;
+  display:flex;
+  justify-content:center;
+}
+
 .rackcabinet {
   width: 75%;
   background-color: grey;
@@ -99,19 +107,19 @@
 }
 
 .stepbutton:nth-of-type(n):nth-of-type(-n+4) {
-  background-color: #DD1D00;
+  background-color: purple;
 }
 
 .stepbutton:nth-of-type(n+5):nth-of-type(-n+8) {
-  background-color: #F27900;
+  background-color: red;
 }
 
 .stepbutton:nth-of-type(n+9):nth-of-type(-n+12) {
-  background-color: #DDDA00;
+  background-color: blue;
 }
 
 .stepbutton:nth-of-type(n+13):nth-of-type(-n+16) {
-  background-color: #E6E8BF;
+  background-color: grey;
 }
 
 .progressbar {
@@ -279,7 +287,7 @@ input::-webkit-inner-spin-button {
   margin: 0; /**<-- Apparently some margin are still there even though it's hidden **/
 }
 
-@media only screen and (min-width: 1550px) {
+/* @media only screen and (min-width: 1550px) {
   .drumrackbar{
     margin-left:19em;
     margin-right:19em;
@@ -346,4 +354,4 @@ input::-webkit-inner-spin-button {
   .lighton {
     left: 2px;
   }
-}
+} */

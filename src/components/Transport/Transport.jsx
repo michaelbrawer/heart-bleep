@@ -22,7 +22,8 @@ const Transport = (props) => {
           onChange={props.tempo_f}
           value={props.bpm_num}/> */}
       </div>
-      <Button onClick={this.stop} waves='light' className="red TransportButton">
+      
+      <Button onClick={props.handleSaveClick} waves='light' className="red TransportButton">
         SAVE
       </Button>
       
