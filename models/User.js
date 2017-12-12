@@ -3,11 +3,14 @@ var bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
-const nulls = require('./nulls');
+const demoTrack = require('./demo');
+const nullTrack = require('./nulls');
+
+// import {nullTrack, demoTrack} from '../src/components/assets/js/patterns'
 
 var userSchema = new mongoose.Schema({
   name: String,
-  pattern: {type: Array, default: nulls},
+  pattern: {type: Array, default: nullTrack},
   email: {type: String, required: true, lowercase: true, unique: true},
   password: String
 }, {

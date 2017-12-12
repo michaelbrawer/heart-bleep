@@ -48,3 +48,55 @@ export const demoTrack = [
     null, null, null, null, null, null, null, null
   ]
 ];
+
+
+export const nullTrack = [
+  [
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null
+  ],
+  [
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null
+  ],
+  [
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null
+  ],
+  [
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null
+  ],
+  [
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null
+  ],
+  [
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null
+  ],
+  [
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null
+  ],
+  [
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null
+  ]
+];

@@ -49,4 +49,4 @@ const nulls = [
   ]
 ];
 
-module.exports={nulls};
+module.exports = nulls;

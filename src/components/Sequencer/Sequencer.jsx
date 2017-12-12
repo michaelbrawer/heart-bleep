@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import Tone from 'tone';
 import PositionTransform from '../assets/js/position';
 import userService from '../../utils/userService';
-import { demoTrack } from '../assets/js/patterns';
-import { nullTrack } from '../assets/js/null_track';
+import { demoTrack, nullTrack } from '../assets/js/patterns';
+// import { nullTrack } from '../assets/js/null_track';
 
 //custom React Components
 import SequenceRow from '../SequenceRow/SequenceRow';
@@ -47,10 +47,13 @@ class Sequencer extends Component {
       volume: -6,
       playing: false,
       bside: false,
-      currentPattern: nullTrack,
+      currentPattern: (this.props.user ? this.props.user.pattern: nullTrack),
+      // (this.props.user ? this.props.user.pattern: nullTrack),
       currentKit: bitKit
     }
   }
+
+  //setState({ currentPattern: this.props.user.pattern})
 
     getInitialState(){
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
@@ -89,7 +92,7 @@ class Sequencer extends Component {
 
 
   componentWillMount(){
-    this.setState({currentPattern: nullTrack})
+    // this.setState({currentPattern: nullTrack})
     this.getInitialState();
   }
 
@@ -112,11 +115,10 @@ class Sequencer extends Component {
     this.playSeq.dispose();
     this.setState({currentPattern: nullTrack});
     window.location.reload();
-
   }
 
-  loadPattern = () =>{
-    this.setState({currentPattern: demoTrack});
+  loadPattern = () => {
+    console.log(this.state.currentPattern);
   }
 
   positionMarker () {

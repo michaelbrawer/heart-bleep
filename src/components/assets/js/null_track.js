@@ -1,4 +1,4 @@
-export const nullTrack = [
+const nulls = [
   [
     null, null, null, null, null, null, null, null,
     null, null, null, null, null, null, null, null,
@@ -48,3 +48,5 @@ export const nullTrack = [
     null, null, null, null, null, null, null, null
   ]
 ];
+
+module.exports = nulls;

@@ -14,13 +14,15 @@ import userService from '../../utils/userService';
 import {Col, Row} from 'react-materialize'
 import './App.css';
 //pattern assets
+// TODO: Import nullTrack
+import {nullTrack, demoTrack} from '../../components/assets/js/patterns'
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      foo: 'bar',
+      currentPattern: nullTrack
     }
   }
 
@@ -70,6 +72,7 @@ class App extends Component {
               <Col s={12}>
             <Sequencer {...props}
             user={this.state.user}
+            currentPatter={this.state.currentPattern}
             handleSaveClick={this.handleSaveClick}
             />
             </Col>
