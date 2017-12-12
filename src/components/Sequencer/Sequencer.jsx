@@ -205,7 +205,12 @@ class Sequencer extends Component {
            
             {this.state.currentPattern.map(makeSeqRow, this)}
             
-            <Transport
+            
+            {/* <ScrewPlate /> */}
+          </div>
+        </div>
+      </div>
+      <Transport
               handleSaveClick={this.props.handleSaveClick}
               playing={this.state.playing}
               bpm_num={this.state.bpm}
@@ -215,10 +220,6 @@ class Sequencer extends Component {
             />
             <button onClick={this.clearPattern}>Clear Pattern</button>
             <button onClick={this.loadPattern}>Load Pattern</button>
-            {/* <ScrewPlate /> */}
-          </div>
-        </div>
-      </div>
       </Container>
     );
   }

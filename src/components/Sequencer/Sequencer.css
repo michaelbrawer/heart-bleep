@@ -29,6 +29,8 @@ body, #root {
   width: 100%;
   margin-right:6px;
   margin-left:6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding:4px 2px 4px 2px;
   border-radius: 9px;
   display: flex;
