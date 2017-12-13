@@ -115,6 +115,12 @@ class Sequencer extends Component {
     // setTimeout(this.startStop, 100)
     // this.startStop();
     this.getInitialState();
+    document.addEventListener('keydown', (e) => {
+      const pressed = e.key;
+      if (pressed === ' ') {
+        this.startStop();
+      }
+    });
   }
 
 //constructor ends here
