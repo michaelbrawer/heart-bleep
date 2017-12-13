@@ -56,6 +56,17 @@ class Sequencer extends Component {
 
   //setState({ currentPattern: this.props.user.pattern})
 
+    handleSaveClick = () => {
+      let pattern = this.state.currentPattern;
+      let email = this.props.user.email
+      let id = this.props.user._id
+      return fetch(`/api/users/${id}`,{
+        method: 'Put',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({id: id, pattern: pattern, email: email})
+      }).then(console.log(pattern))
+    }
+
     getInitialState(){
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
     let multSampler = new Tone.MultiPlayer({
@@ -226,10 +237,11 @@ class Sequencer extends Component {
       </div>
      
       <Transport
-              handleSaveClick={this.props.handleSaveClick}
+              handleSaveClick={this.handleSaveClick}
               playing={this.state.playing}
               bpm_num={this.state.bpm}
               swing_num={this.state.swing}
+              pattern={this.state.currentPattern}
               // toggle_f={this.abswitch}
               tempo_f={this.changeTempo}
               swing_f={this.changeSwing}

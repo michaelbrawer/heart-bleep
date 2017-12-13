@@ -69,7 +69,7 @@ class App extends Component {
             <Sequencer
               {...props}
               user={this.state.user}
-              currentPatter={this.state.currentPattern}
+              // currentPattern={this.state.currentPattern}
               handleSaveClick={this.handleSaveClick}/>
           </Row>}/>
           <Route

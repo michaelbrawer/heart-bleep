@@ -3,7 +3,7 @@ var jwt = require('jsonwebtoken');
 var SECRET = process.env.SECRET;
 
 function updateUser(req, res) {
-  Puppy.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, pat){
+  User.findByIdAndUpdate({_id: req.params.id}, {pattern: req.body.pattern}, function(err, pat){
     res.status(200).json(pat);
   });
 }
