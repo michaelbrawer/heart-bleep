@@ -67,10 +67,10 @@ class Sequencer extends Component {
       }).then(console.log(pattern))
     }
 
-    getInitialState(){
+    getInitialState =() =>{
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
     let multSampler = new Tone.MultiPlayer({
-      urls: this.state.currentKit
+      urls: (undefined? bitKit : this.state.currentKit)
     }).toMaster();
 
     let steps = Array(32).fill(1).map((v, i) => {
@@ -105,12 +105,16 @@ class Sequencer extends Component {
 
   componentWillMount(){
     // this.setState({currentPattern: nullTrack})
-    this.getInitialState();
+    // this.getInitialState();
+    // this.setState({
+    //   user: userService.getUser()
+    // });
   }
 
   componentDidMount(){
     // setTimeout(this.startStop, 100)
     // this.startStop();
+    this.getInitialState();
   }
 
 //constructor ends here
@@ -124,14 +128,35 @@ class Sequencer extends Component {
   //   });
   // }
 
-  clearPattern () {
+  //old Clear Pattern
+  clearZZZPattern () {
     this.playSeq.dispose();
     this.setState({currentPattern: nullTrack});
-    window.location.reload();
+    setTimeout(this.getInitialState, 200)
+    // window.location.reload();
+  }
+
+  clearPattern(){
+    if(this.state.playing){
+      Tone.Transport.stop()
+      this.setState({currentPattern: nullTrack});
+      setTimeout(this.getInitialState, 400);
+    } else {
+      this.setState({currentPattern: nullTrack});
+      setTimeout(this.getInitialState, 400);
+    }
   }
 
   loadPattern = () => {
-    console.log(this.state.currentPattern);
+  if (this.state.playing){
+  Tone.Transport.stop();
+  this.setState({currentPattern: this.props.user.pattern});
+  setTimeout(this.getInitialState, 200);
+  } else {
+    this.setState({currentPattern: this.props.user.pattern});
+    setTimeout(this.getInitialState, 200);
+  }
+  // window.location.reload();
   }
 
   positionMarker () {
@@ -249,7 +274,7 @@ class Sequencer extends Component {
             />
             <button onClick={this.clearPattern}>Clear Pattern</button>
             <button onClick={this.loadPattern}>Load Pattern</button>
-           
+            <button onClick={this.props.handleLogin}>LogLog</button>
       </Container>
     );
   }
