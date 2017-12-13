@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 // import logo from '../../logo.svg';
 import {BrowswerRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
@@ -26,11 +25,10 @@ class App extends Component {
     }
   }
 
- /*---------- Pattern Save Methods ----------*/
- handleSaveClick = () => {
-   console.log('save click');
- }
-
+  /*---------- Pattern Save Methods ----------*/
+  //  handleSaveClick = (pattern) => {   fetch('/api/users', {     method: 'POST',
+  //     headers: {'Content-Type': 'application/json'},     body:
+  // JSON.stringify({pattern: pattern})  }) }
 
   /*---------- Login Callback Methods ----------*/
 
@@ -54,8 +52,7 @@ class App extends Component {
   /*---------- Lifecycle Methods ----------*/
 
   componentDidMount() {
-    // let user = userService.getUser();
-    // this.setState({user});
+    // let user = userService.getUser(); this.setState({user});
     fetch(userService.getUser()).then((e) => this.setState({user: e}))
   }
 
@@ -68,16 +65,13 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={(props) => 
-              <Col s={12}>
-            <Sequencer {...props}
-            user={this.state.user}
-            currentPatter={this.state.currentPattern}
-            handleSaveClick={this.handleSaveClick}
-            />
-            </Col>
-            }
-            />
+            render={(props) => <Col s={12}>
+            <Sequencer
+              {...props}
+              user={this.state.user}
+              currentPatter={this.state.currentPattern}
+              handleSaveClick={this.handleSaveClick}/>
+          </Col>}/>
           <Route
             exact
             path='/signup'

@@ -6,7 +6,7 @@ var usersCtrl = require('../../controllers/users');
 /*---------- Public Routes ----------*/
 router.post('/signup', usersCtrl.signup);
 router.post('/login', usersCtrl.login);
-router.get('/update', usersCtrl.updateUser);
+router.put('/:id', usersCtrl.updateUser);
 
 
 /*---------- Protected Routes ----------*/
