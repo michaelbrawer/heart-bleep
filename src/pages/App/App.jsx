@@ -51,8 +51,12 @@ class App extends Component {
 
   /*---------- Lifecycle Methods ----------*/
 
+  componentWillMount(){
+  }
+  
   componentDidMount() {
     let user = userService.getUser(); this.setState({user});
+    // let user = userService.getUser(); this.setState({user});
     // fetch(userService.getUser()).then((e) => this.setState({user: e}))
   }
 

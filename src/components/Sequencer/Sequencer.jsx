@@ -38,7 +38,7 @@ class Sequencer extends Component {
     this.startStop = this.startStop.bind(this);
     this.changeTempo = this.changeTempo.bind(this);
     this.changeVolume = this.changeVolume.bind(this);
-    this.clearPattern = this.clearPattern.bind(this);
+    // this.clearPattern = this.clearPattern.bind(this);
     this.positionMarker = this.positionMarker.bind(this);
 
     this.state = {
@@ -54,7 +54,7 @@ class Sequencer extends Component {
     }
   }
 
-  //setState({ currentPattern: this.props.user.pattern})
+//Pattern Save Load Methods:
 
     handleSaveClick = () => {
       let pattern = this.state.currentPattern;
@@ -65,6 +65,31 @@ class Sequencer extends Component {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({id: id, pattern: pattern, email: email})
       }).then(console.log(pattern))
+    }
+
+    clearPattern = () => {
+      if(this.state.playing){
+        Tone.Transport.stop()
+        this.setState({currentPattern: nullTrack});
+        setTimeout(this.getInitialState, 400);
+      } else {
+        this.setState({currentPattern: nullTrack});
+        setTimeout(this.getInitialState, 400);
+      }
+    }
+  
+    loadPattern = () => {
+    // if (this.state.playing){
+    // Tone.Transport.stop();
+    // this.setState({currentPattern: this.props.user.pattern});
+    // setTimeout(this.getInitialState, 400);
+    // } else {
+    //   this.setState({currentPattern: this.props.user.pattern});
+    //   setTimeout(this.getInitialState, 400);
+    // }
+    this.setState({currentPattern: this.props.user.pattern})
+    setTimeout(this.getInitialState, 400);
+    // window.location.reload();
     }
 
     getInitialState =() =>{
@@ -138,32 +163,11 @@ class Sequencer extends Component {
   clearZZZPattern () {
     this.playSeq.dispose();
     this.setState({currentPattern: nullTrack});
-    setTimeout(this.getInitialState, 200)
+    setTimeout(this.getInitialState, 400)
     // window.location.reload();
   }
 
-  clearPattern(){
-    if(this.state.playing){
-      Tone.Transport.stop()
-      this.setState({currentPattern: nullTrack});
-      setTimeout(this.getInitialState, 400);
-    } else {
-      this.setState({currentPattern: nullTrack});
-      setTimeout(this.getInitialState, 400);
-    }
-  }
-
-  loadPattern = () => {
-  if (this.state.playing){
-  Tone.Transport.stop();
-  this.setState({currentPattern: this.props.user.pattern});
-  setTimeout(this.getInitialState, 200);
-  } else {
-    this.setState({currentPattern: this.props.user.pattern});
-    setTimeout(this.getInitialState, 200);
-  }
-  // window.location.reload();
-  }
+ 
 
   positionMarker () {
     this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
