@@ -10,6 +10,7 @@ body, #root {
 .rackcabinet {
   width: 90%;
   background-color: grey;
+  margin: 0 auto;
   margin-top:8px;
   padding:0 2px 0 2px;
   display:flex;
