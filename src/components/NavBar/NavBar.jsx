@@ -18,7 +18,7 @@ const NavBar = (props) => {
       
   return (
     <div className="navbar-fixed">
-    <Navbar className="HeaderFooter" brand='heart-bleep' right>
+    <Navbar className="HeaderFooter" brand='heart-bleep' left>
       {nav}
     </Navbar>
     </div>
