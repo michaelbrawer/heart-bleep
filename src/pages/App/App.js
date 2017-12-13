@@ -20,9 +20,9 @@ import {nullTrack, demoTrack} from '../../components/assets/js/patterns'
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      currentPattern: nullTrack
+      currentPattern: null
+      // currentPattern: nullTrack
     }
   }
 
@@ -54,9 +54,9 @@ class App extends Component {
   /*---------- Lifecycle Methods ----------*/
 
   componentDidMount() {
-    let user = userService.getUser();
-    this.setState({user});
-    
+    // let user = userService.getUser();
+    // this.setState({user});
+    fetch(userService.getUser()).then((e) => this.setState({user: e}))
   }
 
   /*---------- Render ----------*/

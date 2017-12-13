@@ -31,7 +31,6 @@ const Transport = (props) => {
           <Icon className="material-icons md-dark">play_arrow</Icon>
         </Button>
         <Button className="disabled">BPM:{props.bpm_num}</Button>
-       
           
         {/* <span className="tempolabel">{props.bpm_num}</span> */}
         <input s={3}
@@ -41,6 +40,7 @@ const Transport = (props) => {
           id="test5"
           min="0"
           max="200"/>
+    
           </Row>
       
     </div>

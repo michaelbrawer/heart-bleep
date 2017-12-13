@@ -14,7 +14,7 @@ import Transport from '../Transport/Transport'
 // import bitKit from '../assets/js/kits'
 
 //Styling:
-import {Col, Row, Container} from 'react-materialize'
+import {Col, Row, Container, CardPanel} from 'react-materialize'
 import './Sequencer.css'
 import { get } from 'https';
 
@@ -47,6 +47,7 @@ class Sequencer extends Component {
       volume: -6,
       playing: false,
       bside: false,
+      // swing: 0.2,
       currentPattern: (this.props.user ? this.props.user.pattern: nullTrack),
       // (this.props.user ? this.props.user.pattern: nullTrack),
       currentKit: bitKit
@@ -83,6 +84,7 @@ class Sequencer extends Component {
     this.playSeq.loop = true;
 
     // Tone.Transport.setLoopPoints(0, '2m');
+    // Tone.Transport.swing = this.state.swing;
     Tone.Transport.setLoopPoints(0, '1m');
     Tone.Transport.loop = true;
     Tone.Transport.scheduleRepeat(this.positionMarker, '16n');
@@ -97,7 +99,8 @@ class Sequencer extends Component {
   }
 
   componentDidMount(){
-    setTimeout(this.startStop, 100)
+    // setTimeout(this.startStop, 100)
+    // this.startStop();
   }
 
 //constructor ends here
@@ -135,6 +138,12 @@ class Sequencer extends Component {
       this.setState({ playing: true });
     }
   }
+
+  // changeSwing (s) {
+  //   var e = s / 100
+  //   Tone.Transport.swing = e;
+  //   this.setState({ swing: e });
+  // }
 
   changeTempo (e) {
     let newTempo = parseInt(e.currentTarget.value, 10);
@@ -218,16 +227,20 @@ class Sequencer extends Component {
           </div>
         </div>
       </div>
+     
       <Transport
               handleSaveClick={this.props.handleSaveClick}
               playing={this.state.playing}
               bpm_num={this.state.bpm}
+              swing_num={this.state.swing}
               // toggle_f={this.abswitch}
               tempo_f={this.changeTempo}
+              swing_f={this.changeSwing}
               playbutton_f={this.startStop}
             />
             <button onClick={this.clearPattern}>Clear Pattern</button>
             <button onClick={this.loadPattern}>Load Pattern</button>
+           
       </Container>
     );
   }

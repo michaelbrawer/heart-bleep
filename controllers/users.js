@@ -2,6 +2,10 @@ var User = require('../models/user');
 var jwt = require('jsonwebtoken');
 var SECRET = process.env.SECRET;
 
+function update(req, res){
+  console.log('LOGGED IN USER POST');
+}
+
 function signup(req, res) {
   var user = new User(req.body);
   user.save()
@@ -26,6 +30,10 @@ function login(req, res) {
   }).catch(err => res.status(401).json(err));
 }
 
+function update(req, res){
+  User.findOne({email: req.body.email})
+}
+
 /*----- Helper Functions -----*/
 
 function createJWT(user) {
@@ -38,5 +46,6 @@ function createJWT(user) {
 
 module.exports = {
   signup,
-  login
+  login,
+  update
 };
