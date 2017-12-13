@@ -65,13 +65,13 @@ class App extends Component {
           <Route
             exact
             path='/'
-            render={(props) => <Col s={12}>
+            render={(props) => <Row>
             <Sequencer
               {...props}
               user={this.state.user}
               currentPatter={this.state.currentPattern}
               handleSaveClick={this.handleSaveClick}/>
-          </Col>}/>
+          </Row>}/>
           <Route
             exact
             path='/signup'

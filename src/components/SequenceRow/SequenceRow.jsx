@@ -1,12 +1,4 @@
 import React from 'react';
-import {
-  Button,
-  Icon,
-  CardPanel,
-  Col,
-  Row,
-  Input
-} from 'react-materialize'
 
 const SequenceRow = (props) => {
   function makeRow(v, i) {

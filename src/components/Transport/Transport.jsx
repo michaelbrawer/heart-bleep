@@ -15,13 +15,6 @@ const Transport = (props) => {
       <Row>
       <div className="drumracklabel">HeartBleep</div>
       {/* <Toggle abfunc={props.toggle_f} /> */}
-      <div className="bpmplaybar">
-        {/* <input
-          type="number"
-          className="tempolabel"
-          onChange={props.tempo_f}
-          value={props.bpm_num}/> */}
-      </div>
       
       <Button onClick={props.handleSaveClick} waves='light' className="red TransportButton">
         SAVE

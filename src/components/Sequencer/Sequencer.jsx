@@ -34,7 +34,7 @@ class Sequencer extends Component {
   constructor(props) {
     super(props);
 
-    this.updatePattern = this.updatePattern.bind(this);
+    // this.updatePattern = this.updatePattern.bind(this);
     this.startStop = this.startStop.bind(this);
     this.changeTempo = this.changeTempo.bind(this);
     this.changeVolume = this.changeVolume.bind(this);
@@ -82,7 +82,6 @@ class Sequencer extends Component {
 
     this.playSeq.start();
     this.playSeq.loop = true;
-
     // Tone.Transport.setLoopPoints(0, '2m');
     // Tone.Transport.swing = this.state.swing;
     Tone.Transport.setLoopPoints(0, '1m');
@@ -157,7 +156,7 @@ class Sequencer extends Component {
     this.setState({ bpm: newTempo });
   }
 
-  updatePattern (event) {
+  updatePattern = (event) => {
     const channelNum = parseInt(event.currentTarget.dataset.channel, 10);
     const stepNum = parseInt(event.currentTarget.dataset.stepindx, 10);
     const cpattern = this.state.currentPattern;
@@ -222,8 +221,6 @@ class Sequencer extends Component {
 
             {this.state.currentPattern.map(makeSeqRow, this)}
 
-
-            {/* <ScrewPlate /> */}
           </div>
         </div>
       </div>
