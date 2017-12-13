@@ -2,8 +2,10 @@ var User = require('../models/user');
 var jwt = require('jsonwebtoken');
 var SECRET = process.env.SECRET;
 
-function update(req, res){
-  console.log('LOGGED IN USER POST');
+function updateUser(req, res) {
+  Puppy.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, pup){
+    res.status(200).json(pup);
+  });
 }
 
 function signup(req, res) {
@@ -47,5 +49,5 @@ function createJWT(user) {
 module.exports = {
   signup,
   login,
-  update
+  updateUser
 };

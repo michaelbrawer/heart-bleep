@@ -2,6 +2,7 @@ html,
 body, #root {
   width:100%;
   background-color:white;
+  font-family: 'Orbitron', sans-serif;
   /* display:flex; */
   /* justify-content:center;  */
 }
