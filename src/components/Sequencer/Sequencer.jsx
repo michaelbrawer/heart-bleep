@@ -97,7 +97,7 @@ class Sequencer extends Component {
   }
 
   componentDidMount(){
-    this.startStop();
+    setTimeout(this.startStop, 100)
   }
 
 //constructor ends here

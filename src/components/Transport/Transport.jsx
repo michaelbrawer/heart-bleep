@@ -7,11 +7,12 @@ import {
   Row,
   Input
 } from 'react-materialize'
+import './Transport.css';
 
 const Transport = (props) => {
   return (
     <div className="drumrackbar">
-    <Row>
+      <Row>
       <div className="drumracklabel">HeartBleep</div>
       {/* <Toggle abfunc={props.toggle_f} /> */}
       <div className="bpmplaybar">
@@ -30,15 +31,18 @@ const Transport = (props) => {
           <Icon className="material-icons md-dark">play_arrow</Icon>
         </Button>
         <Button className="disabled">BPM:{props.bpm_num}</Button>
+       
+          
         {/* <span className="tempolabel">{props.bpm_num}</span> */}
-        <input
+        <input s={3}
           type="range"
           onChange={props.tempo_f}
           value={props.bpm_num}
           id="test5"
           min="0"
           max="200"/>
-      </Row>
+          </Row>
+      
     </div>
   );
 };
