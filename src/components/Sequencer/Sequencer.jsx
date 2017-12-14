@@ -5,6 +5,7 @@ import Tone from 'tone';
 import PositionTransform from '../assets/js/position';
 import userService from '../../utils/userService';
 import { demoTrack, nullTrack } from '../assets/js/patterns';
+
 // import { nullTrack } from '../assets/js/null_track';
 
 //custom React Components
@@ -69,6 +70,12 @@ class Sequencer extends Component {
       }).then(console.log(pattern))
     }
 
+    loadPattern = () => {
+      let user = userService.getUser()
+      setTimeout(this.setState({currentPattern: user.pattern}), 500);
+      setTimeout(this.getInitialState, 1000);
+    }
+
     clearPattern = () => {
       if(this.state.playing){
         Tone.Transport.stop()
@@ -79,8 +86,8 @@ class Sequencer extends Component {
         setTimeout(this.getInitialState, 400);
       }
     }
-  
-    loadPattern = () => {
+
+    loadZZZPattern = () => {
     // if (this.state.playing){
     // Tone.Transport.stop();
     // this.setState({currentPattern: this.props.user.pattern});

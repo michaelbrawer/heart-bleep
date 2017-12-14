@@ -9,6 +9,7 @@ router.post('/login', usersCtrl.login);
 router.put('/:id', usersCtrl.updateUser);
 
 
+
 /*---------- Protected Routes ----------*/
 
 function checkAuth(req, res, next) {
