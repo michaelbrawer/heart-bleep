@@ -1,9 +1,9 @@
 import React from 'react';
-import './LoadSave.css';
 import {Button} from 'react-materialize';
+import './LoadSave.css';
 
 const LoadSave = (props) => {
-  let butz = props.user
+  let buttons = props.user
     ? <div>
         <Button s={12} className="grey" waves="light" onClick={props.loadPattern}>Load</Button>
         <Button s={12} className="red" waves="light" onClick={props.handleSaveClick}>Save</Button>
@@ -11,7 +11,7 @@ const LoadSave = (props) => {
     : <div></div>
   return (
     <div>
-      {butz}
+      {buttons}
     </div>
   )
 }
