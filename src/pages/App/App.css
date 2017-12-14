@@ -14,9 +14,9 @@ body, #root {
 .footHeart {
   color: #f44336 ;
 }
-#Sticky 
-{
+#Sticky {
     position:fixed;
+    color: #eeeeee;
     padding: 0 10px 0 10px;                 
     left: 0px;
     bottom: 0px;

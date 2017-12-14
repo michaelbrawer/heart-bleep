@@ -5,6 +5,8 @@ a{
 .HeaderFooter{
   background-color: #757575;
   padding: 0;
+  border-top: 1px solid #212121 ;
+  border-bottom: 1px solid #212121 ;
 }
 
 .ghLogo, .heartHeader {
