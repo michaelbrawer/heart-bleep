@@ -48,7 +48,8 @@ class Sequencer extends Component {
       playing: false,
       bside: false,
       // swing: 0.2,
-      currentPattern: (this.props.user ? this.props.user.pattern: nullTrack),
+      currentPattern: nullTrack,
+      // currentPattern: (this.props.user ? this.props.user.pattern: nullTrack),
       // (this.props.user ? this.props.user.pattern: nullTrack),
       currentKit: bitKit
     }
@@ -262,16 +263,14 @@ class Sequencer extends Component {
       <div className="rackcabinet">
         <div className="rack">
           <div className="drumrack">
-
             <ProgressBar prog={this.state.position} />
-
             {this.state.currentPattern.map(makeSeqRow, this)}
-
           </div>
         </div>
       </div>
      
       <Transport
+              user={this.props.user}
               handleSaveClick={this.handleSaveClick}
               playing={this.state.playing}
               bpm_num={this.state.bpm}
@@ -281,10 +280,13 @@ class Sequencer extends Component {
               tempo_f={this.changeTempo}
               swing_f={this.changeSwing}
               playbutton_f={this.startStop}
+              clearPattern={this.ClearPattern}
+              loadPattern={this.loadPattern}
             />
             <button onClick={this.clearPattern}>Clear Pattern</button>
             <button onClick={this.loadPattern}>Load Pattern</button>
-            <button onClick={this.props.handleLogin}>LogLog</button>
+           
+
       </Container>
     );
   }

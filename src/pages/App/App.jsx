@@ -20,15 +20,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPattern: null
-      // currentPattern: nullTrack
+      currentPattern: nullTrack
     }
   }
 
-  /*---------- Pattern Save Methods ----------*/
-  //  handleSaveClick = (pattern) => {   fetch('/api/users', {     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},     body:
-  // JSON.stringify({pattern: pattern})  }) }
 
   /*---------- Login Callback Methods ----------*/
 
@@ -73,8 +68,7 @@ class App extends Component {
             <Sequencer
               {...props}
               user={this.state.user}
-              // currentPattern={this.state.currentPattern}
-              handleSaveClick={this.handleSaveClick}/>
+              />
           </Row>}/>
           <Route
             exact

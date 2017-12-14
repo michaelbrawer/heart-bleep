@@ -8,6 +8,7 @@ import {
   Input
 } from 'react-materialize'
 import './Transport.css';
+import LoadSave from '../LoadSave/LoadSave'
 
 const Transport = (props) => {
   return (
@@ -33,7 +34,7 @@ const Transport = (props) => {
           id="test5"
           min="0"
           max="200"/>
-    
+    <LoadSave user={props.user} loadPattern={props.loadPattern} handleSaveClick={props.savePattern} />
           </Row>
       
     </div>
