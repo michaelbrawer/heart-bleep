@@ -8,14 +8,13 @@
   padding:0 2px 0 2px;
   display:flex;
   justify-content:center;
-  /* flex-wrap:wrap; */
   border-radius:10px;
 }
 
 .rack {
   display:flex;
   justify-content:center;
-  width:98%;
+  width:96%;
   flex-wrap:wrap;
   /* background-color:black; */
 }

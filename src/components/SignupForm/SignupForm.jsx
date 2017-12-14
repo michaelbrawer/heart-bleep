@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import userService from '../../utils/userService';
-import {Button} from 'react-materialize'
+import {Button, Row} from 'react-materialize'
 
 class SignupForm extends Component {
   constructor(props) {
@@ -49,7 +49,7 @@ class SignupForm extends Component {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Name"
+                placeholder="name"
                 value={this.state.name}
                 onChange={(e) => this.handleChange('name', e)}/>
             </div>
@@ -85,12 +85,14 @@ class SignupForm extends Component {
             </div>
           </div>
           <div className="form-group">
-            <div className=" text-center">
-              <Button className="blue playBtn" disabled={this.isFormInvalid()}>sign up</Button>&nbsp;&nbsp;
+          <Row>
+            <div className="btns text-center">
+              <Button s={6} className="blue playBtn" disabled={this.isFormInvalid()}>sign up</Button>&nbsp;&nbsp;
               <Link to='/'>
-                <Button className='red saveBtn'>cancel</Button>
+                <Button s={6} className='red saveBtn'>cancel</Button>
               </Link>
             </div>
+            </Row>
           </div>
         </form>
       </div>

@@ -1,20 +1,21 @@
 import React from 'react';
-import {Button, Icon, Col, Row} from 'react-materialize'
+import {Button, Icon, Col, Row, CardPanel} from 'react-materialize'
 import './Transport.css';
 import LoadSave from '../LoadSave/LoadSave'
 
 const Transport = (props) => {
   return (
+      <div className='transportCard' s={10}>
     <div className="drumrackbar">
         <div className="btns">
             <Row className="center-align">
               <Button
                 onClick={props.handleSaveClick}
                 waves='light'
-                className="saveBtn">
+                className="red saveBtn">
                 save
               </Button>
-              <Button className='playBtn' onClick={props.playbutton_f} waves='light'>
+              <Button className='blue playBtn' onClick={props.playbutton_f} waves='light'>
                 {/* <Icon className="material-icons md-dark">cancel</Icon> */}
                 <Icon className="playI material-icons md-dark">play_arrow</Icon>
               </Button>
@@ -31,6 +32,7 @@ const Transport = (props) => {
           min="0"
           max="200"/>
       </Row>
+   </div>
    </div>
   );
 };
