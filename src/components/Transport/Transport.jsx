@@ -1,7 +1,6 @@
 import React from 'react';
 import {Button, Icon, Col, Row, CardPanel} from 'react-materialize'
 import './Transport.css';
-import LoadSave from '../LoadSave/LoadSave'
 
 const Transport = (props) => {
   return (
