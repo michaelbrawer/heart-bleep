@@ -5,20 +5,30 @@ import './NavBar.css';
 const NavBar = (props) => {
   let nav = props.user
     ? <ul>
+        <NavItem href="https://github.com/michaelbrawer/heart-bleep">
+          <i className="ghLogo fa fa-2x fa-github" aria-hidden="true"></i>
+        </NavItem>
         <NavItem className="disabled">Welcome {props.user.name}</NavItem>
         <NavItem onClick={props.handleLogout} href='/'>log out</NavItem>
       </ul>
     : <ul>
-      <NavItem href='/login'>log in</NavItem>
+      <NavItem href="https://github.com/michaelbrawer/heart-bleep">
+        <i className="ghLogo fa fa-2x fa-github" aria-hidden="true"></i>
+      </NavItem>
       <NavItem href='/signup'>sign up</NavItem>
+      <NavItem href='/login'>log in</NavItem>
     </ul>
 
   return (
-    <Navbar className="HeaderFooter" brand='heart-bleep ' left>
+    <Navbar
+      className="HeaderFooter"
+      brand={< div className='valign-wrapper'> 
+        <span className='heart'>heart</span>
+        <span>bleep</span>
+        <img className='transportLogo' src="https://i.imgur.com/AVvpPMI.png " alt=" heart logo "/> 
+        </div>
+        }left>
       {nav}
-      <NavItem href="https://github.com/michaelbrawer/heart-bleep">
-        <i className="fa fa-github" aria-hidden="true"></i>
-      </NavItem>
     </Navbar>
   );
 };
