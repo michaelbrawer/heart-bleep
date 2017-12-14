@@ -1,4 +1,6 @@
 import React from 'react';
+import './ProgressBar.css'
+// import {Col, Row, Container} from 'react-materialize'
 
 const progressBar = (props) => {
   const temp = Array(16).fill(1);
