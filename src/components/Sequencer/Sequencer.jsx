@@ -49,7 +49,7 @@ class Sequencer extends Component {
       playing: false,
       bside: false,
       // swing: 0.2,
-      currentPattern: nullTrack,
+      currentPattern: (this.props.user ? this.props.user.pattern : nullTrack),
       // currentPattern: (this.props.user ? this.props.user.pattern: nullTrack),
       // (this.props.user ? this.props.user.pattern: nullTrack),
       currentKit: bitKit
@@ -67,7 +67,7 @@ class Sequencer extends Component {
         method: 'Put',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({id: id, pattern: pattern, email: email})
-      }).then(console.log(pattern))
+      }).then(console.log(pattern)).then(this.setState({currentPattern: pattern}))
     }
 
     loadPattern = () => {
@@ -145,8 +145,8 @@ class Sequencer extends Component {
     Tone.Transport.scheduleRepeat(this.positionMarker, '16n');
     Tone.Transport.bpm.value = this.state.bpm;
     Tone.Master.volume.value = this.state.volume;
+    
   }
-
 
   positionMarker () {
     this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
