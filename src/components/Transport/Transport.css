@@ -47,7 +47,6 @@ button {
   margin-bottom: 10px;
 } */
 
-
 input[type=range]::-webkit-slider-thumb {
   background-color: #f44336;
 }
@@ -57,7 +56,6 @@ input[type=range]::-moz-range-thumb {
 input[type=range]::-ms-thumb {
   background-color: #f44336;
 }
-
 /***** These are to edit the thumb and the text inside the thumb *****/
 input[type=range] + .thumb {
   background-color: #dedede;
