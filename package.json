@@ -17,9 +17,7 @@
     "react-scripts": "1.0.17",
     "serve-favicon": "^2.4.5",
     "tone": "^0.11.11",
-    "web-audio-scheduler": "^1.4.0",
-    "webmidi": "^2.0.0-rc.11",
-    "worker-timer": "^1.1.0"
+    "webmidi": "^2.0.0-rc.11"
   },
   "scripts": {
     "start": "react-scripts start",

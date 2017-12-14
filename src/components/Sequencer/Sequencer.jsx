@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Tone from 'tone';
 import PositionTransform from '../assets/js/position';
 import userService from '../../utils/userService';
+//fixed pattern assets
 import { demoTrack, nullTrack } from '../assets/js/patterns';
 
 // import { nullTrack } from '../assets/js/null_track';
@@ -56,7 +57,7 @@ class Sequencer extends Component {
     }
   }
 
-//Pattern Save Load Methods:
+//Pattern Save  / Load Methods:
 
     handleSaveClick = () => {
       alert('save')
@@ -241,7 +242,6 @@ class Sequencer extends Component {
         pattern = v.slice(0, 16);
       }
       return (
-
         <SequenceRow
           bside={this.state.bside}
           key={`${i}row`}
@@ -249,7 +249,6 @@ class Sequencer extends Component {
           updateSeq={this.updatePattern}
           channel={pattern}
         />
-
       );
     }
 
