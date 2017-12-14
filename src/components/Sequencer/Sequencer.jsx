@@ -71,9 +71,8 @@ class Sequencer extends Component {
     }
 
     loadPattern = () => {
-      let user = userService.getUser()
-      setTimeout(this.setState({currentPattern: user.pattern}), 500);
-      setTimeout(this.getInitialState, 1000);
+      fetch(userService.getUser()).then(this.setState({currentPattern: this.props.user.pattern}))
+      .then(setTimeout(this.getInitialState, 200));
     }
 
     clearPattern = () => {
