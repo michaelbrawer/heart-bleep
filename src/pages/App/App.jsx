@@ -24,8 +24,7 @@ class App extends Component {
       // currentPattern: nullTrack
     }
   }
-
-
+  
   /*---------- Login Callback Methods ----------*/
 
   handleLogout = () => {
