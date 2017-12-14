@@ -6,30 +6,25 @@ import LoadSave from '../LoadSave/LoadSave'
 const Transport = (props) => {
   return (
     <div className="drumrackbar">
-      <Row>
-        <div className="valign-wrapper drumracklabel">heart-BLEEP<img
-          className='transportLogo'
-          src="https://i.imgur.com/AVvpPMI.png"
-          alt="heart logo"/>
-          <Col s={7}>
-            <div className="transportBtn">
+    
+    
+        <div className="btns">
+            <Row className="center-align">
               <Button
                 onClick={props.handleSaveClick}
                 waves='light'
-                className="red darken-3 TransportButton">
+                className="saveBtn">
                 save
               </Button>
-              <Button className='blue' onClick={props.playbutton_f} waves='light'>
+              <Button className='playBtn' onClick={props.playbutton_f} waves='light'>
                 {/* <Icon className="material-icons md-dark">cancel</Icon> */}
-                <Icon className="material-icons md-dark">play_arrow</Icon>
+                <Icon className="playI material-icons md-dark">play_arrow</Icon>
               </Button>
-              <Button className="bpm-display disabled">bpm:{props.bpm_num}</Button>
-            </div>
-          </Col>
-        </div>
-      </Row>
+              <Button className="bpm-display grey">bpm: {props.bpm_num}</Button>
+</Row>
+</div>
 
-      {/* <Row></Row> */}
+     
       <Row className="tempoSlider">
         <input
           s={3}
@@ -40,7 +35,8 @@ const Transport = (props) => {
           min="0"
           max="200"/>
       </Row>
-    </div>
+      
+   </div>
   );
 };
 

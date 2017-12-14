@@ -10,7 +10,7 @@ a{
 }
 
 .ghLogo, .heartHeader {
-  color: #f44336
+  color: #f44336;
 }
 
 .navLogo {
@@ -39,5 +39,5 @@ a.brand-logo.right{
 }
 
 .ghLogo:before {
-  color: #f44336
+  color: #f44336;
 }
