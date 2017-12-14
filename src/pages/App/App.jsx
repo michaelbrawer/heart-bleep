@@ -12,9 +12,8 @@ import userService from '../../utils/userService';
 //import styling
 import {Col, Row} from 'react-materialize'
 import './App.css';
-//pattern assets
-
-// import {nullTrack, demoTrack} from '../../components/assets/js/patterns'
+// pattern assets import {nullTrack, demoTrack} from
+// '../../components/assets/js/patterns'
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +22,7 @@ class App extends Component {
       foo: 'bar'
     }
   }
-  
+
   /*---------- Login Callback Methods ----------*/
 
   handleLogout = () => {
@@ -45,11 +44,11 @@ class App extends Component {
 
   /*---------- Lifecycle Methods ----------*/
 
-  componentWillMount(){
-  }
-  
+  componentWillMount() {}
+
   componentDidMount() {
-    let user = userService.getUser(); this.setState({user});
+    let user = userService.getUser();
+    this.setState({user});
     // let user = userService.getUser(); this.setState({user});
     // fetch(userService.getUser()).then((e) => this.setState({user: e}))
   }
@@ -64,10 +63,7 @@ class App extends Component {
             exact
             path='/'
             render={(props) => <Row>
-            <Sequencer
-              {...props}
-              user={this.state.user}
-              />
+            <Sequencer {...props} user={this.state.user}/>
           </Row>}/>
           <Route
             exact
@@ -82,7 +78,9 @@ class App extends Component {
             <LoginPage {...props} handleLogin={this.handleLogin}/>
           </Row>}/>
         </Switch>
-        <footer className="copyright HeaderFooter">Copyright 2017 <span className='footHeart'>&hearts;</span> MCB</footer>
+        <div id="Sticky" className="HeaderFooter">Copyright 2017
+      <span className='footHeart'>&hearts;</span>
+      MCB</div>
       </div>
     );
   }

@@ -1,31 +1,51 @@
+button {
+  font-size: 20px;
+  margin: 0 10px !important;
+}
+
+.row {
+  margin-bottom: 0;
+}
+
 .transportLogo {
   height: 45px;
   margin-bottom: 2px;
 }
 
-.bpm-display{
+/* .bpm-display{
   width: 150px;
-}
+} */
 
 .drumrackbar {
   width:90%;
   margin: 0 auto;
-  padding-left: 20px;
+  padding: 0 15px;
   /* display:flex;
   justify-content: flex-start; */
 }
 
+.transportBtn {
+  margin: o auto;
+}
+
 .drumracklabel {
-  height: 55px;
+  /* height: 55px;
   margin-top: 15px;
-  margin-left: 15px;
+  margin-left: 15px; */
   font-family: 'VT323', monospace;
-  bottom:4px;
+  /* bottom:4px; */
+  margin-left: 10px;
+  margin-bottom: 0;
   font-size: 48px;
   color: black;
+  /* padding: 10px; */
   /* padding-bottom: 10px; */
   position:relative;
 }
+
+/* .tempoSlider{
+  margin-bottom: 10px;
+} */
 
 
 input[type=range]::-webkit-slider-thumb {
