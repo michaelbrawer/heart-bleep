@@ -20,6 +20,7 @@ const NavBar = (props) => {
     </ul>
 
   return (
+    <div class='navbar-fixed'>
     <Navbar
       className="HeaderFooter"
       brand={< div className='valign-wrapper'> 
@@ -30,6 +31,7 @@ const NavBar = (props) => {
         }left>
       {nav}
     </Navbar>
+    </div>
   );
 };
 
