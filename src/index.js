@@ -8,8 +8,7 @@ ReactDOM.render(
   <Router>
     <Route render={(props) => 
       <App{...props} />
-    }
-  />
+    }/>
   </Router>,
   document.getElementById('root')
 );
