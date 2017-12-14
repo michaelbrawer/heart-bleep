@@ -86,6 +86,15 @@ class Sequencer extends Component {
       }
     }
 
+      //old Clear Pattern
+  clearZZZPattern () {
+    this.playSeq.dispose();
+    this.setState({currentPattern: nullTrack});
+    setTimeout(this.getInitialState, 400)
+    // window.location.reload();
+  }
+
+    //old Load Pattern
     loadZZZPattern = () => {
     // if (this.state.playing){
     // Tone.Transport.stop();
@@ -101,6 +110,8 @@ class Sequencer extends Component {
     // window.location.reload();
     }
 
+
+    //Instantiates Sequencer
     getInitialState = () =>{
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
     let multSampler = new Tone.MultiPlayer({
@@ -136,47 +147,6 @@ class Sequencer extends Component {
     Tone.Master.volume.value = this.state.volume;
   }
 
-
-  componentWillMount(){
-    // this.setState({currentPattern: nullTrack})
-    // this.getInitialState();
-    // this.setState({
-    //   user: userService.getUser()
-    // });
-  }
-
-  componentDidMount(){
-    // setTimeout(this.startStop, 100)
-    // this.startStop();
-    this.getInitialState();
-    document.addEventListener('keydown', (e) => {
-      const pressed = e.key;
-      if (pressed === ' ') {
-        this.startStop();
-      }
-    });
-  }
-
-//constructor ends here
-
-  // componentDidMount() {
-  //   document.addEventListener('keydown', (e) => {
-  //     const pressed = e.key;
-  //     if (pressed === ' ') {
-  //       this.startStop();
-  //     }
-  //   });
-  // }
-
-  //old Clear Pattern
-  clearZZZPattern () {
-    this.playSeq.dispose();
-    this.setState({currentPattern: nullTrack});
-    setTimeout(this.getInitialState, 400)
-    // window.location.reload();
-  }
-
- 
 
   positionMarker () {
     this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
@@ -232,10 +202,6 @@ class Sequencer extends Component {
     this.setState({ currentPattern: cpattern });
   }
 
-  // abswitch() {
-  //   this.setState({ bside: !this.state.bside });
-  // }
-
   changeVolume(e, value) {
     this.setState({ volume: value });
     if (value < -40) {
@@ -244,6 +210,27 @@ class Sequencer extends Component {
     Tone.Master.volume.value = value;
   }
 
+    /*---------- Lifecycle Methods ----------*/
+
+  componentWillMount(){
+    // this.setState({currentPattern: nullTrack})
+    // this.getInitialState();
+    // this.setState({
+    //   user: userService.getUser()
+    // });
+  }
+
+  componentDidMount(){
+    this.getInitialState();
+    document.addEventListener('keydown', (e) => {
+      const pressed = e.key;
+      if (pressed === ' ') {
+        this.startStop();
+      }
+    });
+  }
+
+    /*---------- Render ----------*/
   render() {
     function makeSeqRow(v, i) {
       let pattern;
@@ -284,7 +271,6 @@ class Sequencer extends Component {
               bpm_num={this.state.bpm}
               swing_num={this.state.swing}
               pattern={this.state.currentPattern}
-              // toggle_f={this.abswitch}
               tempo_f={this.changeTempo}
               swing_f={this.changeSwing}
               playbutton_f={this.startStop}

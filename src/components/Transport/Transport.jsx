@@ -24,7 +24,7 @@ const Transport = (props) => {
           <Icon className="material-icons md-dark">cancel</Icon>
           <Icon className="material-icons md-dark">play_arrow</Icon>
         </Button>
-        <Button className="disabled">BPM:{props.bpm_num}</Button>
+        <Button className="bpm-display disabled">BPM:{props.bpm_num}</Button>
           
         {/* <span className="tempolabel">{props.bpm_num}</span> */}
         <input s={3}
