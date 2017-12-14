@@ -6,6 +6,9 @@ body, #root {
   font-family: 'PT Sans', sans-serif;
   /* display:flex; */
   /* justify-content:center;  */
+  transition: all 0.2s;
+  -webkit-transition: background 0.2s;
+  -moz-transition: background 0.2s;
 }
 
 .rackcabinet {
@@ -104,24 +107,6 @@ body, #root {
   width:100px;
 }
 
-.lettera, .letterb {
-  margin-top:19px;
-  color:black;
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-  font-size: 24px;
-  font-weight: 300;
-  cursor: pointer;
-}
-
-
-.toggled .toggle-slider {
-  background: #388E3C;
-}
-
-.toggled .toggle-slider-button {
-  left: calc(100% - 19px);
-}
 
 textarea:focus, input:focus{
   outline: none;
@@ -134,28 +119,7 @@ input::-webkit-inner-spin-button {
   margin: 0; /**<-- Apparently some margin are still there even though it's hidden **/
 }
 
-@media only screen and (min-width: 1550px) {
-  .drumrackbar{
-    margin-left:19em;
-    margin-right:19em;
-  }
-}
-
-@media only screen and (min-width: 1314px) {
-  .drumrackbar{
-    justify-content:space-around;
-    margin-left:7em;
-    margin-right:7em;
-  }
-}
-
 @media only screen and (max-width: 1024px) {
-  .drumrackbar{
-    flex-wrap:wrap;
-  }
-  .drumracklabel {
-    font-size:40px;
-  }
   .lightoff {
     width: 8px;
     height: 8px;
@@ -169,9 +133,6 @@ input::-webkit-inner-spin-button {
 }
 
 @media only screen and (max-width: 960px) {
-  /* .drumracklabel{
-    font-size:30px;
-  } */
   .lightoff {
     width: 6px;
     height:6px;

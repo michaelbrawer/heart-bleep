@@ -21,7 +21,6 @@ class App extends Component {
     super(props);
     this.state = {
       foo: 'bar'
-      // currentPattern: nullTrack
     }
   }
   

@@ -5,6 +5,7 @@ const SequenceRow = (props) => {
   function makeRow(v, i) {
     const channelClasses = v ? 'lighton' : 'lightoff';
     return (
+    
       <div
         className="stepbutton"
         data-channel={props.channelNum}

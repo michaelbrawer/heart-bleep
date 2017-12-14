@@ -7,7 +7,7 @@ const Transport = (props) => {
   return (
     <div className="drumrackbar">
       <Row>
-        <div className="valign-wrapper drumracklabel">heart-bleep<img
+        <div className="valign-wrapper drumracklabel">heart-BLEEP<img
           className='transportLogo'
           src="https://i.imgur.com/AVvpPMI.png"
           alt="heart logo"/></div>
