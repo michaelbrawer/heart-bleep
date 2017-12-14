@@ -36,13 +36,6 @@ class Sequencer extends Component {
   constructor(props) {
     super(props);
 
-    // this.updatePattern = this.updatePattern.bind(this);
-    this.startStop = this.startStop.bind(this);
-    this.changeTempo = this.changeTempo.bind(this);
-    this.changeVolume = this.changeVolume.bind(this);
-    // this.clearPattern = this.clearPattern.bind(this);
-    this.positionMarker = this.positionMarker.bind(this);
-
     this.state = {
       bpm: 100,
       position: 0,
@@ -123,6 +116,7 @@ class Sequencer extends Component {
       return i;
     });
 
+    //generate columns from step values
     let getColumns = (track) => {
       const result = [];
       for (let i = 0; i < 32; i += 1) {
@@ -132,7 +126,6 @@ class Sequencer extends Component {
     };
 
     this.columnPattern = getColumns(this.state.currentPattern);
-
     this.playSeq = new Tone.Sequence((time, value) => {
       this.columnPattern[value].forEach((v) => { return multSampler.start(v, time, 0, '16n', 0);});
     }, steps, '16n');
@@ -149,28 +142,11 @@ class Sequencer extends Component {
     
   }
 
-  positionMarker () {
+  positionMarker = () => {
     this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
   }
 
-  startStop () {
-    if (this.state.playing) {
-      Tone.Transport.stop();
-      this.setState({ playing: false });
-    }
-    else {
-      Tone.Transport.start('+0.25');
-      this.setState({ playing: true });
-    }
-  }
-
-  // changeSwing (s) {
-  //   var e = s / 100
-  //   Tone.Transport.swing = e;
-  //   this.setState({ swing: e });
-  // }
-
-  changeTempo (e) {
+  changeTempo = (e) => {
     let newTempo = parseInt(e.currentTarget.value, 10);
     if (isNaN(newTempo)) {
       newTempo = 10;
@@ -203,6 +179,23 @@ class Sequencer extends Component {
     this.setState({ currentPattern: cpattern });
   }
 
+  startStop = () => {
+    if (this.state.playing) {
+      Tone.Transport.stop();
+      this.setState({ playing: false });
+    }
+    else {
+      Tone.Transport.start('+0.25');
+      this.setState({ playing: true });
+    }
+  }
+
+  // changeSwing (s) {
+  //   var e = s / 100
+  //   Tone.Transport.swing = e;
+  //   this.setState({ swing: e });
+  // }
+
   changeVolume(e, value) {
     this.setState({ volume: value });
     if (value < -40) {
@@ -212,14 +205,6 @@ class Sequencer extends Component {
   }
 
     /*---------- Lifecycle Methods ----------*/
-
-  componentWillMount(){
-    // this.setState({currentPattern: nullTrack})
-    // this.getInitialState();
-    // this.setState({
-    //   user: userService.getUser()
-    // });
-  }
 
   componentDidMount(){
     this.getInitialState();

@@ -13,7 +13,7 @@ import userService from '../../utils/userService';
 import {Col, Row} from 'react-materialize'
 import './App.css';
 //pattern assets
-// TODO: Import nullTrack
+
 // import {nullTrack, demoTrack} from '../../components/assets/js/patterns'
 
 class App extends Component {
