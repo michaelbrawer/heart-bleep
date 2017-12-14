@@ -10,9 +10,7 @@ const progressBar = (props) => {
     return (<div className="progresslight" key={`${v}prog${i}`}/>);
   });
   return (
-
     <div className="progressbar">{temp2}</div>
-
   );
 };
 

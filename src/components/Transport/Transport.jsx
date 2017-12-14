@@ -16,9 +16,9 @@ const Transport = (props) => {
       <Row>
       <div className="drumracklabel">HeartBleep</div>
       {/* <Toggle abfunc={props.toggle_f} /> */}
-      
-      <Button onClick={props.handleSaveClick} waves='light' className="red TransportButton">
-        SAVE
+      <Col>
+      <Button onClick={props.clearPattern} waves='light' className="grey darken-3 TransportButton">
+        Clear
       </Button>
         <Button className='blue' onClick={props.playbutton_f} waves='light'>
           <Icon className="material-icons md-dark">cancel</Icon>
@@ -34,7 +34,10 @@ const Transport = (props) => {
           id="test5"
           min="0"
           max="200"/>
-    <LoadSave user={props.user} loadPattern={props.loadPattern} handleSaveClick={props.savePattern} />
+          </Col>
+          <Col>
+        <LoadSave user={props.user} loadPattern={props.loadPattern} handleSaveClick={props.savePattern} />
+        </Col>
           </Row>
       
     </div>

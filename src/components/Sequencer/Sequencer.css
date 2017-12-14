@@ -138,6 +138,7 @@ body, #root {
 
 .drumrackbar {
   width:90%;
+  margin: 0 auto;
   margin-top:15px;
   display:flex;
   justify-content: flex-start;

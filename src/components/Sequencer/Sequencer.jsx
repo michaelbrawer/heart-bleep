@@ -93,7 +93,7 @@ class Sequencer extends Component {
     // window.location.reload();
     }
 
-    getInitialState =() =>{
+    getInitialState = () =>{
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
     let multSampler = new Tone.MultiPlayer({
       urls: (undefined? bitKit : this.state.currentKit)
@@ -280,7 +280,7 @@ class Sequencer extends Component {
               tempo_f={this.changeTempo}
               swing_f={this.changeSwing}
               playbutton_f={this.startStop}
-              clearPattern={this.ClearPattern}
+              clearPattern={this.clearPattern}
               loadPattern={this.loadPattern}
             />
             <button onClick={this.clearPattern}>Clear Pattern</button>
