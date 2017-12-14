@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import logo from '../../logo.svg';
-import {BrowswerRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import {BrowswerRouter as Router, Switch, Route} from 'react-router-dom';
 //import App Components
 import NavBar from '../../components/NavBar/NavBar';
 import Sequencer from '../../components/Sequencer/Sequencer';
@@ -10,11 +10,11 @@ import SignupPage from '../SignupPage/SignupPage';
 //import utils
 import userService from '../../utils/userService';
 //import styling
-import {Col, Row, Footer} from 'react-materialize'
+import {Col, Row} from 'react-materialize'
 import './App.css';
 //pattern assets
 // TODO: Import nullTrack
-import {nullTrack, demoTrack} from '../../components/assets/js/patterns'
+// import {nullTrack, demoTrack} from '../../components/assets/js/patterns'
 
 class App extends Component {
   constructor(props) {

@@ -16,9 +16,9 @@ import Transport from '../Transport/Transport'
 // import bitKit from '../assets/js/kits'
 
 //Styling:
-import {Col, Row, Container, CardPanel} from 'react-materialize'
+import {Col, Row, Container} from 'react-materialize'
 import './Sequencer.css'
-import { get } from 'https';
+
 
 //8-bit drum kit
 const bitKit = {
