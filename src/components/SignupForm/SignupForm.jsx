@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import userService from '../../utils/userService';
-
 import {Button} from 'react-materialize'
 
 class SignupForm extends Component {
@@ -26,12 +25,11 @@ class SignupForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     userService.signup(this.state)
-      // successfully signed up - show GamePage
-      .then(() => {
-        this.props.handleSignup();
-        this.props.history.push('/');
-      })
-      // invalid user data
+    // successfully signed up - show GamePage
+      .then(() => {this.props.handleSignup();
+      this.props.history.push('/');
+    })
+    // invalid user data
       .catch(err => this.props.updateMessage(err.message));
   }
 
@@ -42,32 +40,56 @@ class SignupForm extends Component {
   render() {
     return (
       <div>
-        <header className="header-footer"><h5>Sign Up</h5></header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit} >
+        <header className="header-footer">
+          <h5>Sign Up</h5>
+        </header>
+        <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="Name" value={this.state.name} onChange={(e) => this.handleChange('name', e)} />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Name"
+                value={this.state.name}
+                onChange={(e) => this.handleChange('name', e)}/>
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="email" className="form-control" placeholder="Email" value={this.state.email} onChange={(e) => this.handleChange('email', e)} />
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={(e) => this.handleChange('email', e)}/>
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="password" className="form-control" placeholder="Password" value={this.state.password} onChange={(e) => this.handleChange('password', e)} />
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={(e) => this.handleChange('password', e)}/>
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="password" className="form-control" placeholder="Confirm Password" value={this.state.passwordConf} onChange={(e) => this.handleChange('passwordConf', e)} />
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Confirm Password"
+                value={this.state.passwordConf}
+                onChange={(e) => this.handleChange('passwordConf', e)}/>
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-center">
               <button className="btn btn-default" disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
-              <Link to='/'><Button>Cancel</Button></Link>
+              <Link to='/'>
+                <Button>Cancel</Button>
+              </Link>
             </div>
           </div>
         </form>
