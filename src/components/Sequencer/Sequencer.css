@@ -47,8 +47,6 @@ body, #root {
   background-color: #fafafa ;
 }
 
-
-
 .slash {
   font-size:34px;
   padding-left:10px;
@@ -56,57 +54,11 @@ body, #root {
   margin-top: 6px;
 }
 
-.playstopbutton {
-  width: 9em;
-  padding-left:4px;
-  padding-right:4px;
-  cursor: pointer;
-  font-family: 'Orbitron';
-  height: 55px;
-  margin-top:3px;
-  position:relative;
-  border-radius: 5px;
-  background-color:silver;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.9), inset 0 180px 0 rgba(255, 255, 255, 0.2), inset 0 190px 0 rgba(255, 255, 255, 0.3);
-}
-
 .bpmplaybar{
   display:flex;
   flex-direction:row;
   justify-content:center;
 }
-
-.tempolabel {
-  font-family: 'Orbitron', sans-serif;
-  height: 55px;
-  font-size: 32px;
-  background-color:black;
-  padding-right:10px;
-  border-radius: 5px;
-  color: #DD1D00;
-  margin-right: 7px;
-  width: 3em;
-  text-align:right;
-  border: none;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-color: transparent;
-}
-
-.togglebox {
-  margin:0 20px 0 20px ;
-  display:flex;
-  flex-direction:row;
-  justify-content:space-between;
-  height:55px;
-  position:relative;
-  width:100px;
-}
-
 
 textarea:focus, input:focus{
   outline: none;
