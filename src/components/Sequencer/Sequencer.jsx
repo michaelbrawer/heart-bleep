@@ -285,8 +285,6 @@ class Sequencer extends Component {
             />
             <button onClick={this.clearPattern}>Clear Pattern</button>
             <button onClick={this.loadPattern}>Load Pattern</button>
-           
-
       </Container>
     );
   }
