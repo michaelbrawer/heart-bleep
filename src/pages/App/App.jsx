@@ -82,6 +82,7 @@ class App extends Component {
             <LoginPage {...props} handleLogin={this.handleLogin}/>
           </Row>}/>
         </Switch>
+        <footer className="copyright HeaderFooter">Copyright 2017 <span className='footHeart'>&hearts;</span> MCB</footer>
       </div>
     );
   }

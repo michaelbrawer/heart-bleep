@@ -11,3 +11,12 @@ body, #root {
   -moz-transition: background 0.2s;
 }
 
+footer {
+  text-align: center;
+  color: #eeeeee;
+  font-size: 18px;
+}
+
+.footHeart {
+  color: #f44336 ;
+}
