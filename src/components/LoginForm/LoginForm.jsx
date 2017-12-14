@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import userService from '../../utils/userService';
 import {Button} from 'react-materialize'
+import userService from '../../utils/userService';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -21,34 +21,49 @@ class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    userService.login(this.state)
+    userService
+      .login(this.state)
       .then(() => {
         this.props.handleLogin();
         this.props.history.push('/');
       })
-      // invalid credentials - don't alert in YOUR app :)
+      // fix this ugly alert
       .catch(err => alert('Invalid Credentials!'));
   }
 
   render() {
     return (
       <div>
-        <header className="header-footer"><h5>Log In</h5></header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit} >
+        <header className="header-footer">
+          <h5>Log In</h5>
+        </header>
+        <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="email" className="form-control" placeholder="Email" value={this.state.email} onChange={(e) => this.handleChange('email', e)} />
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={(e) => this.handleChange('email', e)}/>
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="password" className="form-control" placeholder="Password" value={this.state.pw} onChange={(e) => this.handleChange('pw', e)} />
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                value={this.state.pw}
+                onChange={(e) => this.handleChange('pw', e)}/>
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-center">
               <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-             <Link to='/'> <Button>Cancel</Button></Link>
+              <Link to='/'>
+                <Button>Cancel</Button>
+              </Link>
             </div>
           </div>
         </form>
