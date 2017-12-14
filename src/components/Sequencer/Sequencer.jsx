@@ -53,7 +53,6 @@ class Sequencer extends Component {
 //Pattern Save  / Load Methods:
 
     handleSaveClick = () => {
-      alert('save')
       let pattern = this.state.currentPattern;
       let email = this.props.user.email
       let id = this.props.user._id
