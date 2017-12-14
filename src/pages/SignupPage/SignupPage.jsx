@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import SignupForm from '../../components/SignupForm/SignupForm';
 import {Col, Row, Container} from 'react-materialize'
+import SignupForm from '../../components/SignupForm/SignupForm';
 import './SignupPage.css';
 
 class SignupPage extends Component {
@@ -22,7 +22,7 @@ class SignupPage extends Component {
           <Row>
             <Col s={3}/>
             <Col s={6}>
-              <SignupForm 
+              <SignupForm
                 {...this.props}
                 updateMessage={this.updateMessage}
                 handleSignup={this.props.handleSignup}/>
