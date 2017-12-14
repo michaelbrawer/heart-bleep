@@ -6,8 +6,6 @@ import LoadSave from '../LoadSave/LoadSave'
 const Transport = (props) => {
   return (
     <div className="drumrackbar">
-    
-    
         <div className="btns">
             <Row className="center-align">
               <Button
@@ -21,10 +19,8 @@ const Transport = (props) => {
                 <Icon className="playI material-icons md-dark">play_arrow</Icon>
               </Button>
               <Button className="bpm-display grey">bpm: {props.bpm_num}</Button>
-</Row>
-</div>
-
-     
+            </Row>
+      </div>
       <Row className="tempoSlider">
         <input
           s={3}
@@ -35,7 +31,6 @@ const Transport = (props) => {
           min="0"
           max="200"/>
       </Row>
-      
    </div>
   );
 };
