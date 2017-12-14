@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Icon, Col, Row, CardPanel} from 'react-materialize'
+import {Button, Icon, Row} from 'react-materialize'
 import './Transport.css';
 
 const Transport = (props) => {

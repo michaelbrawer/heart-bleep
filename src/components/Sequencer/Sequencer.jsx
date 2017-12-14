@@ -5,7 +5,7 @@ import Tone from 'tone';
 import PositionTransform from '../assets/js/position';
 import userService from '../../utils/userService';
 //fixed pattern assets
-import { demoTrack, nullTrack } from '../assets/js/patterns';
+import { nullTrack } from '../assets/js/patterns';
 
 // import { nullTrack } from '../assets/js/null_track';
 
@@ -16,7 +16,7 @@ import Transport from '../Transport/Transport'
 // import bitKit from '../assets/js/kits'
 
 //Styling:
-import {Col, Row, Container} from 'react-materialize'
+import {Container} from 'react-materialize'
 import './Sequencer.css'
 
 

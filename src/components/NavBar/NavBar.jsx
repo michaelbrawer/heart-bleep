@@ -20,7 +20,7 @@ const NavBar = (props) => {
     </ul>
 
   return (
-    <div class='navbar-fixed'>
+    <div className='navbar-fixed'>
     <Navbar
       className="HeaderFooter"
       brand={< div className='valign-wrapper'> 

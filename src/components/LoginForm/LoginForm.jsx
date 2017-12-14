@@ -34,7 +34,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className='logInForm'>
         <header className="header-footer">
           <h5>log in:</h5>
         </header>

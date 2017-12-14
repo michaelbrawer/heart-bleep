@@ -10,7 +10,7 @@ import SignupPage from '../SignupPage/SignupPage';
 //import utils
 import userService from '../../utils/userService';
 //import styling
-import {Col, Row} from 'react-materialize'
+import {Row} from 'react-materialize'
 import './App.css';
 // pattern assets import {nullTrack, demoTrack} from
 // '../../components/assets/js/patterns'
