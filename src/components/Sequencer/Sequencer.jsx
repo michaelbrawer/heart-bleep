@@ -58,6 +58,7 @@ class Sequencer extends Component {
 //Pattern Save Load Methods:
 
     handleSaveClick = () => {
+      alert('save')
       let pattern = this.state.currentPattern;
       let email = this.props.user.email
       let id = this.props.user._id
@@ -90,6 +91,7 @@ class Sequencer extends Component {
     // }
     this.setState({currentPattern: this.props.user.pattern})
     setTimeout(this.getInitialState, 400);
+    // alert('load')
     // window.location.reload();
     }
 
@@ -283,8 +285,8 @@ class Sequencer extends Component {
               clearPattern={this.clearPattern}
               loadPattern={this.loadPattern}
             />
-            <button onClick={this.clearPattern}>Clear Pattern</button>
-            <button onClick={this.loadPattern}>Load Pattern</button>
+            {/* <button onClick={this.clearPattern}>Clear Pattern</button>
+            <button onClick={this.loadPattern}>Load Pattern</button> */}
       </Container>
     );
   }

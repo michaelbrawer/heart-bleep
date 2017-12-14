@@ -36,7 +36,7 @@ const Transport = (props) => {
           max="200"/>
           </Col>
           <Col>
-        <LoadSave user={props.user} loadPattern={props.loadPattern} handleSaveClick={props.savePattern} />
+        <LoadSave user={props.user} loadPattern={props.loadPattern} handleSaveClick={props.handleSaveClick} />
         </Col>
           </Row>
       
