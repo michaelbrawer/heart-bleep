@@ -1,25 +1,22 @@
 import React from 'react';
-import {Navbar} from 'react-materialize'
+import {Navbar, NavItem, Icon} from 'react-materialize'
 import './NavBar.css';
 
 const NavBar = (props) => {
-  let nav = props.user ?
-      <ul>
-        <li><a href="/" onClick={props.handleLogout} >log out</a></li>
-        <li>welcome, {props.user.name}</li>
+  let nav = props.user
+    ? <ul>
+        <NavItem className="disabled">Welcome {props.user.name}</NavItem>
+        <NavItem onClick={props.handleLogout} href='/'>log out</NavItem>
       </ul>
-      :
-      <ul>
-        <li><a href="/login">log in</a></li>
-        <li><a href="/signup">sign up</a></li>
-      </ul>
-      
+    : <ul>
+      <NavItem href='/login'>log in</NavItem>
+      <NavItem href='/signup'>sign up</NavItem>
+    </ul>
+
   return (
-    <div className="navbar-fixed">
     <Navbar className="HeaderFooter" brand='heart-bleep' left>
       {nav}
     </Navbar>
-    </div>
   );
 };
 
