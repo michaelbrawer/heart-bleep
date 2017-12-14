@@ -1,3 +1,8 @@
+.transportLogo {
+  height: 45px;
+  margin-bottom: 2px;
+}
+
 .bpm-display{
   width: 150px;
 }
@@ -5,29 +10,31 @@
 .drumrackbar {
   width:90%;
   margin: 0 auto;
-  margin-top:15px;
-  display:flex;
-  justify-content: flex-start;
+  /* display:flex;
+  justify-content: flex-start; */
 }
 
 .drumracklabel {
   height: 55px;
+  margin-top: 15px;
+  margin-left: 15px;
   font-family: 'Orbitron', sans-serif;
   bottom:4px;
   font-size: 48px;
   color: black;
+  /* padding-bottom: 10px; */
   position:relative;
 }
 
 
 input[type=range]::-webkit-slider-thumb {
-  background-color: red;
+  background-color: #f44336;
 }
 input[type=range]::-moz-range-thumb {
-  background-color: red;
+  background-color: #f44336;
 }
 input[type=range]::-ms-thumb {
-  background-color: red;
+  background-color: #f44336;
 }
 
 /***** These are to edit the thumb and the text inside the thumb *****/
@@ -35,5 +42,5 @@ input[type=range] + .thumb {
   background-color: #dedede;
 }
 input[type=range] + .thumb.active .value {
-  color: red;
+  color: #f44336
 }

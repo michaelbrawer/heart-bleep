@@ -6,8 +6,11 @@ import LoadSave from '../LoadSave/LoadSave'
 const Transport = (props) => {
   return (
     <div className="drumrackbar">
-      <Row>
-        <div className="drumracklabel">HeartBleep</div>
+    <Row>
+        
+        <div className="valign-wrapper drumracklabel">heart-bleep<img className='transportLogo' src="https://i.imgur.com/AVvpPMI.png"/></div>
+      </Row>
+        <Row>
         <Col>
           <Button
             onClick={props.clearPattern}

@@ -14,7 +14,7 @@ const NavBar = (props) => {
     </ul>
 
   return (
-    <Navbar className="HeaderFooter" brand='heart-bleep' left>
+    <Navbar className="HeaderFooter" brand='heart-bleep ' left>
       {nav}
       <NavItem href="https://github.com/michaelbrawer/heart-bleep" right>
         <i class="fa fa-github" aria-hidden="true"></i>
