@@ -23,8 +23,8 @@ const NavBar = (props) => {
     <Navbar
       className="HeaderFooter"
       brand={< div className='valign-wrapper'> 
-        <span className='heart'>heart</span>
-        <span>bleep</span>
+        <span className='navLogo heartHeader'>heart</span>
+        <span className='navLogo bleepHeader'>BLEEP</span>
         <img className='transportLogo' src="https://i.imgur.com/AVvpPMI.png " alt=" heart logo "/> 
         </div>
         }left>

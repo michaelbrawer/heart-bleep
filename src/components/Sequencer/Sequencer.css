@@ -2,7 +2,8 @@ html,
 body, #root {
   width:100%;
   background-color: #fafafa ;
-  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-family: 'PT Sans', sans-serif;
   /* display:flex; */
   /* justify-content:center;  */
 }

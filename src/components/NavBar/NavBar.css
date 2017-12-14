@@ -1,10 +1,26 @@
+a{
+  font-size: 18px !important;
+}
+
 .HeaderFooter{
   background-color: #757575;
   padding: 0;
 }
 
-.ghLogo, .heart {
+.ghLogo, .heartHeader {
   color: #f44336
+}
+
+.navLogo {
+  font-family: 'VT323', monospace;
+}
+
+.heartHeader {
+  font-size: 50px;
+}
+
+.bleepHeader {
+  font-size: 50px;
 }
 
 .side-nav{

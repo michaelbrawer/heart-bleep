@@ -12,8 +12,6 @@
   margin:5px;
   border-radius: 2px;
   background-color: #9e9e9e;
-  
-  /* box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.9), inset 0 28px 0 rgba(255, 255, 255, 0.2), inset 0 28px 0 rgba(255, 255, 255, 0.3); */
 }
 
 .progresslighton {
@@ -23,7 +21,4 @@
   position:relative;
   border-radius: 2px;
   background-color: #f44336 ;
-  
-  
-  /* box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.9), inset 0 28px 0 rgba(221, 29, 0, 0.2), inset 0 28px 0 rgba(255, 255, 255, 0.3); */
 }
