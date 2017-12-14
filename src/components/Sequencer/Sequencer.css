@@ -16,30 +16,18 @@
   justify-content:center;
   width:96%;
   flex-wrap:wrap;
-  /* background-color:black; */
 }
 
 .drumrack {
   width: 100%;
-  margin-right:6px;
-  margin-left:6px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 6px;
   padding:4px 2px 4px 2px;
   border-radius: 9px;
   display: flex;
   position:relative;
   justify-content: center;
-  /* flex-direction:row; */
   flex-wrap:wrap;
   background-color: #fafafa ;
-}
-
-.slash {
-  font-size:34px;
-  padding-left:10px;
-  padding-right:10px;
-  margin-top: 6px;
 }
 
 .bpmplaybar{
