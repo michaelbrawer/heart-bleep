@@ -15,16 +15,16 @@ const Transport = (props) => {
       <Row>
         <Col>
           <Button
-            onClick={props.clearPattern}
+            onClick={props.handleSaveClick}
             waves='light'
-            className="grey darken-3 TransportButton">
-            Clear
+            className="red darken-3 TransportButton">
+            save
           </Button>
           <Button className='blue' onClick={props.playbutton_f} waves='light'>
             <Icon className="material-icons md-dark">cancel</Icon>
             <Icon className="material-icons md-dark">play_arrow</Icon>
           </Button>
-          <Button className="bpm-display disabled">BPM:{props.bpm_num}</Button>
+          <Button className="bpm-display disabled">bpm:{props.bpm_num}</Button>
           <input
             s={3}
             type="range"
