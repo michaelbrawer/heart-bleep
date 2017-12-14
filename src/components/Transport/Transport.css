@@ -51,17 +51,11 @@ button {
 }
 
 .drumracklabel {
-  /* height: 55px;
-  margin-top: 15px;
-  margin-left: 15px; */
   font-family: 'VT323', monospace;
-  /* bottom:4px; */
   margin-left: 10px;
   margin-bottom: 0;
   font-size: 48px;
-  color: black;
-  /* padding: 10px; */
-  /* padding-bottom: 10px; */
+  color: #212121;
   position:relative;
 }
 

@@ -41,7 +41,7 @@ class SignupForm extends Component {
     return (
       <div>
         <header className="header-footer">
-          <h5>Sign Up</h5>
+          <h5>sign up:</h5>
         </header>
         <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
@@ -59,7 +59,7 @@ class SignupForm extends Component {
               <input
                 type="email"
                 className="form-control"
-                placeholder="Email"
+                placeholder="email"
                 value={this.state.email}
                 onChange={(e) => this.handleChange('email', e)}/>
             </div>
@@ -69,7 +69,7 @@ class SignupForm extends Component {
               <input
                 type="password"
                 className="form-control"
-                placeholder="Password"
+                placeholder="password"
                 value={this.state.password}
                 onChange={(e) => this.handleChange('password', e)}/>
             </div>
@@ -85,10 +85,10 @@ class SignupForm extends Component {
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12 text-center">
-              <button className="btn btn-default" disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
+            <div className=" text-center">
+              <Button className="blue playBtn" disabled={this.isFormInvalid()}>sign up</Button>&nbsp;&nbsp;
               <Link to='/'>
-                <Button>Cancel</Button>
+                <Button className='red saveBtn'>cancel</Button>
               </Link>
             </div>
           </div>

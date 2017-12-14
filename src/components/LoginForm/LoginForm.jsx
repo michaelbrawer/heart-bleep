@@ -35,7 +35,7 @@ class LoginForm extends Component {
     return (
       <div>
         <header className="header-footer">
-          <h5>Log In</h5>
+          <h5>log in:</h5>
         </header>
         <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
@@ -43,7 +43,7 @@ class LoginForm extends Component {
               <input
                 type="email"
                 className="form-control"
-                placeholder="Email"
+                placeholder="email"
                 value={this.state.email}
                 onChange={(e) => this.handleChange('email', e)}/>
             </div>
@@ -53,16 +53,16 @@ class LoginForm extends Component {
               <input
                 type="password"
                 className="form-control"
-                placeholder="Password"
+                placeholder="password"
                 value={this.state.pw}
                 onChange={(e) => this.handleChange('pw', e)}/>
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-center">
-              <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
+              <Button className="blue playBtn">Log In</Button>&nbsp;&nbsp;&nbsp;
               <Link to='/'>
-                <Button>Cancel</Button>
+                <Button className='red saveBtn'>Cancel</Button>
               </Link>
             </div>
           </div>
