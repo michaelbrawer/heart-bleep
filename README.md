@@ -25,7 +25,7 @@
 ---
 
 ### Future Enhancements: 
-- I'd still like to get WebMidi cooking in this app... Building in a sprint, I found myself in a place facing a fork in the road development-wise; pursue midi functionality or experiment tone.js.  I chose to work with tone - it's amazing!
+- I'd still like to get WebMidi cooking in this app... Building in a sprint, I found myself in a place facing a fork in the road development-wise; pursue midi functionality or experiment with Tone.js.  I chose to work with Tone - it's amazing!
 
 ### Unsolved Problems: 
 - Tone's initial buffering can be a bit strange when loading larger files / samples.  setTimeout is helping here for the time being.  I'd like to work in a slicker implementation...
