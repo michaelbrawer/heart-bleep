@@ -5,7 +5,7 @@ import './Transport.css';
 const Transport = (props) => {
   return (
       <div className='transportCard' s={10}>
-    <div className="drumrackbar">
+      <div className="drumrackbar">
         <div className="btns">
             <Row className="center-align">
               <Button
