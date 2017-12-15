@@ -25,6 +25,9 @@
 
 @media (min-width: 1900px){
   .progresslight{
-    width: 44px;
+    width: 50px;
+  }
+  .progresslighton {
+    width: 50px;
   }
 }
