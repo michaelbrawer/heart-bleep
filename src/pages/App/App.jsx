@@ -72,8 +72,8 @@ class App extends Component {
             <LoginPage {...props} handleLogin={this.handleLogin}/>
           </Row>}/>
         </Switch>
-        <div id="Sticky" className="HeaderFooter">Copyright 2017
-      <span className='footHeart'>&hearts;</span>
+        <div id="Sticky" className="HeaderFooter">Copyright 2017 &nbsp;
+      <span className='footHeart'>&hearts; &nbsp;</span>
       MCB</div>
       </div>
     );
