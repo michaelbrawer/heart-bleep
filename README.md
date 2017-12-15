@@ -42,6 +42,9 @@
 ![Initial WireFrame](https://i.imgur.com/dRTcQdx.png)
 ----
 
+#### Build History:
+![Animated Build Gif](https://i.imgur.com/B5dvTYb.gif)
+
 ### Credits: 
 
 - Credits go here...
