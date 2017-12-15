@@ -2,23 +2,21 @@
 import React, { Component } from 'react';
 //adds Tone audio Framework
 import Tone from 'tone';
-import PositionTransform from '../assets/js/position';
+//login component
 import userService from '../../utils/userService';
-//fixed pattern assets
-import { nullTrack } from '../assets/js/patterns';
-
-// import { nullTrack } from '../assets/js/null_track';
 
 //custom React Components
 import SequenceRow from '../SequenceRow/SequenceRow';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import Transport from '../Transport/Transport'
-// import bitKit from '../assets/js/kits'
 
 //Styling:
 import {Container} from 'react-materialize'
 import './Sequencer.css'
 
+//fixed pattern assets
+import PositionTransform from '../assets/js/position';
+import { nullTrack } from '../assets/js/patterns';
 
 //8-bit drum kit
 const bitKit = {
@@ -42,16 +40,12 @@ class Sequencer extends Component {
       volume: -6,
       playing: false,
       bside: false,
-      // swing: 0.2,
       currentPattern: (this.props.user ? this.props.user.pattern : nullTrack),
-      // currentPattern: (this.props.user ? this.props.user.pattern: nullTrack),
-      // (this.props.user ? this.props.user.pattern: nullTrack),
       currentKit: bitKit
     }
   }
 
 //Pattern Save  / Load Methods:
-
     handleSaveClick = () => {
       let pattern = this.state.currentPattern;
       let email = this.props.user.email
@@ -78,31 +72,6 @@ class Sequencer extends Component {
         setTimeout(this.getInitialState, 400);
       }
     }
-
-      //old Clear Pattern
-  clearZZZPattern () {
-    this.playSeq.dispose();
-    this.setState({currentPattern: nullTrack});
-    setTimeout(this.getInitialState, 400)
-    // window.location.reload();
-  }
-
-    //old Load Pattern
-    loadZZZPattern = () => {
-    // if (this.state.playing){
-    // Tone.Transport.stop();
-    // this.setState({currentPattern: this.props.user.pattern});
-    // setTimeout(this.getInitialState, 400);
-    // } else {
-    //   this.setState({currentPattern: this.props.user.pattern});
-    //   setTimeout(this.getInitialState, 400);
-    // }
-    this.setState({currentPattern: this.props.user.pattern})
-    setTimeout(this.getInitialState, 400);
-    // alert('load')
-    // window.location.reload();
-    }
-
 
     //Instantiates Sequencer
     getInitialState = () =>{
@@ -131,6 +100,7 @@ class Sequencer extends Component {
 
     this.playSeq.start();
     this.playSeq.loop = true;
+    // Future Swing Implementation goes here:
     // Tone.Transport.setLoopPoints(0, '2m');
     // Tone.Transport.swing = this.state.swing;
     Tone.Transport.setLoopPoints(0, '1m');
@@ -189,20 +159,6 @@ class Sequencer extends Component {
     }
   }
 
-  // changeSwing (s) {
-  //   var e = s / 100
-  //   Tone.Transport.swing = e;
-  //   this.setState({ swing: e });
-  // }
-
-  changeVolume(e, value) {
-    this.setState({ volume: value });
-    if (value < -40) {
-      value = -100;
-    }
-    Tone.Master.volume.value = value;
-  }
-
     /*---------- Lifecycle Methods ----------*/
 
   componentDidMount(){
@@ -216,6 +172,7 @@ class Sequencer extends Component {
   }
 
     /*---------- Render ----------*/
+
   render() {
     function makeSeqRow(v, i) {
       let pattern;
@@ -246,7 +203,6 @@ class Sequencer extends Component {
           </div>
         </div>
       </div>
-     
       <Transport
               user={this.props.user}
               handleSaveClick={this.handleSaveClick}
@@ -260,6 +216,7 @@ class Sequencer extends Component {
               clearPattern={this.clearPattern}
               loadPattern={this.loadPattern}
             />
+            {/* Dev Buttons */}
             {/* <button onClick={this.clearPattern}>Clear Pattern</button>
             <button onClick={this.loadPattern}>Load Pattern</button> */}
       </Container>
