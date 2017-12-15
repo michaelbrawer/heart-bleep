@@ -20,7 +20,7 @@ const NavBar = (props) => {
     </ul>
 
   return (
-    <div className='navbar-fixed'>
+    //fixed navbar seemingly breaks materialize links when collapsed
     <Navbar
       className="HeaderFooter"
       brand={< div className='valign-wrapper'> 
@@ -31,7 +31,7 @@ const NavBar = (props) => {
         }left>
       {nav}
     </Navbar>
-    </div>
+    
   );
 };
 
