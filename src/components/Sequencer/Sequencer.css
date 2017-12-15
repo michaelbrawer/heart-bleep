@@ -14,7 +14,7 @@
   width:96%;
   flex-wrap:wrap;
 }
-.drumrack {
+.drumRack {
   width: 100%;
   margin: 10px 6px;
   padding:4px 2px 4px 2px;
@@ -42,7 +42,7 @@ textarea:focus, input:focus{
     margin-bottom: 60px; 
   }
 
-  .lightoff, .lighton {
+  .lightOff, .lightOn {
     left: 18px;
     width: 14px;
     height: 14px;
@@ -50,7 +50,7 @@ textarea:focus, input:focus{
 }
 
 @media only screen and (max-width: 1024px) {
-  .lightoff, .lighton {
+  .lightOff, .lightOn {
     width: 8px;
     height: 8px;
     left: 9px;
@@ -58,7 +58,7 @@ textarea:focus, input:focus{
 }
 
 @media only screen and (max-width: 960px) {
-  .lightoff, .lighton {
+  .lightOff, .lightOn {
     width: 10px;
     height: 10px;
     left: 10px;
@@ -70,13 +70,17 @@ textarea:focus, input:focus{
 }
 
 @media only screen and (max-width: 860px) {
-  .lightoff, .lighton {
+  .lightOff, .lightOn {
     left: 5px;
+    width: 8px;
+    height: 8px;
   }
 }
 
 @media only screen and (max-width: 640px) {
-  .lightoff, .lighton {
+  .lightOff, .lightOn {
     left: 5px;
+    width: 8px;
+    height: 8px;
   }
 }

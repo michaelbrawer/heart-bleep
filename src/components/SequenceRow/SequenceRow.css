@@ -1,11 +1,11 @@
-.sequencerrow {
+.sequencerRow {
   width:95%;
   display:flex;
   flex-direction: row;
   justify-content:center;
 }
 
-.stepbutton {
+.stepButton {
   cursor: pointer;
   width: 38px;
   height: 38px;
@@ -16,7 +16,7 @@
   position: relative;
 }
 
-.lightoff {
+.lightOff {
   display: block;
   position: absolute;
   background: #4a2b2b;
@@ -28,7 +28,7 @@
   border: 2px #212121 solid;
 }
 
-.lighton {
+.lightOn {
   display: block;
   position: absolute;
   background: #f44336 ;
@@ -40,19 +40,19 @@
   border: 2px #212121 solid;
 }
 
-.stepbutton:nth-of-type(n):nth-of-type(-n+4) {
+.stepButton:nth-of-type(n):nth-of-type(-n+4) {
   background-color: #f44336 ;
 }
 
-.stepbutton:nth-of-type(n+5):nth-of-type(-n+8) {
+.stepButton:nth-of-type(n+5):nth-of-type(-n+8) {
   background-color: #fdd835;
 }
 
-.stepbutton:nth-of-type(n+9):nth-of-type(-n+12) {
+.stepButton:nth-of-type(n+9):nth-of-type(-n+12) {
   background-color: #0277bd;
 }
 
-.stepbutton:nth-of-type(n+13):nth-of-type(-n+16) {
+.stepButton:nth-of-type(n+13):nth-of-type(-n+16) {
   background-color: #9e9e9e;
 }
 

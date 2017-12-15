@@ -9,15 +9,16 @@ const Transport = (props) => {
         <div className="btns">
             <Row className="center-align">
               <Button
+                flat
                 onClick={props.handleSaveClick}
                 waves='light'
                 className="red saveBtn">
                 save
               </Button>
-              <Button className='blue playBtn' onClick={props.playbutton_f} waves='light'>
+              <Button flat className='blue playBtn' onClick={props.playbutton_f} waves='light'>
                 <Icon className="playI material-icons md-dark">play_arrow</Icon>
               </Button>
-              <Button className="bpm-display grey">bpm: {props.bpm_num}</Button>
+              <Button flat className="bpm-display grey">bpm: {props.bpm_num}</Button>
             </Row>
       </div>
       <Row className="tempoSlider">

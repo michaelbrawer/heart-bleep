@@ -3,10 +3,10 @@ import './SequenceRow.css';
 
 const SequenceRow = (props) => {
   function makeRow(v, i) {
-    const channelClasses = v ? 'lighton' : 'lightoff';
+    const channelClasses = v ? 'lightOn' : 'lightOff';
     return (
       <div
-        className="stepbutton"
+        className="stepButton"
         data-channel={props.channelNum}
         data-stepindx={props.bside ? i + 13 : i}
         onClick={props.updateSeq}
@@ -16,7 +16,7 @@ const SequenceRow = (props) => {
     );
   }
   return (
-    <div className="sequencerrow">
+    <div className="sequencerRow">
       {props.channel.map(makeRow, this)}
     </div>
   );

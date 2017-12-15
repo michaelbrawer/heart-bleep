@@ -61,9 +61,9 @@ class LoginForm extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-center">
-              <Button className="blue playBtn">Log In</Button>&nbsp;&nbsp;&nbsp;
+              <Button flat className="blue playBtn">Log In</Button>&nbsp;&nbsp;&nbsp;
               <Link to='/'>
-                <Button className='red saveBtn'>Cancel</Button>
+                <Button flat className='red saveBtn'>Cancel</Button>
               </Link>
             </div>
           </div>

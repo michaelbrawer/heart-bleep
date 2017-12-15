@@ -87,9 +87,9 @@ class SignupForm extends Component {
           <div className="form-group">
           <Row>
             <div className="btns text-center">
-              <Button s={6} className="blue playBtn" disabled={this.isFormInvalid()}>sign up</Button>&nbsp;&nbsp;
+              <Button s={6} flat className="blue playBtn" disabled={this.isFormInvalid()}>sign up</Button>&nbsp;&nbsp;
               <Link to='/'>
-                <Button s={6} className='red saveBtn'>cancel</Button>
+                <Button s={6} flat className='red saveBtn'>cancel</Button>
               </Link>
             </div>
             </Row>
