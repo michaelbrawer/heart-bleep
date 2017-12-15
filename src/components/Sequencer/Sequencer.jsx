@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //adds Tone audio Framework
 import Tone from 'tone';
+
 //login component
 import userService from '../../utils/userService';
 
@@ -47,13 +48,12 @@ class Sequencer extends Component {
 //Pattern Save  / Load Methods:
     handleSaveClick = () => {
       let pattern = this.state.currentPattern;
-      let email = this.props.user.email
-      let id = this.props.user._id
+      let id = this.props.user._id;
       return fetch(`/api/users/${id}`,{
         method: 'Put',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({id: id, pattern: pattern, email: email})
-      }).then(console.log(pattern)).then(this.setState({currentPattern: pattern}))
+        body: JSON.stringify({id: id, pattern: pattern})
+      }).then(this.setState({currentPattern: pattern}))
     }
 
     loadPattern = () => {
@@ -211,9 +211,6 @@ class Sequencer extends Component {
               clearPattern={this.clearPattern}
               loadPattern={this.loadPattern}
             />
-            {/* Dev Buttons */}
-            {/* <button onClick={this.clearPattern}>Clear Pattern</button>
-            <button onClick={this.loadPattern}>Load Pattern</button> */}
       </Container>
     );
   }
