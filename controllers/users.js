@@ -33,7 +33,7 @@ function login(req, res) {
 }
 
 function update(req, res){
-  User.findOne({email: req.body.email})
+  User.findOne({email: req.body.email});
 }
 
 /*----- Helper Functions -----*/

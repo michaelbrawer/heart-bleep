@@ -24,4 +24,4 @@ export default {
   getUser,
   logout,
   login
-}
+};

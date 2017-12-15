@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button} from 'react-materialize'
+import {Button} from 'react-materialize';
 import userService from '../../utils/userService';
 
 
@@ -10,7 +10,7 @@ class LoginForm extends Component {
     this.state = {
       email: '',
       pw: ''
-    }
+    };
   }
 
   handleChange = (field, e) => {
@@ -30,7 +30,7 @@ class LoginForm extends Component {
       })
       // fix this ugly alert
       .catch(err => alert('Invalid Credentials!'));
-  }
+  };
 
   render() {
     return (

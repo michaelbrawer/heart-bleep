@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProgressBar.css'
+import './ProgressBar.css';
 // import {Col, Row, Container} from 'react-materialize'
 
 const progressBar = (props) => {

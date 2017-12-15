@@ -49,4 +49,4 @@ const demo = [
   ]
 ];
 
-module.exports = demo
+module.exports = demo;

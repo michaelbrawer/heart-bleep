@@ -1,5 +1,5 @@
 import React from 'react';
-import './SequenceRow.css'
+import './SequenceRow.css';
 
 const SequenceRow = (props) => {
   function makeRow(v, i) {

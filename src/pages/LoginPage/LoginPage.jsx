@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row, Container} from 'react-materialize'
+import {Col, Row, Container} from 'react-materialize';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import './LoginPage.css';
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import userService from '../../utils/userService';
-import {Button, Row} from 'react-materialize'
+import {Button, Row} from 'react-materialize';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class SignupForm extends Component {
     })
     // invalid user data
       .catch(err => this.props.updateMessage(err.message));
-  }
+  }; 
 
   isFormInvalid() {
     return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);

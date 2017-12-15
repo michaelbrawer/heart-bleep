@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Col, Row, Container} from 'react-materialize'
+import {Col, Row, Container} from 'react-materialize';
 import SignupForm from '../../components/SignupForm/SignupForm';
 import './SignupPage.css';
 
@@ -8,7 +8,7 @@ class SignupPage extends Component {
     super(props);
     this.state = {
       message: ''
-    }
+    };
   }
 
   updateMessage = (msg) => {

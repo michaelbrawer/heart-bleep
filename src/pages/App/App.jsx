@@ -10,21 +10,18 @@ import SignupPage from '../SignupPage/SignupPage';
 //import utils
 import userService from '../../utils/userService';
 //import styling
-import {Row} from 'react-materialize'
+import {Row} from 'react-materialize';
 import './App.css';
-// pattern assets import {nullTrack, demoTrack} from
-// '../../components/assets/js/patterns'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       foo: 'bar'
-    }
+    };
   }
 
   /*---------- Login Callback Methods ----------*/
-
   handleLogout = () => {
     userService.logout();
     this.setState({user: null});
@@ -34,19 +31,16 @@ class App extends Component {
     this.setState({
       user: userService.getUser()
     });
-  }
+  };
 
   handleLogin = () => {
     this.setState({
       user: userService.getUser()
     });
-  }
+  };
 
   /*---------- Lifecycle Methods ----------*/
-
-  componentWillMount() {}
-
-  componentDidMount() {
+  componentDidMount(){
     let user = userService.getUser();
     this.setState({user});
     // let user = userService.getUser(); this.setState({user});

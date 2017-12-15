@@ -7,6 +7,6 @@ const bitKit = {
   CH: "https://dl.dropboxusercontent.com/s/jypkqgpkcve863z/ClosedHat.wav?dl=1",
   OH: "https://dl.dropboxusercontent.com/s/ykqfdn3q8ridglg/OpenHat.wav?dl=1",
   HT: "https://dl.dropboxusercontent.com/s/hx3l8shrbm47bsh/HighTom.wav?dl=1"
-}
+};
 
-module.exports = {bitKit}
+module.exports = {bitKit};

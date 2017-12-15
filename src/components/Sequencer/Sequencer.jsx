@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 //adds Tone audio Framework
 import Tone from 'tone';
@@ -8,11 +7,11 @@ import userService from '../../utils/userService';
 //custom React Components
 import SequenceRow from '../SequenceRow/SequenceRow';
 import ProgressBar from '../ProgressBar/ProgressBar';
-import Transport from '../Transport/Transport'
+import Transport from '../Transport/Transport';
 
 //Styling:
-import {Container} from 'react-materialize'
-import './Sequencer.css'
+import {Container} from 'react-materialize';
+import './Sequencer.css';
 
 //fixed pattern assets
 import PositionTransform from '../assets/js/position';
@@ -28,7 +27,7 @@ const bitKit = {
   CH: "https://dl.dropboxusercontent.com/s/jypkqgpkcve863z/ClosedHat.wav?dl=1",
   OH: "https://dl.dropboxusercontent.com/s/ykqfdn3q8ridglg/OpenHat.wav?dl=1",
   HT: "https://dl.dropboxusercontent.com/s/hx3l8shrbm47bsh/HighTom.wav?dl=1"
-}
+};
 
 class Sequencer extends Component {
   constructor(props) {
@@ -42,7 +41,7 @@ class Sequencer extends Component {
       bside: false,
       currentPattern: (this.props.user ? this.props.user.pattern : nullTrack),
       currentKit: bitKit
-    }
+    };
   }
 
 //Pattern Save  / Load Methods:
@@ -60,18 +59,18 @@ class Sequencer extends Component {
     loadPattern = () => {
       fetch(userService.getUser()).then(this.setState({currentPattern: this.props.user.pattern}))
       .then(setTimeout(this.getInitialState, 200));
-    }
+    };
 
     clearPattern = () => {
       if(this.state.playing){
-        Tone.Transport.stop()
+        Tone.Transport.stop();
         this.setState({currentPattern: nullTrack});
         setTimeout(this.getInitialState, 400);
       } else {
         this.setState({currentPattern: nullTrack});
         setTimeout(this.getInitialState, 400);
       }
-    }
+    };
 
     //Instantiates Sequencer
     getInitialState = () =>{
@@ -108,12 +107,11 @@ class Sequencer extends Component {
     Tone.Transport.scheduleRepeat(this.positionMarker, '16n');
     Tone.Transport.bpm.value = this.state.bpm;
     Tone.Master.volume.value = this.state.volume;
-    
-  }
+  };
 
   positionMarker = () => {
     this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
-  }
+  };
 
   changeTempo = (e) => {
     let newTempo = parseInt(e.currentTarget.value, 10);
@@ -125,7 +123,7 @@ class Sequencer extends Component {
     }
     Tone.Transport.bpm.value = newTempo;
     this.setState({ bpm: newTempo });
-  }
+  };
 
   updatePattern = (event) => {
     const channelNum = parseInt(event.currentTarget.dataset.channel, 10);
@@ -146,7 +144,7 @@ class Sequencer extends Component {
       this.setState({ currentPattern: cpattern });
     }
     this.setState({ currentPattern: cpattern });
-  }
+  };
 
   startStop = () => {
     if (this.state.playing) {
@@ -157,10 +155,9 @@ class Sequencer extends Component {
       Tone.Transport.start('+0.25');
       this.setState({ playing: true });
     }
-  }
+  };
 
-    /*---------- Lifecycle Methods ----------*/
-
+/*---------- Lifecycle Methods ----------*/
   componentDidMount(){
     this.getInitialState();
     document.addEventListener('keydown', (e) => {
@@ -170,9 +167,7 @@ class Sequencer extends Component {
       }
     });
   }
-
-    /*---------- Render ----------*/
-
+/*---------- Render ----------*/
   render() {
     function makeSeqRow(v, i) {
       let pattern;
