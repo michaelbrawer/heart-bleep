@@ -72,7 +72,7 @@ class Sequencer extends Component {
       }
     };
 
-    //Instantiates Sequencer
+    //Instantiates Multiplayer
     getInitialState = () =>{
     this.sampleOrder = ['BD', 'SD', 'CL', 'CA', 'LT', 'CH', 'OH', 'HT'];
     let multSampler = new Tone.MultiPlayer({
@@ -91,7 +91,7 @@ class Sequencer extends Component {
       }
       return result;
     };
-
+    //Built & Start Tone Sequencer
     this.columnPattern = getColumns(this.state.currentPattern);
     this.playSeq = new Tone.Sequence((time, value) => {
       this.columnPattern[value].forEach((v) => { return multSampler.start(v, time, 0, '16n', 0);});
@@ -111,18 +111,6 @@ class Sequencer extends Component {
 
   positionMarker = () => {
     this.setState({ position: PositionTransform[Tone.Transport.position.slice(0, 5)] });
-  };
-
-  changeTempo = (e) => {
-    let newTempo = parseInt(e.currentTarget.value, 10);
-    if (isNaN(newTempo)) {
-      newTempo = 10;
-    }
-    if (newTempo > 200) {
-      newTempo = 200;
-    }
-    Tone.Transport.bpm.value = newTempo;
-    this.setState({ bpm: newTempo });
   };
 
   updatePattern = (event) => {
@@ -155,6 +143,18 @@ class Sequencer extends Component {
       Tone.Transport.start('+0.25');
       this.setState({ playing: true });
     }
+  };
+
+  changeTempo = (e) => {
+    let newTempo = parseInt(e.currentTarget.value, 10);
+    if (isNaN(newTempo)) {
+      newTempo = 10;
+    }
+    if (newTempo > 200) {
+      newTempo = 200;
+    }
+    Tone.Transport.bpm.value = newTempo;
+    this.setState({ bpm: newTempo });
   };
 
 /*---------- Lifecycle Methods ----------*/

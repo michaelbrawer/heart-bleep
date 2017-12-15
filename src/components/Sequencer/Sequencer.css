@@ -36,6 +36,16 @@ textarea:focus, input:focus{
   outline: none;
 }
 
+@media (min-width: 1900px){
+  div.rackcabinet{
+    margin-top: 100px !important;
+    margin-bottom: 60px; 
+  }
+  div.progressbar{
+    width: 80%;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .lightoff {
     width: 8px;

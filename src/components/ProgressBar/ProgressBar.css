@@ -22,3 +22,9 @@
   border-radius: 2px;
   background-color: #f44336 ;
 }
+
+@media (min-width: 1900px){
+  .progresslight{
+    width: 38px;
+  }
+}
