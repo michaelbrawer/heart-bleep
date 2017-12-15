@@ -38,11 +38,8 @@ textarea:focus, input:focus{
 
 @media (min-width: 1900px){
   div.rackcabinet{
-    margin-top: 100px !important;
+    margin-top: 80px !important;
     margin-bottom: 60px; 
-  }
-  div.progressbar{
-    width: 80%;
   }
 }
 
