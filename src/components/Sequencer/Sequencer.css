@@ -63,6 +63,10 @@ textarea:focus, input:focus{
     height: 10px;
     left: 10px;
   }
+  div.rackcabinet{
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
 }
 
 @media only screen and (max-width: 860px) {
