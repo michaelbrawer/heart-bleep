@@ -2,7 +2,7 @@
 
 ### *A chiptune inspired drum sequencer built on React / Tone.js*
 ----
-![ScreenShot](https://i.imgur.com/83U2gFf.png)
+![ScreenShot](https://i.imgur.com/XBFVK6a.png)
 ----
 ### Getting Started
 - [CLICK HERE](https://aqueous-temple-93653.herokuapp.com/) to play in browser... 
