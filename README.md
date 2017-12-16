@@ -55,3 +55,6 @@ GA instructors [Jim Clark](https://github.com/jim-clark) and [Jonathan Tamsut](h
 (Even through I likely deserved it...  406 Error Forever!)
 
 -MCB, Dec. 2017
+
+#### WDI-DT-53
+![Class Photo](https://i.imgur.com/aZH3ZV8.jpg)
