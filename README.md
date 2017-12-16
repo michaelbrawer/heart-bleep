@@ -57,4 +57,4 @@ GA instructors [Jim Clark](https://github.com/jim-clark) and [Jonathan Tamsut](h
 -MCB, Dec. 2017
 
 #### WDI-DT-53
-![Class Photo](https://i.imgur.com/aZH3ZV8.jpg)
+![Class Photo](https://i.imgur.com/RRtcNv1.jpg)
